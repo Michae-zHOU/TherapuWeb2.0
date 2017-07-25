@@ -1,0 +1,43 @@
+{{>head}}
+{{>header}}
+    <link rel="stylesheet" href="../../stylesheets/createArticle.css">
+    <script>
+        //indicator for navbar 
+        $('#articleLink').addClass('active')
+    </script>
+    <section class="createArticle">
+        <h1>修改文章</h1>
+        <form action="/edit/article/{{articleId}}" method="post">
+            <input type="text" id="articleId" data-api="/article/edit/{{articleId}}" name="id" hidden>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group is-empty">
+                            <input type="text" value="{{articleTitle}}" class="form-control" name="title" id="title" required>
+                            <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group is-empty">
+                            <input type="text" value="{{articleSubtitle}}" class="form-control" id="subtitle" name="subtitle" required>
+                            <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating is-empty noMarginInput">
+                        <textarea id="article" class="form-control" rows="5" name="article" required>{{articleBody}}</textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-md-offset-11">
+                    <button class="btn btn-info btn-lg" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </section>
+     <script>
+        CKEDITOR.replace( 'article' );
+    </script>
+{{>footer}}
+{{>scripts}}

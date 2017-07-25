@@ -1,0 +1,19 @@
+.index-section {
+    height: 70vh;
+    width: 100%;
+    position: absolute;
+    top: 65px;
+    background-color: rgb(141, 191, 66);
+}
+.index-section img {
+    float: right;
+    clear: both;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.article-section {
+    margin-top: calc(70vh + 80px);
+    padding: 20px 20%;
+}

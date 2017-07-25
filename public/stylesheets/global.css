@@ -1,0 +1,61 @@
+.modal-backdrop.in {
+    display: none;
+}
+.navbar .navbar-nav>li>a.active { 
+    color: #388e3c;
+}
+.form-control, .form-group .form-control {
+    padding: 15px 25px;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.form-control, .form-group .form-control:focus {
+    border: 1px solid #4caf50;
+}
+.navbar.navbar-primary {
+	background-color: white;
+	box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 12px -5px rgba(100,100,100, 0.5);
+	color: black;
+}
+.loginBtn.btn.btn-round, .navbar .navbar-nav>li>a.btn.btn-round {
+	background-color: #4caf50;
+	color: white;
+}
+.articleBody body {
+    background-color: #fff;
+}
+.navbar .navbar-toggle .icon-bar {
+    color: #4caf50;
+}
+.side-nav {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    right: -300px;
+    z-index: 999;
+    background-color: #fff;
+    padding: 15% 30px 0 30px;
+    color: #444;
+    transition: 0.4s;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 12px -5px rgba(100,100,100, 0.5);;
+}
+.side-nav a {
+    color: #444;
+}
+.side-nav.activeNav {
+    right: 0;
+}
+.navbar-brand>img {
+    height: 40px;
+    margin-top: -5px; 
+}
+@media only screen and (min-width: 691px) {
+    .side-nav {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+     .surveyGenerateForm {
+        padding: 0 10%;
+    }
+} 

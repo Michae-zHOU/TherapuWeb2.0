@@ -1,0 +1,175 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/index.css">
+<script>
+	//indicator for navbar 
+	$('#homeLink').addClass('active')
+</script>
+
+<section class="homeContent">
+	<div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success ">
+                        <div class="container">
+                            <div class="alert-icon">
+                                <i class="material-icons">info_outline</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                            </button>
+
+                            <b>温馨提示:</b> {{banner}}
+						</div>
+                </div>
+			</div>
+			<input type="text" hidden value="{{banner}}" id="alert-text">
+			<script>
+				if ($('#alert-text').val() == '') {
+					$('.alert-success').hide()
+				}
+			</script>
+            <div class="col-md-6">
+                <div class="row topArticles">
+                    <div class="col-md-12">
+                                <div class="card card-raised card-carousel">
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel slide" data-ride="carousel">
+
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+												 {{#carouselArticles}}
+                                                <div class="item next left">
+                                                    <img src="/assets/articles/{{articleImg.filename}}" alt="Awesome Image">
+                                                    <div class="carousel-caption">
+                                                        <a href="/article/{{_id}}"><h4>{{title}}</h4></a>
+                                                    </div>
+                                                </div>
+												{{/carouselArticles}} 
+												<script>
+													$('.carousel-inner .item').first().addClass('next').addClass('left')
+													$('.carousel-inner .item').last().addClass('active').addClass('left')
+												</script>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="index.html#carousel-example-generic" data-slide="prev">
+                                                <i class="material-icons">keyboard_arrow_left</i>
+                                            </a>
+                                            <a class="right carousel-control" href="index.html#carousel-example-generic" data-slide="next">
+                                                <i class="material-icons">keyboard_arrow_right</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                        <div class="articleList" style="height: 258px; max-height: 258px;">
+                            <h4 class="title">本周热门</h4>
+                            <div class="divider"></div>
+                            <ul>
+                                {{#featuredArticles}}
+                                <li><a href="/article/{{_id}}"><h6>{{title}}</h6></a></li>
+                                {{/featuredArticles}}
+                            </ul>
+                        </div>
+            </div>	
+        </div>
+	
+		<div class="row dailyArticleSection">
+			<div class="col-md-12">
+					<h2 class="title">每日精选</h2>
+					{{#dailyArticles}}
+					<div class="card card-plain card-blog">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="card-image">
+									<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+								</div>
+							</div>
+							<div class="col-md-8">
+								<h3 class="card-title">
+									<a href="/article/{{_id}}">{{title}}</a>
+								</h3>
+								<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
+								<p class="card-description">
+									{{article}} 
+								</p>
+								<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+								<p class="author">
+									作者： <a href=""><b>{{author}}</b></a>,<br>创作于： {{created_at}}
+								</p>
+								<p class="views test" id="test">
+									阅读量： <a href=""><b>{{views}}+</b></a>
+								</p>
+							</div>
+						</div>
+					</div>
+					{{/dailyArticles}}
+				</div>
+		</div>
+
+
+</section>
+
+
+<script>
+
+
+	
+</script>
+{{>scripts}}
+{{>footer}}
+
+<script>
+				var monkeyList = new List('fourArticleList', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('newestArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('popularArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('hunlianArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('jiankangArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('zhichangArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+			var parser = new DOMParser()
+			var cardDescriptions = document.getElementsByClassName('card-description');
+			
+			
+			
+			for (var i = 0; i <=cardDescriptions.length; i++) {
+				Encoder.EncodeType = "entity";
+				var decoded = Encoder.htmlDecode(cardDescriptions[i].innerHTML);
+				cardDescriptions[i].innerHTML = parser.parseFromString(decoded, 'text/html').documentElement.innerHTML
+				
+			}
+			
+    </script>

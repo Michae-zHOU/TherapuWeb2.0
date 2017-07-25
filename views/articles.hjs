@@ -1,0 +1,449 @@
+{{>head}}
+{{>header}}
+    <link rel="stylesheet" href="stylesheets/articles.css">
+	<script>
+		//indicator for navbar 
+		$('#articleLink').addClass('active')
+	</script>
+   
+	<div class="row allArticles">
+		<div class="card card-nav-tabs">
+			<div class="header header-success">
+				<!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+				<div class="nav-tabs-navigation">
+						<div class="nav-tabs-wrapper">
+							<ul class="nav nav-tabs" data-tabs="tabs" id="articleTypesTab">
+														<li class="active">
+															<a href="index.html#all" data-toggle="tab">
+																<i class="material-icons">face</i>
+																全部
+															</a>
+														</li>
+														<li>
+															<a href="index.html#popular" data-toggle="tab">
+																<i class="material-icons">build</i>
+																热门
+															</a>
+														</li>
+														<li>
+															<a href="index.html#hunlian" data-toggle="tab">
+																<i class="material-icons">face</i>
+																婚恋
+															</a>
+														</li>
+														<li>
+															<a href="index.html#jiankang" data-toggle="tab">
+																<i class="material-icons">chat</i>
+																健康
+															</a>
+														</li>
+														<li>
+															<a href="index.html#zhichang" data-toggle="tab">
+																<i class="material-icons">build</i>
+																职场
+															</a>
+														</li>
+														<li>
+															<a href="index.html#xingxinli" data-toggle="tab">
+																<i class="material-icons">build</i>
+																性心理
+															</a>
+														</li>
+														<li>
+															<a href="index.html#kepu" data-toggle="tab">
+																<i class="material-icons">build</i>
+																科普
+															</a>
+														</li>
+														<li>
+															<a href="index.html#chengzhang" data-toggle="tab">
+																<i class="material-icons">build</i>
+																成长
+															</a>
+														</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="card-content">
+										<div class="tab-content text-center">
+											<div class="tab-pane active" id="all">
+												<div class="row">
+													<div id="fourArticleList">
+														<div class="list">
+															{{#AllArticle}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/AllArticle}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="popular">
+												<div class="row">
+													<div id="popularArticles">
+														<div class="list">
+															{{#popularArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/popularArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="hunlian">
+												<div class="row">
+													<div id="hunlianArticles">
+														<div class="list">
+															{{#hunlianArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/hunlianArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="jiankang">
+												<div class="row">
+													<div id="jiankangArticles">
+														<div class="list">
+															{{#jiankangArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/jiankangArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="zhichang">
+												<div class="row">
+													<div id="zhichangArticles">
+														<div class="list">
+															{{#zhichangArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/zhichangArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="xingxinli">
+												<div class="row">
+													<div id="zhichangArticles">
+														<div class="list">
+															{{#xingxinliArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/xingxinliArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="kepu">
+												<div class="row">
+													<div id="zhichangArticles">
+														<div class="list">
+															{{#kepuArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/kepuArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="chengzhang">
+												<div class="row">
+													<div id="zhichangArticles">
+														<div class="list">
+															{{#chengzhangArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{article}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/chengzhangArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+				var monkeyList = new List('fourArticleList', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('newestArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('popularArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('hunlianArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('jiankangArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('zhichangArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+			var parser = new DOMParser()
+			var cardDescriptions = document.getElementsByClassName('card-description');
+			
+			
+			
+			for (var i = 0; i <=cardDescriptions.length; i++) {
+				Encoder.EncodeType = "entity";
+				var decoded = Encoder.htmlDecode(cardDescriptions[i].innerHTML);
+				cardDescriptions[i].innerHTML = parser.parseFromString(decoded, 'text/html').documentElement.innerHTML
+				
+			}
+			
+    </script>
+{{>footer}}
+{{>scripts}}

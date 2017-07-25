@@ -1,0 +1,187 @@
+{{>head}}
+{{>header}}
+    <link rel="stylesheet" href="../../stylesheets/createSurvey.css">
+    <script>
+        //indicator for navbar 
+        $('#surveyLink').addClass('active')
+    </script>
+    <h1 class="createSurveyHeader">{{surveyTitle}}</h1>
+    <section class="createSurvey">
+        <form action="/survey/new/create" method="post" id="surveyForm" name="surveyForm" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail img-raised">
+                            <img src="/assets/surveys/survey-default.png" alt="...">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                        <div>
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" name="surveyImg" required>
+                            </span>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" value="{{surveyNumber}}" id="surveyNumber" name="surveyNumber" hidden>
+            <input type="text" value="{{surveyType}}" id="surveyType" name="surveyType" hidden>
+            <input type="text" value="{{surveyTitle}}" name="surveyTitle" hidden>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" placeholder="问卷简介" class="form-control" name="description" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <span>0-25分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" placeholder="0-25分 标题" value="" class="form-control" name="range1Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" placeholder="0-25分 内容" value="" class="form-control" name="range1Content" required></textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <span>25-50分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" placeholder="25-50分 标题" value="" class="form-control" name="range2Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" placeholder="25-50分 内容" value="" class="form-control" name="range2Content" required></textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <span>50-75分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" placeholder="50-75分 标题" value="" class="form-control" name="range3Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" placeholder="50-75分 内容" value="" class="form-control" name="range3Content" required></textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <span>75-100分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" placeholder="75-100分 标题" value="" class="form-control" name="range4Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" placeholder="75-100分 内容" value="" class="form-control" name="range4Content" required></textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button class="btn btn-lg btn-success" type="submit" onclick="document.surveyForm.submit()">创建问卷</button>
+    </section>
+
+    <script>
+        var article = $("#surveyType").val()
+        var typeArray = article.split()
+        var type = typeArray[0]
+        var py =typeArray[1]
+        var surveyNumber = $('#surveyNumber').val();
+        for(i = 1; i <= surveyNumber; i ++) {
+            $('#surveyForm').append(`
+                <div class="questionBlock">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>${i}.</span>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="form-group label-floating is-empty">
+                            <textarea class="form-control" rows="5" placeholder="问题${i}" name="q${i}t" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <span>A.</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group is-empty">
+                            <input type="text" value="" placeholder="选项A" class="form-control" name="q${i}m1" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group is-empty">
+                            <input type="number" placeholder="得分" value="" class="form-control" name="q${i}m1p" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-1">
+                        <span>B.</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group is-empty">
+                            <input type="text" value="" placeholder="选项B" class="form-control" name="q${i}m2" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group is-empty">
+                            <input type="number" placeholder="得分" value="" class="form-control" name="q${i}m2p" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-1">
+                        <span>C.</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group is-empty">
+                            <input type="text" value="" placeholder="选项C" class="form-control" name="q${i}m3" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group is-empty">
+                            <input type="number" placeholder="得分" value="" class="form-control" name="q${i}m3p" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-1">
+                        <span>D.</span>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group is-empty">
+                            <input type="text" value="" placeholder="选项D" class="form-control" name="q${i}m4" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group is-empty">
+                            <input type="number" placeholder="得分" value="" class="form-control" name="q${i}m4p" required>
+                        <span class="material-input"></span></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            `)
+        }
+    </script>
+{{>footer}}
+{{>scripts}}

@@ -1,0 +1,30 @@
+.featureSection {
+    padding: 10% 5%;
+}
+.main.main-raised {
+    position: relative;
+    bottom: 20px;
+}
+.about-page {
+    padding-top: 70px;
+}
+.card-profile h4.card-title {
+    max-width: none;
+}
+.card-description {
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.readMore {
+    color: #444;
+}
+.readMore:hover {
+    cursor: pointer;
+     color: #4caf50;
+}
+.card-description.active {
+    max-height: 900px;
+    text-overflow: none;
+    overflow: none;
+}

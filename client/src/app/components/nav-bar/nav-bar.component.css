@@ -1,0 +1,6 @@
+.navBar {
+    border-bottom: 1px solid hsla(0,0%,100%,.3);
+    position: absolute;
+    top: 0;
+    background-color: rgb(141, 191, 66);
+}

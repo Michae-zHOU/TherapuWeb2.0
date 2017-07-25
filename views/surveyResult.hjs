@@ -1,0 +1,41 @@
+{{>head}}
+{{>header}}
+  <link rel="stylesheet" href="../../stylesheets/result.css">
+  <script>
+	//indicator for navbar 
+	$('#surveyLink').addClass('active')
+</script>
+      <section class="resultContent">
+          <section class="resultTab">
+              <h1>{{userName}}， 您的问卷评估得分是： {{surveyData.score}}</h1>
+          </section>
+          <section class="resultSelection">
+              <div class="row">
+              {{#analysis}}
+                <div class="col s12 m6">
+                   <div class="card">
+						<div class="front">
+							<div class="card-content">
+												<h5 class="category-social text-success">
+													<i class="fa fa-newspaper-o"></i> {{range}}
+												</h5>
+
+												<h4 class="card-title">
+													<a href="#pablo">{{title}}</a>
+												</h4>
+												<p class="card-description">
+													{{content}}
+												</p>
+											</div>
+										</div>
+									</div>
+                </div>
+              {{/analysis}}
+              </div>
+          </section>
+      </section>
+      
+      
+
+{{>footer}}
+{{>scripts}}

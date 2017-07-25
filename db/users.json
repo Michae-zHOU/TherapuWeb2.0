@@ -1,0 +1,2 @@
+{"_id":{"$oid":"592c3ac5591fb374e8b51812"},"email":"peter@test.com","password":"123","username":"Peter Zheng","admin":{"$numberLong":"1"}}
+{"_id":{"$oid":"592dccfa614fac781411d59d"},"email":"123@123.com","password":"test"}

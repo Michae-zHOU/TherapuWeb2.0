@@ -1,0 +1,247 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/setting.css">
+<section class="settingSection">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-pills-rose nav-stacked">
+                <li class="active"><a href="#articleManagement" data-toggle="tab" aria-expanded="true">文章管理</a></li>
+                <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">问卷管理</a></li>
+                <li class=""><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
+                <li class=""><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="tab-content">
+                <div class="tab-pane active" id="articleManagement">
+                    <h3>文章管理</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>作者</th>
+                                    <th>点击量</th>
+                                    <th>发布时间</th>
+                                    <th class="text-right">标签</th>
+                                    <th class="text-right">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#articles}}
+                                <tr>
+                                    <td class="title"><a href="/article/{{_id}}">{{title}}</a></td>
+                                    <td>{{author}}</td>
+                                    <td>{{views}}+</td>
+                                    <td>{{created_at}}</td>
+                                    <td class="text-right">{{type}}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="/article/edit/{{_id}}" data-api="/api/edit/article/{{_id}}" type="button" rel="tooltip" class="btn btn-success btn-simple editBtn">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a data-api="/api/delete/article/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/articles}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="surveyManagement">
+                    <h3>问卷管理</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>作者</th>
+                                    <th>点击量</th>
+                                    <th>发布时间</th>
+                                    <th class="text-right">标签</th>
+                                    <th class="text-right">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#surveys}}
+                                <tr>
+                                    <td class="title"><a href="/survey/{{_id}}">{{title}}</a></td>
+                                    <td>{{author.fullName}}</td>
+                                    <td>{{views}}</td>
+                                    <td>{{created_at}}</td>
+                                    <td class="text-right">{{type}}</td>
+                                    <td class="td-actions text-right">
+                                        <!--<a href="/survey/edit/{{_id}}" data-api="/api/edit/article/{{_id}}" type="button" rel="tooltip" class="btn btn-success btn-simple editBtn">
+                                            <i class="material-icons">edit</i>
+                                        </a>-->
+                                        <a data-api="/api/delete/survey/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/surveys}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pageManagement">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <div class="form-group is-empty">
+                                <h3>首页横幅修改</h3>
+		        	        	<input type="text" name="mainPageBanner" value="{{homePageBannerData}}"  placeholder="{{homePageBannerData}}" class="form-control" id="mainPageBanner">
+                                <button class="btn btn-success btn-lg float-right" id="changeBannerBtn">修改</button>
+                            </div>
+                        </div>
+	                </div>
+	            </div>
+                <div class="tab-pane" id="userManagement">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <div class="form-group is-empty">
+                                <h3>新用户添加</h3>
+                                <form class="row" name="newUserForm" action="/api/register" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-3">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail img-circle img-raised">
+                                                <img src="assets/users/user-default.jpg" alt="...">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                                            <div>
+                                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                                    <span class="fileinput-new">添加头像</span>
+                                                    <span class="fileinput-exists">修改</span>
+                                                    <input type="file" name="avatar" id="avatar"></span>
+                                                <br>
+                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 删除</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text" name="email" placeholder="用户邮箱" class="form-control" required>
+                                        <input type="text" name="password"  placeholder="用户密码" class="form-control" required>
+                                        <input type="text" name="fullName" placeholder="用户姓名" class="form-control" required>
+                                        <input type="text" name="description" placeholder="用户简介" class="form-control" required>
+                                    </div>
+                                    <button class="btn btn-success btn-lg" type="submit">添加用户</button>
+                                </form>
+                                
+                               
+                            </div>
+                        </div>
+                         
+	                </div>
+                    <h3>用户列表</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>邮箱地址</th>
+                                                <th>全名</th>
+                                                <th>加入时间</th>
+                                                <th>身份</th>
+                                                <th class="text-right">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="userBody">
+                                            {{#users}}
+                                            <tr class="userCol">
+                                                <td class="title">{{email}}</td>
+                                                <td>{{fullName}}</td>
+                                                <td>{{created_at}}</td>
+                                                <td class="isAdmin{{admin}}">{{admin}}</td>
+                                                <td class="td-actions text-right">
+                                                    <a type="button" rel="tooltip" class="btn btn-danger btn-simple deleteUser">
+                                                        <i class="material-icons">close</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {{/users}}
+                                        </tbody>
+                                    </table>
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</section>
+<!-- small modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModal" aria-hidden="true">
+  <div class="modal-dialog modal-small ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+      </div>
+      <div class="modal-body text-center">
+        <h5>确定要删除吗？删除后数据不可恢复，请慎重执行。</h5>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-simple" data-dismiss="modal">取消操作</button>
+        <button type="button" class="btn btn-success btn-simple" id="confirm">确认操作</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+
+    $('.deleteBtn').click(function() {
+        var self = $(this)
+        $('#confirmModal').modal()
+        $('#confirm').click(function() {
+            console.log('hit')
+            var apiUrl = self.attr('data-api')
+            var title = self.parent().siblings('.title')[0].innerText;
+            console.log(apiUrl)
+            $.ajax({
+                url: apiUrl,
+                type: 'get',
+                success: function(result) {
+                    self.parent().parent().hide()
+                    $('#confirmModal').modal('hide')
+                }
+            })
+        })
+    })
+   $('#changeBannerBtn').click(function() {
+       var newBanner = $('#mainPageBanner').val();
+       var self = $(this)
+       if (!$('#mainPageBanner').val()) {
+        newBanner = 'empty'
+       }
+       $.ajax({
+           url: '/api/update/homePageBanner/' + newBanner,
+           type: 'get',
+           success: function(result) {
+            self.siblings('#mainPageBanner').value = result.homePageBanner
+            alert('首页条幅已修改！')
+           },
+           error: function(err) {
+               alert(err.responseText)
+           }
+       })
+   })
+
+ 
+   $('.deleteUser').on('click', function() {
+       var apiUrl =  $(this).parent().parent().find('.text-center')[0].innerText
+
+       var self = $(this)
+       $.ajax({
+           url: '/api/deleteUser/' + apiUrl,
+           type: 'get',
+           success: function(res) {
+               alert(`用户 ${apiUrl} 成功删除`)
+               self.parent().parent().hide()
+           },
+           error: function(res) {
+               alert(`用户删除失败， 因为 ${res.responseText}`)
+           }
+       })
+   })
+    $('.isAdmin1').text('作者')
+    $('.isAdmin2').text('管理员')
+</script>
+{{>footer}}
+{{>scripts}}

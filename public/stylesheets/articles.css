@@ -1,0 +1,28 @@
+.allArticles {
+    max-width: 70%;
+    margin: 100px auto;
+}
+.card-description {
+	font-size: 18px;
+	margin: 5px 0;
+	max-height: 70px;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+.card img {
+    max-height: 200px;
+}
+.card .col-md-4 {
+    padding-left: 0;
+}
+.card .card-content.col-md-8 {
+    padding: 0 10px;
+}
+@media only screen and (max-width: 892px) {
+    .allArticles {
+        max-width: 100%;
+        margin: 100px auto 0px auto;
+    }
+}

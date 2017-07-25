@@ -1,0 +1,25 @@
+.header-filter {
+    background-image: url('../assets/articles/{{articleData.articleImg.filename}}');
+}
+.page-header {
+    height: 20vh;
+}
+.articleImg {
+    height: auto;
+    width: 100%;
+}
+.articleTitle {
+    text-align: center;
+    margin: 30px 0;
+}
+.articleBody  body {
+    margin: 20px 0;
+    font-size: 19px;
+    line-height: 32px;
+}
+.section-blog-info .card-title {
+    text-align: left
+}
+.section-blog-info .description {
+    text-align: left
+}

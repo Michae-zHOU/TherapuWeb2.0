@@ -1,0 +1,66 @@
+.allSurveys {
+    max-width: 70%;
+    margin: 100px auto;
+}
+.card-title a {
+    max-width: 100%;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+body {
+    background-color: #fafafa;
+}
+.allSurveys .col-md-5 {
+    padding-left: 0;
+}
+.dailysurveySection .card-title {
+    min-height: 55px;
+    max-height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.authorDescription {
+    margin: 10px 35px 10px 45px;
+    color: #5e5e5e;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.author.left span {
+    font-weight: 900;
+    vertical-align: -5px;
+    font-size: 15px;
+}
+.card-description {
+    text-align: left;
+    margin: 10px 45px;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.allsurveys .stats i {
+    font-weight: 100;
+    color: #388e3c;
+    vertical-align: -5px;
+}
+.stats span {
+    font-weight: 900;
+    color: #388e3c;
+}
+.stats .questionNumber {
+    margin: 0 25px;
+}
+.author img {
+    margin: 0 5px 0 10px;
+}
+.allsurveys  .label.label-success{
+    vertical-align: 2.5px;
+}
+/*.creationDate {
+    width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20px;
+    display: block
+}*/

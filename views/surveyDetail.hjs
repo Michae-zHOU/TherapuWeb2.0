@@ -1,0 +1,119 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/surveyDetail.css">
+<script>
+	//indicator for navbar 
+	$('#surveyLink').addClass('active')
+</script>
+<section class="surveySection">
+        <form action="done" method="post" id="surveyForm">
+            <input type="text" hidden value="{{survey._id}}" name="id" id="surveyId">
+            <input type="number" hidden value="" id="questionNum" name="questionNum">
+            <div class="card card-blog">
+                <div class="card-content">
+                    <div class="topSection">
+                        <span class="details text-left">
+                            <span><i class="material-icons">schedule</i> 发布于 {{survey.created_at}}</span>
+                            <span><i class="material-icons">visibility</i>{{survey.views}}+人测试过</span>
+                            <span class="questionNumber">本测试共 {{survey.questionNumber}} 题</span>
+                        </span>
+                        <h6 class="category text-success text-right">
+                            <i class="material-icons">trending_up</i> {{survey.type}}
+                        </h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                             <div class="card-image">
+                                <img src="/assets/surveys/{{survey.surveyImg.filename}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h4 class="card-title text-left">
+                                <a href="#pablo">{{survey.title}}</a>
+                            </h4>
+                            <p class="card-description text-left">{{survey.description}}</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="author">
+                            <a href="#pablo">
+                                <img src="/assets/users/{{survey.author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+                                <span>{{survey.author.fullName}} - 专栏作者</span>
+                                <p class="card-description">作者简介 - {{survey.author.description}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="allQuestions">
+                    
+                </div>
+                <div class="row userInfo">
+                        <div class="col-md-6">
+                            <input type="text" name="email" placeholder="您的邮箱地址 (选填)" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="name" placeholder="您的姓名（选填）" class="form-control">
+                        </div>
+                </div>
+                <button class="btn btn-lg btn-success" type="submit" id="submitForm">提交问卷</button>
+                <br>    
+                <br>
+            </div>
+        </form>
+</section>
+ <script>
+
+
+    var surveyId = $('#surveyId').val();
+    var surveyQuestions;
+    $.get("/api/survey/" + surveyId, function(data, status){
+        surveyQuestions = data.questions
+        $('#questionNum').val(data.questionNumber);
+        for (i = 0; i < data.questionNumber; i ++) {
+        $('.allQuestions').append(`
+                    <div class="row" id="questionContent">
+                        <div class="col s12 m12 l12 questionBlock">
+                            <span class="questionTitle">${i + 1}.</span>
+                            <span class="question">${surveyQuestions[i].title}</span>
+
+                            <div class="radio">
+								<label>
+									<input type="radio" name="q${i+1}" id="q${i+1}m1" value="${surveyQuestions[i].mc1.pt}|a"><span class="circle"></span><span class="check"></span>
+									A. ${surveyQuestions[i].mc1.mc}
+								</label>
+							</div>
+                            <div class="radio">
+								<label>
+									<input type="radio" name="q${i+1}" id="q${i+1}m2" value="${surveyQuestions[i].mc2.pt}|b"><span class="circle"></span><span class="check"></span>
+									B. ${surveyQuestions[i].mc2.mc}
+								</label>
+							</div>
+                            <div class="radio">
+								<label>
+									<input type="radio" name="q${i+1}" id="q${i+1}m3" value="${surveyQuestions[i].mc3.pt}|c"><span class="circle"></span><span class="check"></span>
+									C. ${surveyQuestions[i].mc3.mc}
+								</label>
+							</div>
+                            <div class="radio">
+								<label>
+									<input type="radio" name="q${i+1}" id="q${i+1}m4" value="${surveyQuestions[i].mc4.pt}|d"><span class="circle"></span><span class="check"></span>
+									D. ${surveyQuestions[i].mc4.mc}
+								</label>
+							</div>
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+        `)
+        $('#surveyForm').submit(function(){
+            $(".pt:checked").attr('name', 'pt');
+        })
+        
+    };
+    })
+    
+   
+
+ </script>
+{{>footer}}
+{{>scripts}}

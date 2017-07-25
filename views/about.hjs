@@ -1,0 +1,302 @@
+{{>head}}
+{{>header}}
+	<link rel="stylesheet" href="stylesheets/about.css">
+	<script>
+		//indicator for navbar 
+		$('#aboutLink').addClass('active')
+	</script>
+	<section class="about-page">
+				<div class="team-4 section-image" style="background-image: url('images/aboutus.jpg')">
+
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 text-center">
+								<h2 class="title">轻语大家庭</h2>
+								<h5 class="description">这个团队温和、简单、开放，我们有明媚的现在和灿烂的未来，这一切，想与你一起创造和分享。</h5>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-md-3">
+								<div class="card card-profile">
+									<div class="card-avatar">
+										<a href="#pablo">
+											<img class="img" src="images/jeff.png">
+										</a>
+									</div>
+
+									<div class="card-content">
+										<h4 class="card-title">王彬兆 Jeff Wang</h4>
+										<h6 class="category text-muted">CEO / 联合创始人</h6>
+										<p class="card-description">
+											轻语创始人王彬兆（Jeff Wang）毕业于美国Skidmore College，工商管理学士，曾从事金融、市场营销等行业，有着丰富的工商管理、品牌策划、营销等能力与经验。
+			生活中的Jeff是一个阳光、开朗的大男孩，性格活泼，对于任何事情的看法都十分积极。就是这样的性格，使得他对心理这个行业产生了极大的兴趣。
+			之所以选择创立轻语这样一个专业的心理咨询平台，也是源于其自身对于国内心理行业的关注。Jeff在一次谈话中聊道：“在决定创业之前曾简单的研究过，发现在海外，人们经过了对身体健康和饮食健康的关注后，逐渐将重心转移到了心理健康，也使得心理这一行业越发成熟。相比之下，国内对于心理健康的关注才刚刚起步，国人对于心理的概念存在误解，而心理健康在国内的重要性却越发重要。但是，积极的一点是，国人已经经过了对身体健康和饮食健康的关注，逐渐将重心转向心理健康，只是缺乏催化剂，而创立轻语，就是希望成为心理行业的一道催化剂。”Jeff最喜欢放在嘴边的一句话就是“车到山前必有路，船到桥头自然直”，正是如此，他才愿意去走出未知的每一步，去想办法解决困境，帮助他人。
+										</p>
+										<a class="readMore">阅读更多</a>
+										<div class="footer">
+											<a href="#pablo" class="btn btn-just-icon btn-linkedin btn-round"><i class="fa fa-linkedin"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-twitter btn-round"><i class="fa fa-twitter"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-dribbble btn-round"><i class="fa fa-dribbble"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="card card-profile">
+									<div class="card-avatar">
+										<a href="#pablo">
+											<img class="img" src="images/jack.jpeg">
+										</a>
+									</div>
+
+									<div class="card-content">
+										<h4 class="card-title">黄泽龙 Jack Huang</h4>
+										<h6 class="category text-muted">COO / 联合创始人</h6>
+
+										<p class="card-description">
+											联合创始人兼COO黄泽龙（Jack），毕业于洛杉矶加州大学（UCLA）数学经济学士学位。
+				平日里的Jack十分腼腆，在工作中却是自信的，曾经从事基金行业的他在离职以后便开始了创业之旅，有着一定的创业经验。
+			关于为什么选择心理这个行业与Jeff共同创业，Jack说：“这要从我个人的性格发展开始，在15岁以前我的性格都是属于腼腆，不爱说话的一类，平时不善于与人沟通，在班级上也属于默默无闻的那种人。直到临近16岁那年，正值高一升高二的暑假，父亲因为见我物理成绩排名一直在班级后10名，安排了我一位老师给我补习物理课。而这位老师也成为了我的启蒙恩师，改变了我对传统老师“只关心学习好的学生”的观念，逐渐为我重拾信心面对学业，开导我以积极的人生态度面对生活。老师因材施教，每一次补习都努力观察我的心理变化，争取用最浅显的公式推理来告诉我物理并不是我仔细想象中的那么难，让我不要把问题放大，从而达到先不对学习产生抗拒的作用。还记得有一次老师对我说他把我当成亲弟弟看待，当时我的心非常暖，从未有老师对我这么说过。老师和我的距离又拉近了，我们的交谈不在仅限于物理知识上的交流，我把生活上遇到的困惑也分享于老师。老师的慷慨解惑改变了我对人生的态度，因为他生活的方式是积极的，这份积极通过他对我的引导传递给了我，也改变了我。我慢慢地学会融入集体，学会以乐观的态度面对家庭的琐事。
+			“老师的引导改变了我，我认为老师的引导是心理上的引导，是基于充分的了解和观察做出的引导。我希望像老师那样去引导他人，因为一个正确的引导能给到的力量是无尽的。”
+
+										</p>
+										<a class="readMore">阅读更多</a>
+										<div class="footer">
+											<a href="#pablo" class="btn btn-just-icon btn-dribbble btn-round"><i class="fa fa-dribbble"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-twitter btn-round"><i class="fa fa-twitter"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="card card-profile">
+									<div class="card-avatar">
+										<a href="#pablo">
+											<img class="img" src="images/pink.jpeg">
+										</a>
+									</div>
+
+									<div class="card-content">
+										<h4 class="card-title">修成颖 Pinkie Xiu</h4>
+										<h6 class="category text-muted">CLO / 联合创始人</h6>
+
+										<p class="card-description">
+											联合创始人兼首席法务官修成颖（Pinkie），毕业于西北政法大学，获法学学士学位，后赴英国南安普顿大学（The University of Southampton）进修并获得营销学硕士学位。Pinkie具备奢侈品行业、顶尖律所和资本市场等不同行业的跨界经验。曾在世界著名奢侈品牌Christian Dior Couture伦敦总部从事商业管理工作；并曾在世界顶尖律所King and Woods and Mallesons并购部工作；后进入资本市场，在A股主板上市公司担任证券事务代表；2017年开始从事法律金融风险投资工作。
+										</p>
+										<a class="readMore">阅读更多</a>
+										<div class="footer">
+											<a href="#pablo" class="btn btn-just-icon btn-dribbble btn-round"><i class="fa fa-dribbble"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-twitter btn-round"><i class="fa fa-twitter"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-pinterest btn-round"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="card card-profile">
+									<div class="card-avatar">
+										<a href="#pablo">
+											<img class="img" src="images/michael.png">
+										</a>
+									</div>
+
+									<div class="card-content">
+										<h4 class="card-title">周子尧 Michael Zhou</h4>
+										<h6 class="category text-muted">CTO / 联合创始人</h6>
+
+										<p class="card-description">
+											联合创始人兼技术部经理周子尧（Michael Zhou），毕业于美国加州大学圣地亚哥分校，计算机工程学士。
+				在平时生活里，Michael是一个每天都很努力的程序员，但在写码的业余生活中，他疯狂的热爱着音乐，每天追求着各种各样新的想法，对各种生活都充满着热情，永远都对任何困难都抱有一种挑战和坚持不懈的精神。
+				至于为什么Michael想加入轻语这个团队，Michael说：“从小到大，我一直都感觉身边缺少一位能一直从心理上正确帮助我的人。从小到大，我一直会突然从开开心心的状态莫名其妙的陷入心情低落的状态，以至于变得消极，不愿做事。正因为在当时并没有人给我正确的心理指导，这样的心情导致我的很多事情被耽误。渐渐地，因为在长大的过程中遇到了各种各样的人和事，我逐渐了解了各种心理知识，意识到发生在我身上的这些问题都不过是普遍存在的简单问题，只要自己时常注意并提醒自己就可以轻松解决。因此我感觉在中国的教育环境下，很需要这样一个心理咨询的平台来帮助大家了解自身的心理状况。这样一来不仅可以提高我们的工作效率，还可以让我们对生活更加充满激情。”
+
+										</p>
+										<a class="readMore">阅读更多</a>
+										<div class="footer">
+											<a href="#pablo" class="btn btn-just-icon btn-dribbble btn-round"><i class="fa fa-dribbble"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-twitter btn-round"><i class="fa fa-twitter"></i></a>
+											<a href="#pablo" class="btn btn-just-icon btn-pinterest btn-round"><i class="fa fa-pinterest"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+								<div class="main main-raised">
+					<div class="container">
+						<div class="section section-text">
+							<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+									<h3 class="title">那么，什么是心理咨询？</h3>
+									<blockquote>
+										<p>
+											“心理学是通过与个体持续的、直接的接触，向其提供心理帮助并力图促使其行为、态度发生变化的过程。”
+										</p>
+										<small>
+										罗杰斯（C,Rogers）
+										</small>
+									</blockquote>
+									<blockquote>
+										<p>
+											“心理学咨询是通过与个体持续的、直接的接触，向其提供心理帮助并力图促使其行为、态度发生变化的过程受过心理咨询专门训练的咨询师，向在心理适应方面出现问题并企求解决问题的求助者两个人在面对面的情况下提供援助的过程。”
+										</p>
+										<small>
+										威尔森（1949）
+										</small>
+									</blockquote>
+									<blockquote>
+										<p>
+											“对轻度的、属于机能性的心理失常的人，通过心理商谈的程序和方法，使其对自己与环境有一个正确的认识，以改变其态度与行为，并对社会生活有良好的适应。”
+										</p>
+										<small>
+										《心理学大词典》（朱智贤主编，1989）
+										</small>
+									</blockquote>
+									<blockquote>
+										<p>
+											“咨询者就访谈对象提出的心理障碍或要求加以矫正的行为问题，运用相应的心理学原理及其技术，借助一定的符号，与访谈者一起进行分析、研究和讨论，揭示引起心理障碍的原因，找出行为问题的症结，探索解决的可能条件和途径，共同协商出摆脱困境的对策，最后使来访者增强信心，克服障碍，维护心理健康。”
+										</p>
+										<small>
+										《心理学百科全书》（李维主编，1995）中心理咨询的定义
+										</small>
+									</blockquote>
+									<blockquote>
+										<p>
+											“运用有关心理科学的理论和方法，通过解决咨询对象的心理问题，来维护和增进身心健康，促进个性发展和潜能开发的过程。”
+										</p>
+										<small>
+										《辅导人生——心理咨询学》（马建青1992）心理咨询定义
+										</small>
+									</blockquote>
+								</div>
+
+								<div class="section col-md-10 col-md-offset-1">
+									<div class="col-md-4">
+										<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="http://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog4.jpg">
+									</div>
+									<div class="col-md-4">
+										<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="http://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog3.jpg">
+									</div>
+									<div class="col-md-4">
+										<img class="img-rounded img-responsive img-raised" alt="Raised Image" src="http://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog1.jpg">
+									</div>
+								</div>
+
+								<div class="col-md-8 col-md-offset-2">
+									<h3 class="title">结语</h3>
+									<p>心理学界给“心理咨询”下了很多操作性的定义，总而言之——心理咨询（counseling）是指运用心理学的方法，对心理适应方面出现问题并企求解决问题的求询者提供心理援助的过程。需要解决问题并前来寻求帮助者称为来访者或者咨客，提供帮助的咨询专家称为咨询者。
+来访者就自身存在的心理不适或心理障碍，通过语言文字等交流媒介，向咨询者进行述说、询问与商讨，在其支持和帮助下，通过共同的讨论找出引起心理问题的原因，分析问题的症结，进而寻求摆脱困境解决问题的条件和对策，以便恢复心理平衡、提高对环境的适应能力、增进身心健康。
+</p>
+									<p>轻语将于线上/线下共同开展心理咨询业务，向用户提供从轻咨询到专业咨询，至于心理治疗的一条龙服务。另外，轻语也将面向大众人群，在线上、线下展开更多趣味性及专业性的心理讲座等活动。
+更多有关轻语的相关资讯请关注轻语官方网站新闻资讯，或扫描下方的二维码关注轻语的微信公众号——TherapU轻语。
+</p>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="features-4 featureSection">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 text-center">
+								<h2 class="title">深圳市轻语科技有限公司</h2>
+								<h5 class="description">深圳市轻语科技有限公司（以下简称“轻语”）于2016年11月21日成立，并于2017年2月正式入驻深圳市留学生创业园。轻语致力于提供一个便捷、实惠、高效的心理咨询服务平台。</h5>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-md-3 col-md-offset-1">
+								<div class="info info-horizontal">
+									<div class="icon icon-info">
+										<i class="material-icons">code</i>
+									</div>
+									<div class="description">
+										<h4 class="info-title">国内最酷的心理咨询平台</h4>
+										<p>致力于打造一个心理学平台，聚集国内新锐心理学人，输出健康、科学的心理学价值。我们在心理学中发现趣味，分享美好；我们为需要心理帮助的人提供在线解决方案，为心理机构提供展示、推广及服务平台</p>
+									</div>
+								</div>
+
+								<div class="info info-horizontal">
+									<div class="icon icon-danger">
+										<i class="material-icons">format_paint</i>
+									</div>
+									<div class="description">
+										<h4 class="info-title">最专业的心理咨询师</h4>
+										<p>我们用有趣、有爱、实用的表达方式为社会、组织以及每一个人提供有价值的心理学服务。心理学进入中国的历程如同西医，公众真正认可心理学需要一段时间，也需要心理学人积极输出健康的价值。</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="phone-container">
+									<img src="images/phone.png">
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="info info-horizontal">
+									<div class="icon icon-primary">
+										<i class="material-icons">dashboard</i>
+									</div>
+									<div class="description">
+										<h4 class="info-title">精品文章</h4>
+										<p>我们有近200多位心理专栏作者，与国内各大高校心理系、国内知名心理机构保持紧密合作，从心理学的角度，为网络用户、传统媒体的用户解读最新的新闻事件。我们有100多位兼职翻译，每天翻译国外最新的心理学资讯。无论是心理学研究动态或是实用的心理技巧，你都会最先在轻语阅读到它们。</p>
+									</div>
+								</div>
+
+								<div class="info info-horizontal">
+									<div class="icon icon-success">
+										<i class="material-icons">view_carousel</i>
+									</div>
+									<div class="description">
+										<h4 class="info-title">心理测试</h4>
+										<p>我们为个人用户、为各大合作网站、传统媒体以及企业用户提供优质的心理测试。在壹心理，我们有1500多个有趣实用的心理测试，包括不计算常模样本的趣味测试，以及用于专业测试的自评量表。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+
+	</section>
+	<script>
+		$('.readMore').click(function() {
+			$(this).siblings('.card-description').toggleClass('active')
+		})
+		$('.card-description').each(function(i) {
+			if ($(this).offsetHeight < $(this).scrollHeight) {
+				$(this).parent().find('.readMore').hide()
+			} else {
+				// your element doesn't have overflow
+				console.log('nothing more')
+			}
+		})
+</script>
+<style>
+	
+</style>
+{{>footer}}
+{{>scripts}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

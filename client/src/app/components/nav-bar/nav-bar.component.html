@@ -1,0 +1,29 @@
+
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <nav class="navBar">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">
+          Therapu
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a routerLink="/">首页</a></li>
+          <li><a routerLink="/about">关于我们</a></li>
+          <li><a routerLink="/survey">调查问卷</a></li>
+          <li><a class="btn white green-text" routerLink="/login">登录</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/">首页</a></li>
+          <li><a href="/about">关于我们</a></li>
+          <li><a href="/survey">调查问卷</a></li>
+          <li><a class="btn white green-text" href="/login">登录</a></li>
+        </ul>
+      </div>
+    </nav>
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+

@@ -1,0 +1,31 @@
+.settingSection {
+    margin: 10%;
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    min-height: 200px;
+    padding: 20px;
+}
+.settingSection .idCol {
+	max-width: 60px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.form-control, .form-group .form-control {
+    padding: 15px 25px;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.form-control, .form-group .form-control:focus {
+    border: 1px solid #4caf50;
+}
+#mainPageBanner {
+    width: 80%;
+    display: inline;
+}
+.tab-pane h3 {
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+#addNewUser {
+    float: right
+}
