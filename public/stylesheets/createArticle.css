@@ -8,14 +8,6 @@
 .dropdown-menu li a:active, .dropdown-menu li a:focus, .dropdown-menu li a:hover {
     background-color: #4caf50;
 }
-.form-control, .form-group .form-control {
-    padding: 15px 25px;
-    height: auto;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-.form-control, .form-group .form-control:focus {
-    border: 1px solid #4caf50;
-}
 .noMarginInput {
     margin-top: 10px;
 }

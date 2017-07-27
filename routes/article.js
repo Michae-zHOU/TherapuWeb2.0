@@ -51,13 +51,10 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
 
         console.log(req.file)
         var newArticle = {
-            author: req.user.fullName,
-            authorAvatar: req.user.userAvatar,
-            authorDescription: req.user.authorDescription ? req.user.authorDescription : '',
-            authorID: req.user._id,
+            author: req.user,
             article: article.article,
             title: article.title,
-            subtitle: article.subtitle ? article.subtitle: '',
+            description: article.description ? article.description: '',
             creationDateFormat: new Date(),
             created_at: newdate,
             typeIdentifier: typeArray[1],
@@ -275,7 +272,7 @@ router.get('/article/edit/:id', adminRequired, (req, res, next) => {
                     articleId: id,
                     types,
                     articleTitle: article.title,
-                    articleSubtitle: article.subtitle,
+                    articleDescription: article.description,
                     articleBody: article.article,
                     articleImg: article.articleImg,
                     articleAuthor: article.author,
@@ -299,7 +296,7 @@ router.post('/edit/article/:id', adminRequired, (req, res, next) => {
             title: article.title,
             author: article.author,
             article: article.article,
-            subtitle: article.subtitle,
+            description: article.description,
             creationDateFormat: original.creationDateFormat,
             created_at: original.created_at,
             typeIdentifier: original.typeIdentifier,

@@ -20,6 +20,7 @@ articleCollection.find({}).sort({creationDateFormat: -1}).limit(5, function(err,
     if (err) {
       console.log(err)
     }
+    console.log(featuredArticles.length)
       articleCollection.find().sort({creationDateFormat: -1}, function(err, AllArticle) {
             //全部文章
             if (err) {

@@ -1,6 +1,7 @@
 .allSurveys {
-    max-width: 70%;
+    max-width: 1200px;
     margin: 100px auto;
+    background-color: #fafafa;
 }
 .card-title a {
     max-width: 100%;

@@ -44,5 +44,7 @@ $(document).ready(function() {
       $('.personal-info').hide()
       $('.login-btn').show()
     }
+      
+
 })  
 

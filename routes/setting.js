@@ -20,11 +20,11 @@ function adminRequired(req, res, next) {
 }
 /* GET home page. */
 router.get('/setting', adminRequired, function(req, res, next) {
-    articleCollection.find(function(err, articles) {
+    articleCollection.find().sort({creationDateFormat: -1},function(err, articles) {
         if (err) {
             console.log(err)
         }
-        surveyCollection.find(function(err, surveys) {
+        surveyCollection.find().sort({creationDateFormat: -1}, function(err, surveys) {
             if (err) {
                 console.log(err)
             }
@@ -32,7 +32,7 @@ router.get('/setting', adminRequired, function(req, res, next) {
                 if (err) {
                     console.log(err)
                 }
-                usersCollection.find(function(err, users) {
+                usersCollection.find().sort({creationDateFormat: -1}, function(err, users) {
                     if (err) {
                         console.log(err)
                     }
