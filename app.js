@@ -20,7 +20,7 @@ var setting = require('./routes/setting')
 var passport = require('passport')
 var flash = require('connect-flash')
 var Ddos = require('ddos')
-var ddos = new Ddos({burst:10, limit:30})
+var ddos = new Ddos({burst:60, limit:120})
 
 
 

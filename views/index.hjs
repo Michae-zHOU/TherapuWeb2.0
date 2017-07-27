@@ -91,7 +91,7 @@
 								</p>
 								<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
 								<p class="author">
-									作者： <a href=""><b>{{author}}</b></a>,<br>创作于： {{created_at}}
+									作者： <a href=""><b>{{author.fullName}}</b></a><br>创作于： {{created_at}}
 								</p>
 								<p class="views test" id="test">
 									阅读量： <a href=""><b>{{views}}+</b></a>
