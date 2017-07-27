@@ -145,37 +145,38 @@
 													<div class="row">
 														<div id="popularsurveys">
 															<div class="list">
-																{{#popularsurveys}}
+																{{#popularSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/popularsurveys}}
+																{{/popularSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -185,37 +186,38 @@
 													<div class="row">
 														<div id="hunliansurveys">
 															<div class="list">
-																{{#hunliansurveys}}
+																{{#hunlianSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/hunliansurveys}}
+																{{/hunlianSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -225,37 +227,38 @@
 													<div class="row">
 														<div id="jiankangsurveys">
 															<div class="list">
-																{{#jiankangsurveys}}
+																{{#jiankangSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/jiankangsurveys}}
+																{{/jiankangSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -265,37 +268,38 @@
 													<div class="row">
 														<div id="zhichangsurveys">
 															<div class="list">
-																{{#zhichangsurveys}}
+																{{#zhichangSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/zhichangsurveys}}
+																{{/zhichangSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -305,37 +309,38 @@
 													<div class="row">
 														<div id="zhichangsurveys">
 															<div class="list">
-																{{#xingxinlisurveys}}
+																{{#xingxinliSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/xingxinlisurveys}}
+																{{/xingxinliSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -345,37 +350,38 @@
 													<div class="row">
 														<div id="zhichangsurveys">
 															<div class="list">
-																{{#kepusurveys}}
+																{{#kepuSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/kepusurveys}}
+																{{/kepuSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>
@@ -385,37 +391,38 @@
 													<div class="row">
 														<div id="zhichangsurveys">
 															<div class="list">
-																{{#chengzhangsurveys}}
+																{{#chengzhangSurveys}}
 																<div class="col-md-12">
 																	<div class="card row">
-																		<div class="card-img col-md-4">
+																		<div class="card-img col-md-5">
 																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
 																		</div>
-																		<div class="card-content col-md-8">
+																		<div class="card-content col-md-7">
+																			<div class="stats text-left">
+																					<span class="createdAt">{{created_at}} 发布</span>
+																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
+																					<i class="material-icons">visibility</i> <span>{{views}}+人测试过</span>
+																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
 																				<a href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{survey}}
+																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
 																			</p>
-																			<p class="text-info text-left"><a href="/survey/{{_id}}">阅读更多</a></p>
 																			<div class="footer text-left">
 																				<div class="author left">
 																					<a href="/survey/{{_id}}">
-																					<img src="/assets/users/{{authorAvatar.filename}}" alt="..." class="avatar img-raised">
-																					<span>{{author}}</span>
+																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																					<span>{{author.fullName}} - 专栏作家</span>
+																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
-																			<div class="stats">
-																					<i class="material-icons">visibility</i> {{views}}
-																					
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
-																{{/chengzhangsurveys}}
+																{{/chengzhangSurveys}}
 															</div>
 															<ul class="pagination pagination-success"></ul>
 														</div>

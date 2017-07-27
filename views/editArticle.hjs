@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group is-empty">
-                            <input type="text" value="{{articleSubtitle}}" class="form-control" id="subtitle" name="subtitle" required>
+                            <input type="text" value="{{articleDescription}}" class="form-control" id="description" name="description" required>
                             <span class="material-input"></span>
                     </div>
                 </div>

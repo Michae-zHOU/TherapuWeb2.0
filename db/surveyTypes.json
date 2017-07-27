@@ -1,0 +1,4 @@
+{"_id":{"$oid":"595fd8e079773314118922e7"},"type":"心理","py":"xinli","index":{"$numberLong":"1"}}
+{"_id":{"$oid":"595fd8fe79773314118922e8"},"type":"情感","py":"qinggan","index":{"$numberLong":"2"}}
+{"_id":{"$oid":"595fd8ff79773314118922e9"},"type":"社会","py":"shehui","index":{"$numberLong":"3"}}
+{"_id":{"$oid":"595fd90179773314118922ea"},"type":"学习","py":"xuexi","index":{"$numberLong":"4"}}

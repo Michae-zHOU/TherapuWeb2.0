@@ -56,7 +56,7 @@
                             <input type="text" name="name" placeholder="您的姓名（选填）" class="form-control">
                         </div>
                 </div>
-                <button class="btn btn-lg btn-success" type="submit" id="submitForm">提交问卷</button>
+                <button class="btn btn-lg btn-success disabled" type="submit" id="submitForm" disabled>请完成所有选项再行提交</button>
                 <br>    
                 <br>
             </div>
@@ -64,7 +64,9 @@
 </section>
  <script>
 
-
+    function removeDisable() {
+        $('#submitForm').removeClass('disabled').prop('disabled', false).text("提交表格")
+    }
     var surveyId = $('#surveyId').val();
     var surveyQuestions;
     $.get("/api/survey/" + surveyId, function(data, status){
@@ -79,25 +81,25 @@
 
                             <div class="radio">
 								<label>
-									<input type="radio" name="q${i+1}" id="q${i+1}m1" value="${surveyQuestions[i].mc1.pt}|a"><span class="circle"></span><span class="check"></span>
+									<input type="radio" onchange="removeDisable()" name="q${i+1}" id="q${i+1}m1" value="${surveyQuestions[i].mc1.pt}|a"><span class="circle"></span><span class="check"></span>
 									A. ${surveyQuestions[i].mc1.mc}
 								</label>
 							</div>
                             <div class="radio">
 								<label>
-									<input type="radio" name="q${i+1}" id="q${i+1}m2" value="${surveyQuestions[i].mc2.pt}|b"><span class="circle"></span><span class="check"></span>
+									<input type="radio" onchange="removeDisable()" name="q${i+1}" id="q${i+1}m2" value="${surveyQuestions[i].mc2.pt}|b"><span class="circle"></span><span class="check"></span>
 									B. ${surveyQuestions[i].mc2.mc}
 								</label>
 							</div>
                             <div class="radio">
 								<label>
-									<input type="radio" name="q${i+1}" id="q${i+1}m3" value="${surveyQuestions[i].mc3.pt}|c"><span class="circle"></span><span class="check"></span>
+									<input type="radio" onchange="removeDisable()" name="q${i+1}" id="q${i+1}m3" value="${surveyQuestions[i].mc3.pt}|c"><span class="circle"></span><span class="check"></span>
 									C. ${surveyQuestions[i].mc3.mc}
 								</label>
 							</div>
                             <div class="radio">
 								<label>
-									<input type="radio" name="q${i+1}" id="q${i+1}m4" value="${surveyQuestions[i].mc4.pt}|d"><span class="circle"></span><span class="check"></span>
+									<input type="radio" onchange="removeDisable()" name="q${i+1}" id="q${i+1}m4" value="${surveyQuestions[i].mc4.pt}|d"><span class="circle"></span><span class="check"></span>
 									D. ${surveyQuestions[i].mc4.mc}
 								</label>
 							</div>

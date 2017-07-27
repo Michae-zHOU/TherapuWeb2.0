@@ -46,11 +46,6 @@
 	            									隐私条款
 	            								</a>
 	            							</li>
-											<li>
-	            								<a href="#pablo">
-	            									网号
-	            								</a>
-	            							</li>
 	            						</ul>
 	            					</div>
 
@@ -64,7 +59,8 @@
 	            			<hr>
 
 	            			<div class="copyright pull-center">
-	            				Copyright © <script>document.write(new Date().getFullYear())</script>轻语科技 版权所有
+								Copyright © <script>document.write(new Date().getFullYear())</script>轻语科技 版权所有
+								<p><a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a></p>
 	            			</div>
 	            		</div>
 	            	</footer>

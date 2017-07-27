@@ -23,12 +23,14 @@ router.get('/login', function(req, res, next) {
             if (req.user) {
                 return req.user.admin
             }
-        }, 
+		}, 
+	error: req.flash('message')
    });
 });
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/',
-	failureRedirect: '/login'
+	failureRedirect: '/login',
+	failureFlash: true,
 }))
 router.get('/logout', (req, res, next) => {
 	req.session.destroy((err) => {

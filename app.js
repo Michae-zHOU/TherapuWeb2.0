@@ -18,23 +18,32 @@ var surveys = require('./routes/surveys');
 var article = require('./routes/article');
 var setting = require('./routes/setting')
 var passport = require('passport')
+var flash = require('connect-flash')
+var Ddos = require('ddos')
+var ddos = new Ddos({burst:10, limit:30})
+
+
+
 require('passport');
 var app = express();
+app.use(ddos.express);
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
-app.use(session({ secret: "i love cookie", resave: false, saveUninitialized: false}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(cors());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hjs');
+app.use(session({ secret: "i love cookie", resave: false, saveUninitialized: false, cookie: {maxAge: 60000}}))
+app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
