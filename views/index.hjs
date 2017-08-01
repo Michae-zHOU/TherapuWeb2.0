@@ -154,7 +154,7 @@
 					pagination: true
 				});
 			var parser = new DOMParser()
-			var cardDescriptions = document.getElementsByClassName('card-description');
+			var cardDescriptions = $('.card-description');
 			
 			
 			

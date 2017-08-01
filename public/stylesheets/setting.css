@@ -29,3 +29,7 @@
 #addNewUser {
     float: right
 }
+#updatePrime input.form-control{
+    width: 40%;
+    display: inline-block;
+}

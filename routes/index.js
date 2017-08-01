@@ -76,7 +76,7 @@ articleCollection.find({}).sort({creationDateFormat: -1}).limit(5, function(err,
                         }
                         var chengzhangArticles = chengzhang
                         var topChengzhangArticle = chengzhang[0]
-                        articleCollection.find().sort({created_at:1}).limit(3, function(err, daily) {
+                        articleCollection.find().limit(3).sort({priority: -1}, function(err, daily) {
                           if (err) {
                             console.log(err)
                           }

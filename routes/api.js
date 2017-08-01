@@ -33,6 +33,43 @@ function adminRequired(req, res, next) {
 	next()
 }
 /* GET home page. */
+router.post('/updatePrime', function(req, res, next) {
+    var primes = req.body;
+    articleCollection.update({_id: mongojs.ObjectId(primes.prime1)}, {$set: {priority: Number(primes.prime1pt)}}, function(err, prime1) {
+        if (err) {
+            res.send(err)
+        }
+        if (!prime1) {
+            res.send('没有查到第一个输入框内的文章ID，请确认后重试')
+        }
+        articleCollection.update({_id: mongojs.ObjectId(primes.prime2)}, {$set: {priority: Number(primes.prime2pt)}}, function(err, prime2) {
+            if (err) {
+                res.send(err)
+            }
+            if (!prime1) {
+                res.send('没有查到第二个输入框内的文章ID，请确认后重试')
+            }
+            articleCollection.update({_id: mongojs.ObjectId(primes.prime3)}, {$set: {priority: Number(primes.prime3pt)}}, function(err, prime3) {
+                if (err) {
+                    res.send(err)
+                }
+                if (!prime1) {
+                    res.send('没有查到第一个输入框内的文章ID，请确认后重试')
+                }
+                res.redirect('/setting')
+            })
+        })
+    })
+})
+router.get('/primes', function(req, res, next) { 
+    articleCollection.find().sort({priority: -1}, function(err, primes) {
+        if (err) {
+            res.send(err)
+        }
+        console.log(primes)
+        res.json(primes)
+    })
+})
 router.get('/surveyTypes', function(req, res, next) {
     surveyTypes.find(function(err, doc) {
         if (err) {
