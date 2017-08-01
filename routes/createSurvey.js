@@ -11,7 +11,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage, limits: {fileSize: 5000000}})
 /* GET home page. */
 function authorRequired(req, res, next) {
 	if (!req.isAuthenticated()) {
@@ -51,7 +51,13 @@ router.post('/survey/new/generate', authorRequired, function(req, res, next) {
 })
 
 
-router.post('/survey/new/create', authorRequired, upload.single('surveyImg'), function(req, res, next) {
+router.post('/survey/new/create', authorRequired, upload.single('surveyImg'), function(err, req, res, next) {
+    if (err) {
+                res.render('error', {
+                    errorMSG: '文件过于巨大，服务器表示做不到，请上传小于5MB的图片。'
+                }
+            )
+        }
     var survey = req.body;
     var questions = []
 

@@ -1,0 +1,168 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/editSurvey.css">
+    <section class="editSurvey">
+        
+        <form action="/survey/edit/{{survey._id}}" method="post" id="editSurveyForm" name="editSurveyForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="createSurveyHeader">问卷标题</label>
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.title}}" class="form-control" name="title" required>
+                        <span class="material-input"></span>
+                    </div>
+                    <label class="createSurveyHeader">问卷简介</label>
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.description}}" class="form-control" name="description" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <span>0-25分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.analysis.0.title}}" class="form-control" name="range1Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" value="{{survey.analysis.0.content}}" class="form-control" name="range1Content" required>{{survey.analysis.0.content}}</textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <span>25-50分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.analysis.1.title}}" class="form-control" name="range2Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" value="{{survey.analysis.1.content}}" class="form-control" name="range2Content" required>{{survey.analysis.1.content}}</textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <span>50-75分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.analysis.2.title}}" class="form-control" name="range3Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" value="{{survey.analysis.2.content}}" class="form-control" name="range3Content" required>{{survey.analysis.2.content}}</textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <span>75-100分</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group label-floating is-empty">
+                        <input type="text" value="{{survey.analysis.3.title}}" class="form-control" name="range4Title" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="form-group label-floating is-empty">
+                        <textarea rows="5" value="{{survey.analysis.3.content}}" class="form-control" name="range4Content" required>{{survey.analysis.3.content}}</textarea>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="questionBlock"></div>
+            <button class="btn btn-lg btn-success" type="submit" onclick="document.surveyForm.submit()">提交修改</button>
+        </form>
+        
+        
+    </section>
+<input type="text" value="{{survey._id}}" id="surveyId">
+<input type="text" value="{{survey.questionNumber}}" id="surveyNumber" hidden>
+<script>
+    var id = $('#surveyId').val()
+    $.get('/api/survey/'+ id, function(survey) {
+            var questionNumber = $('#surveyNumber').val()
+            console.log()
+            for (var i = 1; i <= Number(questionNumber); i++) {
+                $('.questionBlock').append(`
+                    <div class="questionBlock">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span>${i}.</span>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="form-group label-floating is-empty">
+                                    <textarea class="form-control" rows="5" value="${survey.questions[i].title}" name="q${i}t" required>${survey.questions[i].title}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <span>A.</span>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group is-empty">
+                                    <input type="text" value="${survey.questions[i].mc1.mc}" class="form-control" name="q${i}m1" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group is-empty">
+                                    <input type="number" value="${survey.questions[i].mc1.pt}" class="form-control" name="q${i}m1p" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-1">
+                                <span>B.</span>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group is-empty">
+                                    <input type="text" value="${survey.questions[i].mc2.mc}" class="form-control" name="q${i}m2" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group is-empty">
+                                    <input type="number"  value="${survey.questions[i].mc2.pt}" class="form-control" name="q${i}m2p" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-1">
+                                <span>C.</span>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group is-empty">
+                                    <input type="text" value="${survey.questions[i].mc3.mc}" class="form-control" name="q${i}m3" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group is-empty">
+                                    <input type="number" value="${survey.questions[i].mc3.pt}" class="form-control" name="q${i}m3p" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-1">
+                                <span>D.</span>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group is-empty">
+                                    <input type="text" value="${survey.questions[i].mc4.mc}" class="form-control" name="q${i}m4" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group is-empty">
+                                    <input type="number" value="${survey.questions[i].mc4.pt}" class="form-control" name="q${i}m4p" required>
+                                <span class="material-input"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                `)
+            }
+    })
+   
+</script>
+
+{{>footer}}
+{{>script}}

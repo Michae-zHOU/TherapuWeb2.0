@@ -17,11 +17,12 @@
                         <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
                         <div>
                             <span class="btn btn-raised btn-round btn-default btn-file">
-                                <span class="fileinput-new">Select image</span>
-                                <span class="fileinput-exists">Change</span>
-                                <input type="file" name="surveyImg" required>
+                                <span class="fileinput-new">选择图片</span>
+                                <span class="fileinput-exists">修改图片</span>
+                                <input type="file" name="surveyImg" id="surveyImg" required>
                             </span>
-                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>删除图片</a>
+                            <p class="warningText" style="color: red;">图片最大上传： 5MB</p>
                         </div>
                     </div>
                 </div>
@@ -103,18 +104,30 @@
                     </div>
                 </div>
             </div>
+            <div class="questionBlock">
+
+            </div>
+            <button class="btn btn-lg btn-success" type="submit">创建问卷</button>
         </form>
-        <button class="btn btn-lg btn-success" type="submit" onclick="document.surveyForm.submit()">创建问卷</button>
+        
     </section>
 
     <script>
+        $('#surveyImg').change(function() {
+            var fileUploader = document.getElementById('surveyImg')
+            if (fileUploader.files[0].size > 5000000) {
+                alert('亲，文件上传最大可接受5MB以下的图片，请更换图片后再试')
+                $('.warningText').text('亲，文件上传最大可接受5MB以下的图片，请点击上方选择图片更换图片后再试')
+                fileUploader.value = null
+            }
+        })
         var article = $("#surveyType").val()
         var typeArray = article.split()
         var type = typeArray[0]
         var py =typeArray[1]
         var surveyNumber = $('#surveyNumber').val();
         for(i = 1; i <= surveyNumber; i ++) {
-            $('#surveyForm').append(`
+            $('.questionBlock').append(`
                 <div class="questionBlock">
                 <div class="row">
                     <div class="col-md-1">

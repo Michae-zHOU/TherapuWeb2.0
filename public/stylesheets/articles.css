@@ -26,6 +26,9 @@ body {
 .label.label-success {
     vertical-align: 5px;
 }
+.label.label-warning {
+    vertical-align: 5px;
+}
 @media only screen and (max-width: 892px) {
     .allArticles {
         max-width: 100%;

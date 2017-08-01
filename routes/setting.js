@@ -7,18 +7,21 @@ var surveyCollection = db.collection('survey')
 var siteDataCollection = db.collection('siteData')
 var usersCollection = db.collection('users')
 function authorRequired(req, res, next) {
+    console.log(req.admin ? req.admin : 'no user')
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')
-	}
+    }
 	next()
 }
 function adminRequired(req, res, next) {
-	if (req.user.admin !== 2) {
+    console.log(req.admin ? req.admin : 'no user')
+	if (!req.user || req.user.admin == 1) {
 		return res.redirect('/login')
-	}
+    }
 	next()
 }
 /* GET home page. */
+
 router.get('/setting', adminRequired, function(req, res, next) {
     articleCollection.find().sort({creationDateFormat: -1},function(err, articles) {
         if (err) {
@@ -36,28 +39,35 @@ router.get('/setting', adminRequired, function(req, res, next) {
                     if (err) {
                         console.log(err)
                     }
-                    var homePageBannerData = siteData[0].homePageBanner
-                    // console.log(req.session)
-                    
-                    res.render('setting', { 
-                        partials: {
-                        header: '../views/partials/header',
-                        footer: '../views/partials/footer',
-                        head: '../views/partials/head',
-                        scripts: '../views/partials/scripts'
-                    },
-                    title: 'Home',
-                    articles,
-                    surveys,
-                    users,
-                    homePageBannerData,
-                    session: req.session,
-                    auth: function() {
-                            if (req.user) {
-                                return req.user.admin
-                            }
-                        }, 
-                    }) 
+                    articleCollection.find().sort({priority: -1}, function(err, primes) {
+                        var homePageBannerData = siteData[0].homePageBanner
+                        console.log(primes[0].priority, primes[1].priority, primes[2].priority)
+                        
+                        res.render('setting', { 
+                            partials: {
+                            header: '../views/partials/header',
+                            footer: '../views/partials/footer',
+                            head: '../views/partials/head',
+                            scripts: '../views/partials/scripts'
+                        },
+                        title: 'Home',
+                        articles,
+                        surveys,
+                        users,
+                        primes,
+                        homePageBannerData,
+                        flash: req.flash('updateMessage'),
+                        session: req.session,
+                        auth: function() {
+                                if (req.user) {
+                                    return req.user.admin
+                                }
+                                if (!req.user.admin) {
+                                    return null
+                                }
+                            }, 
+                        }) 
+                    })
                 })
             })
         })

@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage, limits: {fileSize: 5000000}})
 
 function authorRequired(req, res, next) {
 	if (!req.isAuthenticated()) {
@@ -60,7 +60,8 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
             typeIdentifier: typeArray[1],
             type: typeArray[0],
             articleImg: req.file,
-            views: 0
+            views: 0,
+            priority: 0,
         }
         articleCollection.save(newArticle, (err, doc) => {
             if (err) {
@@ -138,40 +139,46 @@ router.get('/articles', function(req, res, next) {
                           }
                         var dailyArticles = daily
                         siteDataCollection.find(function(err, siteData) {
-                          var banner = siteData[0].homePageBanner;
-                          res.render('articles', { 
-                            partials: {
-                              header: '../views/partials/header',
-                              head: '../views/partials/head',
-                              scripts: '../views/partials/scripts',
-                              footer: '../views/partials/footer'
-                            },
-                            featuredArticles,
-                            AllArticle,
-                            popularArticles,
-                            topHunlianArticle,
-                            topAllArticle,
-                            hunlianArticles,
-                            topJiankangArticle,
-                            jiankangArticles,
-                            topZhichangArticle,
-                            zhichangArticles,
-                            xingxinliArticles,
-                            topXingxinliArticle,
-                            kepuArticles,
-                            topKepuArticle,
-                            chengzhangArticles,
-                            topChengzhangArticle,
-                            dailyArticles,
-                            carouselArticles,
-                            banner,
-                            title: 'Home',
-                            auth: function() {
-                              if (req.user) {
-                                  return req.user.admin
-                              }
-                            }, 
-                          });
+                            articleCollection.find().limit(3).sort({priority: -1}, function(err, primeArticles) {
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                    var banner = siteData[0].homePageBanner;
+                                    res.render('articles', { 
+                                    partials: {
+                                    header: '../views/partials/header',
+                                    head: '../views/partials/head',
+                                    scripts: '../views/partials/scripts',
+                                    footer: '../views/partials/footer'
+                                    },
+                                    featuredArticles,
+                                    AllArticle,
+                                    popularArticles,
+                                    topHunlianArticle,
+                                    topAllArticle,
+                                    hunlianArticles,
+                                    topJiankangArticle,
+                                    jiankangArticles,
+                                    topZhichangArticle,
+                                    zhichangArticles,
+                                    xingxinliArticles,
+                                    topXingxinliArticle,
+                                    kepuArticles,
+                                    topKepuArticle,
+                                    chengzhangArticles,
+                                    topChengzhangArticle,
+                                    dailyArticles,
+                                    carouselArticles,
+                                    banner,
+                                    primeArticles,
+                                    title: 'Home',
+                                    auth: function() {
+                                    if (req.user) {
+                                        return req.user.admin
+                                    }
+                                    }, 
+                                });
+                            })
                         })
                       })
                     })

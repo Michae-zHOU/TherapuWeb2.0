@@ -9,6 +9,7 @@
                 <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">问卷管理</a></li>
                 <li class=""><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
                 <li class=""><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
+                <li class=""><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -72,9 +73,9 @@
                                     <td>{{created_at}}</td>
                                     <td class="text-right">{{type}}</td>
                                     <td class="td-actions text-right">
-                                        <!--<a href="/survey/edit/{{_id}}" data-api="/api/edit/article/{{_id}}" type="button" rel="tooltip" class="btn btn-success btn-simple editBtn">
+                                        <a href="/survey/edit/{{_id}}" data-api="/api/edit/article/{{_id}}" type="button" rel="tooltip" class="btn btn-success btn-simple editBtn">
                                             <i class="material-icons">edit</i>
-                                        </a>-->
+                                        </a>
                                         <a data-api="/api/delete/survey/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
                                             <i class="material-icons">close</i>
                                         </a>
@@ -161,6 +162,58 @@
                                         </tbody>
                                     </table>
                     </div>
+                </div>
+                <div class="tab-pane" id="primeManagement">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <h1>文章置顶管理</h1>
+                            <div class="form-group label-floating is-empty">
+                                <label>置顶文章(输入文章ID）:</label>
+                                <form id="updatePrime" name="updatePrime">
+                                    <label id="prime1T"></label>: <br>
+                                    <input type="text" class="form-control" name="prime1" id="prime1">
+                                    <input type="number" class="form-control" name="prime1pt" id="prime1pt"><br>
+                                    <label id="prime2T"></label>: <br>
+                                    <input type="text" class="form-control" name="prime2" id="prime2">
+                                    <input type="number" class="form-control" name="prime2pt" id="prime2pt"><br>
+                                    <label id="prime3T"></label>: <br>
+                                    <input type="text" class="form-control" name="prime3" id="prime3">
+                                    <input type="number" class="form-control" name="prime3pt" id="prime3pt">
+                                    <button type="submit" class="btn btn-success">更新置顶文章</button>
+                                </form>
+                                <script>
+                                    $('#updatePrime').submit(function(e) {
+                                        e.preventDefault();
+                                        var prime1 = $('#prime1').val();
+                                        var prime2 = $('#prime2').val();
+                                        var prime3 = $('#prime3').val();
+                                        $.ajax({
+                                            url: '/api/updatePrime',
+                                            method: 'post',
+                                            data: $('#updatePrime').serialize(),
+                                            success: function(data) {
+                                                alert('修改成功')
+                                            },
+                                            error: function(err) {
+                                                alert('修改失败，因为' + err.responseText)
+                                            }
+                                        })
+                                    })
+                                    $.get('/api/primes', function(data) {
+                                        $('#prime1').val(data[0]._id)
+                                        $('#prime2').val(data[1]._id)
+                                        $('#prime3').val(data[2]._id)
+                                        $('#prime1pt').val(data[0].priority)
+                                        $('#prime2pt').val(data[1].priority)
+                                        $('#prime3pt').val(data[2].priority)
+                                        $('#prime1T').text(data[0].title)
+                                        $('#prime2T').text(data[1].title)
+                                        $('#prime3T').text(data[2].title)
+                                    })
+                                </script>
+                            </div>
+                        </div>
+	                </div>
 	            </div>
 	        </div>
 	    </div>

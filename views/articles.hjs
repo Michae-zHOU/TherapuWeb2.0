@@ -71,6 +71,38 @@
 												<div class="row">
 													<div id="fourArticleList">
 														<div class="list">
+															{{#primeArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8 col-sm-8 col-sm-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<span class="label label-warning">置顶</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{description}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author.fullName}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/primeArticles}}
 															{{#AllArticle}}
 															<div class="col-md-12">
 																<div class="card row">
