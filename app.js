@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
-app.use(session({ secret: "i love cookie", resave: false, saveUninitialized: false, cookie: {maxAge: 60000}}))
+app.use(session({ secret: "i love cookie", resave: false, rolling: true, saveUninitialized: false, cookie: {maxAage: 600000}}))
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
