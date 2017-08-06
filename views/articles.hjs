@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="stylesheets/articles.css">
 	<script>
 		//indicator for navbar 
-		$('#articleLink').addClass('active')
+		$('.articleLink').addClass('active')
 	</script>
    
 	<div class="row allArticles">
@@ -15,49 +15,55 @@
 							<ul class="nav nav-tabs" data-tabs="tabs" id="articleTypesTab">
 														<li class="active">
 															<a href="index.html#all" data-toggle="tab">
-																<i class="material-icons">face</i>
+																<i class="material-icons">language</i>
 																全部
 															</a>
 														</li>
 														<li>
+															<a href="index.html#zixun" data-toggle="tab">
+																<i class="material-icons">adjust</i>
+																资讯
+															</a>
+														</li>
+														<li>
 															<a href="index.html#popular" data-toggle="tab">
-																<i class="material-icons">build</i>
+																<i class="material-icons">trending_up</i>
 																热门
 															</a>
 														</li>
 														<li>
-															<a href="index.html#hunlian" data-toggle="tab">
-																<i class="material-icons">face</i>
-																婚恋
+															<a href="index.html#liangxing" data-toggle="tab">
+																<i class="material-icons">favorite</i>
+																两性
 															</a>
 														</li>
 														<li>
-															<a href="index.html#jiankang" data-toggle="tab">
-																<i class="material-icons">chat</i>
-																健康
+															<a href="index.html#jiaoyu" data-toggle="tab">
+																<i class="material-icons">account_balance</i>
+																教育
 															</a>
 														</li>
 														<li>
 															<a href="index.html#zhichang" data-toggle="tab">
-																<i class="material-icons">build</i>
+																<i class="material-icons">card_travel</i>
 																职场
 															</a>
 														</li>
 														<li>
-															<a href="index.html#xingxinli" data-toggle="tab">
-																<i class="material-icons">build</i>
-																性心理
+															<a href="index.html#jiating" data-toggle="tab">
+																<i class="material-icons">home</i>
+																家庭
 															</a>
 														</li>
 														<li>
 															<a href="index.html#kepu" data-toggle="tab">
-																<i class="material-icons">build</i>
+																<i class="material-icons">import_contacts</i>
 																科普
 															</a>
 														</li>
 														<li>
 															<a href="index.html#chengzhang" data-toggle="tab">
-																<i class="material-icons">build</i>
+																<i class="material-icons">accessibility</i>
 																成长
 															</a>
 														</li>
@@ -179,11 +185,11 @@
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="hunlian">
+											<div class="tab-pane" id="zixun">
 												<div class="row">
-													<div id="hunlianArticles">
+													<div id="popularArticles">
 														<div class="list">
-															{{#hunlianArticles}}
+															{{#zixunArticles}}
 															<div class="col-md-12">
 																<div class="card row">
 																	<div class="card-img col-md-4 col-sm-4">
@@ -213,17 +219,17 @@
 																	</div>
 																</div>
 															</div>
-															{{/hunlianArticles}}
+															{{/zixunArticles}}
 														</div>
 														<ul class="pagination pagination-success"></ul>
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="jiankang">
+											<div class="tab-pane" id="liangxing">
 												<div class="row">
-													<div id="jiankangArticles">
+													<div id="liangxingArticles">
 														<div class="list">
-															{{#jiankangArticles}}
+															{{#liangxingArticles}}
 															<div class="col-md-12">
 																<div class="card row">
 																	<div class="card-img col-md-4 col-sm-4">
@@ -253,7 +259,47 @@
 																	</div>
 																</div>
 															</div>
-															{{/jiankangArticles}}
+															{{/liangxingArticles}}
+														</div>
+														<ul class="pagination pagination-success"></ul>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="jiaoyu">
+												<div class="row">
+													<div id="jiaoyuArticles">
+														<div class="list">
+															{{#jiaoyuArticles}}
+															<div class="col-md-12">
+																<div class="card row">
+																	<div class="card-img col-md-4 col-sm-4">
+																		<img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt="">
+																	</div>
+																	<div class="card-content col-md-8 col-sm-8">
+																		<h4 class="card-title text-left">
+																			<span class="label label-success">{{type}}</span>
+																			<a href="/article/{{_id}}"> {{title}}</a>
+																		</h4>
+																		<p class="card-description">
+																			{{description}}
+																		</p>
+																		<p class="text-info text-left"><a href="/article/{{_id}}">阅读更多</a></p>
+																		<div class="footer text-left">
+																			<div class="author left">
+																				<a href="/article/{{_id}}">
+																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+																				<span>{{author.fullName}}</span>
+																				</a>
+																			</div>
+																		<div class="stats">
+																				<i class="material-icons">visibility</i> {{views}}
+																				
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															{{/jiaoyuArticles}}
 														</div>
 														<ul class="pagination pagination-success"></ul>
 													</div>
@@ -299,11 +345,11 @@
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane" id="xingxinli">
+											<div class="tab-pane" id="jiating">
 												<div class="row">
 													<div id="zhichangArticles">
 														<div class="list">
-															{{#xingxinliArticles}}
+															{{#jiatingArticles}}
 															<div class="col-md-12">
 																<div class="card row">
 																	<div class="card-img col-md-4 col-sm-4">
@@ -333,7 +379,7 @@
 																	</div>
 																</div>
 															</div>
-															{{/xingxinliArticles}}
+															{{/jiatingArticles}}
 														</div>
 														<ul class="pagination pagination-success"></ul>
 													</div>
@@ -452,12 +498,12 @@
 					page: 6,
 					pagination: true
 				});
-				var monkeyList = new List('hunlianArticles', {
+				var monkeyList = new List('liangxingArticles', {
 					valueNames: ['card'],
 					page: 6,
 					pagination: true
 				});
-				var monkeyList = new List('jiankangArticles', {
+				var monkeyList = new List('jiaoyuArticles', {
 					valueNames: ['card'],
 					page: 6,
 					pagination: true

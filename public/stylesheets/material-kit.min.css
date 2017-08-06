@@ -20,7 +20,7 @@ blockquote p {
     font-style: italic
 }
 body {
-    background-color: #E5E5E5;
+    background-color: #fafafa;
     color: #3C4858
 }
 body.inverse {
@@ -64,7 +64,7 @@ h6 {
     font-family: "Roboto Slab", "Times New Roman", serif
 }
 a {
-    color: #9c27b0
+    color: #388e3c
 }
 a:focus,
 a:hover {
@@ -414,7 +414,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn:hover {
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle,
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle:focus,
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle:hover {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .btn.btn-primary:active,
@@ -478,7 +478,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.btn-primary:hover {
 .btn.btn-primary.btn-simple,
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-simple {
     background-color: transparent;
-    color: #9c27b0;
+    color: #388e3c;
     box-shadow: none
 }
 .btn.btn-primary.btn-simple:active,
@@ -488,7 +488,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.btn-primary:hover {
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-simple:focus,
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-simple:hover {
     background-color: transparent;
-    color: #9c27b0
+    color: #388e3c
 }
 .btn.btn-info,
 .navbar .navbar-nav>li>a.btn.btn-info {
@@ -1611,7 +1611,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     opacity: .2
 }
 .checkbox input[type=checkbox]:checked+.checkbox-material .check {
-    background: #9c27b0
+    background: #388e3c
 }
 .checkbox input[type=checkbox]:checked+.checkbox-material .check:before {
     color: #FFF;
@@ -1735,7 +1735,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
     left: 15px;
-    border-color: #9c27b0
+    border-color: #388e3c
 }
 .togglebutton label input[type=checkbox]:checked+.toggle {
     background-color: rgba(156, 39, 176, .7)
@@ -1771,7 +1771,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
     height: 15px;
     width: 15px;
     border-radius: 100%;
-    background-color: #9c27b0;
+    background-color: #388e3c;
     -webkit-transform: scale3d(0, 0, 0);
     -moz-transform: scale3d(0, 0, 0);
     -o-transform: scale3d(0, 0, 0);
@@ -1816,7 +1816,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
     opacity: 1
 }
 .radio input[type=radio]:checked~.check {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     -webkit-transform: scale3d(.65, .65, 1);
     -moz-transform: scale3d(.65, .65, 1);
     -o-transform: scale3d(.65, .65, 1);
@@ -1824,7 +1824,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
     transform: scale3d(.65, .65, 1)
 }
 .radio input[type=radio]:checked~.circle {
-    border-color: #9c27b0
+    border-color: #388e3c
 }
 .radio input[type=radio][disabled]~.check,
 .radio input[type=radio][disabled]~.circle {
@@ -2013,7 +2013,7 @@ output {
     background-color: #212121
 }
 .label.label-primary {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .label.label-success {
     background-color: #4caf50
@@ -2033,7 +2033,7 @@ output {
 .form-control,
 .form-group .form-control {
     border: 0;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 0 2px, 100% 1px;
     background-repeat: no-repeat;
     background-position: center bottom, center calc(100% - 1px);
@@ -2096,13 +2096,13 @@ fieldset[disabled] .form-group .form-control {
 }
 .form-group.is-focused .form-control {
     outline: 0;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: .3s
 }
 .form-group.is-focused .form-control .material-input:after {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .form-group.is-focused.form-info .form-control {
     background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#D2D2D2, #D2D2D2)
@@ -2492,8 +2492,8 @@ select.form-control[multiple] {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+    background-color: #388e3c;
+    border-color: #388e3c;
     color: #FFF;
     box-shadow: 0 4px 5px 0 rgba(156, 39, 176, .14), 0 1px 10px 0 rgba(156, 39, 176, .12), 0 2px 4px -1px rgba(156, 39, 176, .2)
 }
@@ -2577,7 +2577,7 @@ select.form-control[multiple] {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:focus,
 .nav-pills>li.active>a:hover {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(156, 39, 176, .6)
 }
@@ -2858,7 +2858,7 @@ fieldset[disabled] .navbar .btn-link:hover {
     color: #fff
 }
 .navbar.navbar-primary {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #fff;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 12px -5px rgba(156, 39, 176, .46)
 }
@@ -2877,11 +2877,11 @@ fieldset[disabled] .navbar .btn-link:hover {
 .navbar.navbar-primary .dropdown-menu li>a:focus,
 .navbar.navbar-primary .dropdown-menu li>a:hover {
     color: #FFF;
-    background-color: #9c27b0;
+    background-color: #388e3c;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4)
 }
 .navbar.navbar-primary .dropdown-menu .active>a {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #fff
 }
 .navbar.navbar-primary .dropdown-menu .active>a:focus,
@@ -3130,7 +3130,7 @@ fieldset[disabled] .navbar .btn-link:hover {
 .dropdown-menu li a:active,
 .dropdown-menu li a:focus,
 .dropdown-menu li a:hover {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .dropdown-menu .divider {
@@ -3141,7 +3141,7 @@ fieldset[disabled] .navbar .btn-link:hover {
 .navbar.navbar-default .dropdown-menu li>a:focus,
 .navbar.navbar-default .dropdown-menu li>a:hover {
     color: #FFF;
-    background-color: #9c27b0;
+    background-color: #388e3c;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4)
 }
 .progress,
@@ -3284,7 +3284,7 @@ fieldset[disabled] .navbar .btn-link:hover {
     background-color: #212121
 }
 .progress .progress-bar.progress-bar-primary {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .progress .progress-bar.progress-bar-success {
     background-color: #4caf50
@@ -3318,7 +3318,7 @@ fieldset[disabled] .navbar .btn-link:hover {
 }
 .progress .progress-bar,
 .progress .progress-bar.progress-bar-default {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .h1,
 h1 {
@@ -3393,7 +3393,7 @@ h2.title {
     color: #ff9800
 }
 .text-primary {
-    color: #9c27b0
+    color: #388e3c
 }
 .text-danger {
     color: #f44336
@@ -3411,7 +3411,7 @@ h2.title {
     color: #999
 }
 .nav-tabs {
-    background: #9c27b0;
+    background: #388e3c;
     border: 0;
     border-radius: 3px;
     padding: 0 15px
@@ -4388,7 +4388,7 @@ footer ul li a:hover {
 .panel .panel-heading a:active,
 .panel .panel-heading a:hover,
 .panel .panel-heading a[aria-expanded=true] {
-    color: #9c27b0
+    color: #388e3c
 }
 .panel .panel-heading a.expanded i,
 .panel .panel-heading a[aria-expanded=true] i {
@@ -4552,7 +4552,7 @@ hr.on-light {
     font-size: 2.6em
 }
 .icon.icon-primary {
-    color: #9c27b0
+    color: #388e3c
 }
 .icon.icon-info {
     color: #00bcd4
@@ -4710,7 +4710,7 @@ select[data-dropdownjs][disabled]+.dropdownjs>input[readonly] {
 .dropdownjs>ul>li:focus,
 .dropdownjs>ul>li:hover {
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .dropdownjs>ul>li>.close:before {
@@ -5001,7 +5001,7 @@ select[data-dropdownjs][disabled]+.dropdownjs>input[readonly] {
     float: none;
     height: 30px;
     font-weight: 400;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2);
     box-shadow: none
 }
 .select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
@@ -5037,13 +5037,13 @@ select[data-dropdownjs][disabled]+.dropdownjs>input[readonly] {
 }
 .select2.select2-container--open .select2-simple {
     outline: 0;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: .3s
 }
 .select2.select2-container--open .select2-simple .material-input:after {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .select2-container--default.select2-container--disabled .select2-selection--multiple {
     background-color: #eee;
@@ -5086,13 +5086,13 @@ select[data-dropdownjs][disabled]+.dropdownjs>input[readonly] {
 }
 .select2-container--default .select2-search--dropdown .select2-search__field:focus {
     outline: 0;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: .3s
 }
 .select2-container--default .select2-search--dropdown .select2-search__field:focus .material-input:after {
-    background-color: #9c27b0
+    background-color: #388e3c
 }
 .select2-container--default .select2-search--inline .select2-search__field {
     background: 0 0;
@@ -5144,7 +5144,7 @@ select[data-dropdownjs][disabled]+.dropdownjs>input[readonly] {
 .select2-container--default .select2-results__option--highlighted[aria-selected]:focus,
 .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4);
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .select2-container--default .select2-results__group {
@@ -5392,14 +5392,14 @@ footer ul li a {
     line-height: 1.5em
 }
 .bootstrap-tagsinput .tag.tag-primary .tag {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .bootstrap-tagsinput .tag.tag-primary .tag .tagsinput-remove-link {
     color: #FFF
 }
 .bootstrap-tagsinput .tag.tag-primary .tagsinput-add {
-    color: #9c27b0
+    color: #388e3c
 }
 .bootstrap-tagsinput .tag.tag-info .tag {
     background-color: #00bcd4;
@@ -6454,11 +6454,11 @@ footer .pull-center {
     background: #c8c8c8
 }
 .slider .noUi-connect {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     border-radius: 4px
 }
 .slider .noUi-handle {
-    border-color: #9c27b0
+    border-color: #388e3c
 }
 .slider.slider-info .noUi-connect {
     background-color: #00bcd4
@@ -6573,12 +6573,12 @@ footer .pull-center {
     margin: 0;
     border-width: 0;
     background-color: transparent;
-    color: #9c27b0;
+    color: #388e3c;
     box-shadow: none
 }
 .bootstrap-datetimepicker-widget a[data-action]:hover span {
     background-color: #eee;
-    color: #9c27b0
+    color: #388e3c
 }
 .bootstrap-datetimepicker-widget a[data-action]:active {
     box-shadow: none
@@ -6749,7 +6749,7 @@ footer .pull-center {
     content: '';
     display: inline-block;
     border: 0 solid transparent;
-    border-bottom-color: #9c27b0;
+    border-bottom-color: #388e3c;
     border-top-color: rgba(0, 0, 0, .2);
     position: absolute;
     bottom: 4px;
@@ -6757,7 +6757,7 @@ footer .pull-center {
 }
 .bootstrap-datetimepicker-widget table td.active:hover>div,
 .bootstrap-datetimepicker-widget table td.active>div {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4)
 }
@@ -6784,7 +6784,7 @@ footer .pull-center {
     background: #eee
 }
 .bootstrap-datetimepicker-widget table td span.active {
-    background-color: #9c27b0;
+    background-color: #388e3c;
     color: #FFF
 }
 .bootstrap-datetimepicker-widget table td span.old {
@@ -7114,7 +7114,7 @@ select.selectpicker {
 }
 .bootstrap-select.open button.form-control {
     outline: 0!important;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2)!important;
+    background-image: linear-gradient(#388e3c, #388e3c), linear-gradient(#D2D2D2, #D2D2D2)!important;
     background-size: 100% 2px, 100% 1px!important;
     box-shadow: none;
     transition-duration: .3s!important

@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="stylesheets/about.css">
 	<script>
 		//indicator for navbar 
-		$('#aboutLink').addClass('active')
+		$('.aboutLink').addClass('active')
 	</script>
 	<section class="about-page">
 				<div class="team-4 section-image" style="background-image: url('images/aboutus.jpg')">
@@ -267,7 +267,13 @@
 	</section>
 	<script>
 		$('.readMore').click(function() {
+			$.fn.extend({
+				toggleText: function(a, b){
+					return this.text(this.text() == b ? a : b);
+				}
+			});
 			$(this).siblings('.card-description').toggleClass('active')
+			$(this).toggleText('阅读更多','收起')
 		})
 		$('.card-description').each(function(i) {
 			if ($(this).offsetHeight < $(this).scrollHeight) {

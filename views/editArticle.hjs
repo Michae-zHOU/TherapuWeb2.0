@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../../stylesheets/createArticle.css">
     <script>
         //indicator for navbar 
-        $('#articleLink').addClass('active')
+        $('.articleLink').addClass('active')
     </script>
     <section class="createArticle">
         <h1>修改文章</h1>

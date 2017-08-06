@@ -2,16 +2,19 @@
 {{>header}}
 <link rel="stylesheet" href="../../stylesheets/editSurvey.css">
     <section class="editSurvey">
-        
+        <script>
+            //indicator for navbar 
+            $('.surveyLink').addClass('active')
+        </script>
         <form action="/survey/edit/{{survey._id}}" method="post" id="editSurveyForm" name="editSurveyForm">
             <div class="row">
                 <div class="col-md-12">
-                    <label class="createSurveyHeader">问卷标题</label>
+                    <label class="createSurveyHeader">测试标题</label>
                     <div class="form-group label-floating is-empty">
                         <input type="text" value="{{survey.title}}" class="form-control" name="title" required>
                         <span class="material-input"></span>
                     </div>
-                    <label class="createSurveyHeader">问卷简介</label>
+                    <label class="createSurveyHeader">测试简介</label>
                     <div class="form-group label-floating is-empty">
                         <input type="text" value="{{survey.description}}" class="form-control" name="description" required>
                         <span class="material-input"></span>
@@ -84,7 +87,7 @@
         
         
     </section>
-<input type="text" value="{{survey._id}}" id="surveyId">
+<input type="text" value="{{survey._id}}" id="surveyId" hidden>
 <input type="text" value="{{survey.questionNumber}}" id="surveyNumber" hidden>
 <script>
     var id = $('#surveyId').val()

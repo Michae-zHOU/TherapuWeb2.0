@@ -7,3 +7,13 @@ h1 {
 body {
     background-color: #fdfdfd;
 }
+.scoreRange {
+    position: relative;
+}
+.targetScore {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3em;
+    color: #3c763d;
+}

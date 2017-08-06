@@ -3,6 +3,18 @@
 }
 .navbar .navbar-nav>li>a.active { 
     color: #388e3c;
+    font-weight: 900;
+    border-bottom: 3px solid #388e3c;
+    border-radius: 0;
+}
+.navbar-nav>li>a.active { 
+    color: #388e3c;
+    font-weight: 900;
+    border-bottom: 3px solid #388e3c;
+    border-radius: 0;
+}
+.navbar.navbar-primary .material-icons {
+    color: #388e3c;
 }
 .form-control, .form-group .form-control {
     padding: 15px 25px;
@@ -18,7 +30,9 @@
 .navbar.navbar-primary {
 	background-color: white;
 	box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 12px -5px rgba(100,100,100, 0.5);
-	color: black;
+    color: black;
+    padding-bottom: 0;
+    padding-top: 5px;
 }
 .loginBtn.btn.btn-round, .navbar .navbar-nav>li>a.btn.btn-round {
 	background-color: #4caf50;
@@ -73,6 +87,14 @@
     text-align: center;
     font-size: 12px;
     color: red;
+}
+.footer-white img {
+    display: block;
+    margin: 0 auto;
+}
+
+* {
+    font-family: 'Helvetica Neue', sans-serif, 'Microsoft YaHei', 'Hiragino Sans GB';
 }
 @media only screen and (min-width: 691px) {
     .side-nav {

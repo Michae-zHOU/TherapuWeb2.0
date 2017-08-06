@@ -92,6 +92,14 @@ h6.category {
     outline: none;
     box-shadow: none;
 }
+.progress {
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    z-index: 888;
+    margin: 0 20%;
+    max-width: 60%;
+}
 #submitForm {
     display: block;
     margin: 0 auto;
@@ -116,5 +124,8 @@ h6.category {
     }
     .surveySection {
         padding: 10% 5px;
+    }
+    .progress {
+        display: none;
     }
 }

@@ -3,17 +3,17 @@
   <link rel="stylesheet" href="../../stylesheets/result.css">
   <script>
 	//indicator for navbar 
-	$('#surveyLink').addClass('active')
+	$('.surveyLink').addClass('active')
 </script>
       <section class="resultContent">
           <section class="resultTab">
-              <h1>{{userName}}， 您的问卷评估得分是： {{surveyData.score}}</h1>
+              <h1>{{userName}}， 您的测试评估得分是： <span class="scoreSpan">{{surveyData.score}}</span></h1>
           </section>
           <section class="resultSelection">
               <div class="row">
               {{#analysis}}
                 <div class="col s12 m6">
-                   <div class="card">
+                   <div class="card scoreRange">
 						<div class="front">
 							<div class="card-content">
 												<h5 class="category-social text-success">
@@ -31,10 +31,20 @@
 									</div>
                 </div>
               {{/analysis}}
-              </div>
-          </section>
-      </section>
-      
+            </div>
+        </section>
+    </section>
+    <script>
+        if (Number($('.scoreSpan').text()) <= 25) {
+            $('.scoreRange').eq(0).append('<i class="material-icons targetScore">check</i>')
+        } else if (Number($('.scoreSpan').text()) <= 50 && Number($('.scoreSpan').text()) > 25) {
+            $('.scoreRange').eq(1).append('<i class="material-icons targetScore">check</i>')
+        } else if (Number($('.scoreSpan').text()) <= 75 && Number($('.scoreSpan').text()) > 50) {
+            $('.scoreRange').eq(2).append('<i class="material-icons targetScore">check</i>')
+        } else if (Number($('.scoreSpan').text()) > 75) {
+            $('.scoreRange').eq(3).append('<i class="material-icons targetScore">check</i>')
+        }
+    </script>
       
 
 {{>footer}}

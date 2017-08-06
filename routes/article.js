@@ -97,87 +97,82 @@ router.get('/articles', function(req, res, next) {
             if (err) {
               console.log(err)
             }
-            articleCollection.find({typeIdentifier: "hunlian"}, function(err, hunlian) {
+            articleCollection.find({typeIdentifier: "liangxing"}, function(err, liangxing) {
               if (err) {
                 console.log(err)
               }
-              var topHunlianArticle = hunlian[0]
-              var hunlianArticles = hunlian
-              articleCollection.find({typeIdentifier: "jiankang"}, function(err, jiankang) {
+              var liangxingArticles = liangxing
+              articleCollection.find({typeIdentifier: "jiaoyu"}, function(err, jiaoyu) {
                 if (err) {
                   console.log(err)
                 }
-                var jiankangArticles = jiankang
-                var topJiankangArticle = jiankang[0]
+                var jiaoyuArticles = jiaoyu
                 articleCollection.find({typeIdentifier: "zhichang"}, function(err, zhichang) {
                   if (err) {
                     console.log(err)
                   }
                   var zhichangArticles = zhichang
-                  var topZhichangArticle = zhichang[0]
-                  articleCollection.find({typeIdentifier: "xingxinli"}, function(err, xingxinli) {
+                  articleCollection.find({typeIdentifier: "jiating"}, function(err, jiating) {
                     if (err) {
                       console.log(err)
                     }
-                    var xingxinliArticles = xingxinli
-                    var topXingxinliArticle = xingxinli[0]
+                    var jiatingArticles = jiating
                     articleCollection.find({typeIdentifier: "kepu"}, function(err, kepu) {
                       if (err) {
                         console.log(err)
                       }
                       var kepuArticles = kepu
-                      var topKepuArticle = kepu[0]
                       articleCollection.find({typeIdentifier: "chengzhang"}, function(err, chengzhang) {
                         if (err) {
                           console.log(err)
                         }
                         var chengzhangArticles = chengzhang
-                        var topChengzhangArticle = chengzhang[0]
-                        articleCollection.find().sort({created_at:1}).limit(3, function(err, daily) {
-                          if (err) {
-                            console.log(err)
-                          }
-                        var dailyArticles = daily
-                        siteDataCollection.find(function(err, siteData) {
-                            articleCollection.find().limit(3).sort({priority: -1}, function(err, primeArticles) {
-                                    if (err) {
-                                        console.log(err)
-                                    }
-                                    var banner = siteData[0].homePageBanner;
-                                    res.render('articles', { 
-                                    partials: {
-                                    header: '../views/partials/header',
-                                    head: '../views/partials/head',
-                                    scripts: '../views/partials/scripts',
-                                    footer: '../views/partials/footer'
-                                    },
-                                    featuredArticles,
-                                    AllArticle,
-                                    popularArticles,
-                                    topHunlianArticle,
-                                    topAllArticle,
-                                    hunlianArticles,
-                                    topJiankangArticle,
-                                    jiankangArticles,
-                                    topZhichangArticle,
-                                    zhichangArticles,
-                                    xingxinliArticles,
-                                    topXingxinliArticle,
-                                    kepuArticles,
-                                    topKepuArticle,
-                                    chengzhangArticles,
-                                    topChengzhangArticle,
-                                    dailyArticles,
-                                    carouselArticles,
-                                    banner,
-                                    primeArticles,
-                                    title: 'Home',
-                                    auth: function() {
-                                    if (req.user) {
-                                        return req.user.admin
-                                    }
-                                    }, 
-                                });
+                        articleCollection.find({typeIdentifier: "zixun"}, function(err, zixun) {
+                            if (err) {
+                                console.log(err)
+                            }
+                            var zixunArticles = zixun
+                            articleCollection.find().sort({created_at:1}).limit(3, function(err, daily) {
+                            if (err) {
+                                console.log(err)
+                            }
+                            var dailyArticles = daily
+                            siteDataCollection.find(function(err, siteData) {
+                                articleCollection.find().limit(3).sort({priority: -1}, function(err, primeArticles) {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                        var banner = siteData[0].homePageBanner;
+                                        res.render('articles', { 
+                                        partials: {
+                                        header: '../views/partials/header',
+                                        head: '../views/partials/head',
+                                        scripts: '../views/partials/scripts',
+                                        footer: '../views/partials/footer'
+                                        },
+                                        featuredArticles,
+                                        AllArticle,
+                                        popularArticles,
+                                        topAllArticle,
+                                        liangxingArticles,
+                                        jiaoyuArticles,
+                                        zhichangArticles,
+                                        jiatingArticles,
+                                        zixunArticles,
+                                        kepuArticles,
+                                        chengzhangArticles,
+                                        dailyArticles,
+                                        carouselArticles,
+                                        banner,
+                                        primeArticles,
+                                        title: 'Home',
+                                        auth: function() {
+                                        if (req.user) {
+                                            return req.user.admin
+                                        }
+                                        }, 
+                                    });
+                                })
                             })
                         })
                       })

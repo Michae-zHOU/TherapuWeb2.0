@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../../stylesheets/article.css">
 <script>
 	//indicator for navbar 
-	$('#articleLink').addClass('active')
+	$('.articleLink').addClass('active')
 </script>
 		<div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/articles/{{articleData.articleImg.filename}}');">
 			

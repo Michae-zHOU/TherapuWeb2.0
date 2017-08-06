@@ -26,7 +26,7 @@ function adminRequired(req, res, next) {
 	next()
 }
 
-router.post('/survey/new/generate', authorRequired, function(req, res, next) {
+router.post('/survey/new/generate', function(req, res, next) {
     var surveyInfo = req.body
     var typeInfo = surveyInfo.type.split(',')
     var type = typeInfo[0]
@@ -38,7 +38,7 @@ router.post('/survey/new/generate', authorRequired, function(req, res, next) {
             head: '../views/partials/head',
             scripts: '../views/partials/scripts'
         },
-        title: '问卷创建工具',
+        title: '测试创建工具',
         surveyTitle: surveyInfo.title,
         surveyNumber: surveyInfo.number,
         surveyType: surveyInfo.type,
@@ -51,13 +51,8 @@ router.post('/survey/new/generate', authorRequired, function(req, res, next) {
 })
 
 
-router.post('/survey/new/create', authorRequired, upload.single('surveyImg'), function(err, req, res, next) {
-    if (err) {
-                res.render('error', {
-                    errorMSG: '文件过于巨大，服务器表示做不到，请上传小于5MB的图片。'
-                }
-            )
-        }
+router.post('/survey/new/create',  upload.single('surveyImg'), function(req, res, next) {
+    var survey = req.body;
     var survey = req.body;
     var questions = []
 
@@ -539,6 +534,7 @@ var q20 = {
             res.redirect('/surveys')
         }
     });
+
 })
 
 

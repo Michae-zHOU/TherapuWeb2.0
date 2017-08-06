@@ -9,6 +9,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.dailysurveySection .card-title a {
+    font-weight: 100;
+}
+.dailysurveySection .hoverable {
+    transition: 0.4s;
+}
+.dailysurveySection .hoverable:hover {
+    margin-bottom: 10px; 
+}
 body {
     background-color: #fafafa;
 }
@@ -54,9 +63,37 @@ body {
 }
 .author img {
     margin: 0 5px 0 10px;
+    display: inline-block;
 }
 .allsurveys  .label.label-success{
     vertical-align: 2.5px;
+}
+.allSurveys .card-img {
+    max-height: 315px;
+    overflow: hidden;
+}
+.startSurvey {
+    display: block;
+    max-width: 150px;
+    margin: 10px auto 0 auto;
+}
+.card .card-content {
+    padding-bottom: 10px;
+}
+.category-social i {
+    color: #fafafa;
+}
+.category-social span { 
+    margin-left: 5px;
+    font-weight: 900;
+    font-size: 14px;
+    color: white;
+}
+@media only screen and (max-width: 500px) {
+    .stats .questionNumber {
+        margin: 0;
+        display: block;
+    }
 }
 /*.creationDate {
     width: 20px;
