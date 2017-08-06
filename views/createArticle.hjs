@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../../stylesheets/createArticle.css">
     <script>
         //indicator for navbar 
-        $('#articleLink').addClass('active')
+        $('.articleLink').addClass('active')
     </script>
     <section class="createArticle">
         <form action="/create/article" method="post" enctype="multipart/form-data">
@@ -17,11 +17,16 @@
                 <div class="col-md-3">
                     <div class="btn-group bootstrap-select">
                         <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98" onChange="$('#submitArticle').removeClass('disabled')">
-                            <option class="bs-title-option" value="">文章分类</option>
-                            <option disabled="" selected="">选择文章分类</option>
-                            {{#types}}
-                                <option value="{{type}},{{py}}">{{type}}</option>
-                            {{/types}}
+                                <option class="bs-title-option" value="">文章分类</option>
+                                <option disabled="" selected="">选择文章分类</option>
+                                <option value="两性,liangxing">两性</option>
+                                <option value="健康,jiankang">健康</option>
+                                <option value="职场,zhichang">职场</option>
+                                <option value="家庭,jiating">家庭</option>
+                                <option value="教育,jiaoyu">教育</option>
+                                <option value="资讯,zixun">资讯</option>
+                                <option value="成长,chengzhang">成长</option>
+                                <option value="科普,kepu">科普</option>
                         </select>
                     </div>
                 </div>
@@ -78,6 +83,11 @@
                 $('#warningText').text('亲，文件上传最大可接受5MB以下的图片，请点击上方选择图片更换图片后再试')
                 fileUploader.value = null
             }
+            var ext = $(this).val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('文件上传仅限图片格式，请确认后重试！');
+                    fileUploader.value = null
+                }
         })
     </script>
 {{>footer}}

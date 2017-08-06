@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="../../stylesheets/index.css">
 <script>
 	//indicator for navbar 
-	$('#homeLink').addClass('active')
+	$('.homeLink').addClass('active')
 </script>
 
 <section class="homeContent">
 	<div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 alertRow">
                 <div class="alert alert-success ">
                         <div class="container">
                             <div class="alert-icon">

@@ -24,7 +24,7 @@
      color: #4caf50;
 }
 .card-description.active {
-    max-height: 900px;
+    max-height: 1000px;
     text-overflow: none;
     overflow: none;
 }

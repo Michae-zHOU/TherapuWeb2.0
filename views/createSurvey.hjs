@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../../stylesheets/createSurvey.css">
     <script>
         //indicator for navbar 
-        $('#surveyLink').addClass('active')
+        $('.surveyLink').addClass('active')
     </script>
     <h1 class="createSurveyHeader">{{surveyTitle}}</h1>
     <section class="createSurvey">
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-2">
                     <div class="form-group label-floating is-empty">
-                        <input type="text" placeholder="问卷简介" class="form-control" name="description" required>
+                        <input type="text" placeholder="测试简介" class="form-control" name="description" required>
                         <span class="material-input"></span>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             <div class="questionBlock">
 
             </div>
-            <button class="btn btn-lg btn-success" type="submit">创建问卷</button>
+            <button class="btn btn-lg btn-success" type="submit">创建测试</button>
         </form>
         
     </section>
@@ -120,15 +120,20 @@
                 $('.warningText').text('亲，文件上传最大可接受5MB以下的图片，请点击上方选择图片更换图片后再试')
                 fileUploader.value = null
             }
+            var ext = $(this).val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('文件上传仅限图片格式，请确认后重试！');
+                    fileUploader.value = null
+                }
         })
         var article = $("#surveyType").val()
         var typeArray = article.split()
         var type = typeArray[0]
         var py =typeArray[1]
         var surveyNumber = $('#surveyNumber').val();
+        console.log(surveyNumber)
         for(i = 1; i <= surveyNumber; i ++) {
             $('.questionBlock').append(`
-                <div class="questionBlock">
                 <div class="row">
                     <div class="col-md-1">
                         <span>${i}.</span>
@@ -191,7 +196,6 @@
                         <span class="material-input"></span></div>
                     </div>
                 </div>
-            </div>
             <hr>
             `)
         }

@@ -8,16 +8,29 @@ var surveyResultsCollection = db.collection('surveyResults');
 var surveyTypesCollection = db.collection('surveyTypes');
 var siteDataCollection = db.collection('siteData')
 
+function authorRequired(req, res, next) {
+    console.log(req.admin ? req.admin : 'no user')
+	if (!req.isAuthenticated()) {
+		return res.redirect('/login')
+    }
+	next()
+}
+function adminRequired(req, res, next) {
+    console.log(req.admin ? req.admin : 'no user')
+	if (!req.user || req.user.admin == 1) {
+		return res.redirect('/login')
+    }
+	next()
+}
 
 
 
 
-
-router.get('/survey/status', function(req, res, next) {
+router.get('/survey/status', adminRequired, function(req, res, next) {
     res.json(surveyArray)
 })
 
-router.get('/survey/edit/:id', function(req, res, next) {
+router.get('/survey/edit/:id', adminRequired ,function(req, res, next) {
     const {id} = req.params;
     surveyCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, survey) {
         res.render('editSurvey', { 
@@ -37,7 +50,7 @@ router.get('/survey/edit/:id', function(req, res, next) {
         });
     })
 })
-router.post('/survey/edit/:id', function(req, res, next) {
+router.post('/survey/edit/:id', adminRequired,function(req, res, next) {
     const { id } = req.params;
     const updatedSurvey = req.body;
     surveyCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, original) {
@@ -525,36 +538,31 @@ router.get('/surveys', function(req, res, next) {
             console.log(err)
           }
           var popularSurveys = popularSurveys
-            surveyCollection.find({py: "hunlian"}, function(err, hunlian) {
+            surveyCollection.find({py: "nengli"}, function(err, nengli) {
               if (err) {
                 console.log(err)
               }
-              var hunlianSurveys = hunlian
-              surveyCollection.find({py: "jiankang"}, function(err, jiankang) {
+              var nengliSurveys = nengli
+              surveyCollection.find({py: "xingge"}, function(err, xingge) {
                 if (err) {
                   console.log(err)
                 }
-                var jiankangSurveys = jiankang
-                surveyCollection.find({py: "zhichang"}, function(err, zhichang) {
+                var xinggeSurveys = xingge
+                surveyCollection.find({py: "jiandan"}, function(err, jiandan) {
                   if (err) {
                     console.log(err)
                   }
-                  var zhichangSurveys = zhichang
-                  surveyCollection.find({py: "xingxinli"}, function(err, xingxinli) {
+                  var jiandanSurveys = jiandan
+                  surveyCollection.find({py: "zhuanye"}, function(err, zhuanye) {
                     if (err) {
                       console.log(err)
                     }
-                    var xingxinliSurveys = xingxinli
-                    surveyCollection.find({py: "kepu"}, function(err, kepu) {
+                    var zhuanyeSurveys = zhuanye
+                    surveyCollection.find({py: "quwei"}, function(err, quwei) {
                       if (err) {
                         console.log(err)
                       }
-                      var kepuSurveys = kepu
-                      surveyCollection.find({py: "chengzhang"}, function(err, chengzhang) {
-                        if (err) {
-                          console.log(err)
-                        }
-                        var chengzhangSurveys = chengzhang
+                      var quweiSurveys = quwei
                         siteDataCollection.find(function(err, siteData) {
                           var banner = siteData[0].homePageBanner;
                           res.render('surveys', { 
@@ -567,12 +575,11 @@ router.get('/surveys', function(req, res, next) {
                             featuredSurveys,
                             allSurveys,
                             popularSurveys,
-                            hunlianSurveys,
-                            jiankangSurveys,
-                            zhichangSurveys,
-                            xingxinliSurveys,
-                            kepuSurveys,
-                            chengzhangSurveys,
+                            nengliSurveys,
+                            xinggeSurveys,
+                            jiandanSurveys,
+                            zhuanyeSurveys,
+                            quweiSurveys,
                             banner,
                             title: 'Home',
                             auth: function() {
@@ -591,7 +598,6 @@ router.get('/surveys', function(req, res, next) {
           })
         })
       })
-  })
 
 
 
