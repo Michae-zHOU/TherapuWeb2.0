@@ -167,13 +167,13 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
                         <div class="form-group is-empty">
-                            <input type="text" name="title" placeholder="测试标题" class="form-control">
+                            <input type="text" name="title" placeholder="测试标题" class="form-control" required>
                             <span class="material-input"></span>
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
                         <div class="btn-group bootstrap-select">
-                            <select id="surveyTypes" name="type" class="selectpicker" data-style="btn btn-info btn-round" title="Single Select" data-size="7" tabindex="-98">
+                            <select required id="surveyTypes" name="type" class="selectpicker" data-style="btn btn-info btn-round" title="Single Select" data-size="7" tabindex="-98">
                                 <option class="bs-title-option" value="">测试分类</option>
                                 <option disabled="" selected="">选择测试分类</option>
                                 <option value="能力,nengli">能力</option>
@@ -186,7 +186,7 @@
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
                         <div class="btn-group bootstrap-select">
-                            <select id="questionNumber" name="number" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98">
+                            <select required id="questionNumber" name="number" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98">
                                 <option class="bs-title-option" value="">问题数量</option>
                                 <option disabled="" selected="">选择测试问题数量</option>
                             </select>
@@ -194,7 +194,7 @@
                     </div>
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="submit" class="btn btn-success btn-simple">创建测试<div class="ripple-container"></div></button>
+                    <button type="submit" class="btn btn-success btn-simple generateBtn">创建测试<div class="ripple-container"></div></button>
                 </div>
             </form>
         </div>
@@ -204,4 +204,22 @@
         for (i = 1; i <= 20; i ++) {
                 $('#questionNumber').append('<option value='+ i + '>' + i + '</option>')
             }
+        var requiredInput = 0
+        if (requiredInput <= 2) {
+                $('.generateBtn').hide()
+            }
+        $('#surveyTypes').change(function() {
+            requiredInput ++
+            console.log(requiredInput)
+            if (requiredInput >= 2) {
+                $('.generateBtn').show()
+            }
+        })
+        $('#questionNumber').change(function() {
+            requiredInput ++
+            console.log(requiredInput)
+            if (requiredInput >= 2) {
+                $('.generateBtn').show()
+            }
+        })
     </script>
