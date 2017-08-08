@@ -93,13 +93,12 @@
     var id = $('#surveyId').val()
     $.get('/api/survey/'+ id, function(survey) {
             var questionNumber = $('#surveyNumber').val()
-            console.log()
-            for (var i = 1; i <= Number(questionNumber); i++) {
+            console.log(survey)
+            for (var i = 0; i < Number(questionNumber); i++) {
                 $('.questionBlock').append(`
-                    <div class="questionBlock">
                         <div class="row">
                             <div class="col-md-1">
-                                <span>${i}.</span>
+                                <span>${i + 1}.</span>
                             </div>
                             <div class="col-md-11">
                                 <div class="form-group label-floating is-empty">
@@ -159,7 +158,6 @@
                                 <span class="material-input"></span></div>
                             </div>
                         </div>
-                    </div>
                     <hr>
                 `)
             }
