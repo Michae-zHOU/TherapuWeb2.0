@@ -96,6 +96,15 @@
 * {
     font-family: 'Helvetica Neue', sans-serif, 'Microsoft YaHei', 'Hiragino Sans GB';
 }
+.footer-links {
+    width: 100%;
+    margin: 0 auto;
+}
+.copy-right {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
 @media only screen and (min-width: 691px) {
     .side-nav {
         display: none;

@@ -1,74 +1,4 @@
 
-
-					<!-- <footer class="footer footer-white footer-big">
-	            		<div class="container">
-
-	            			<div class="content">
-	            				<div class="row">
-	            					<div class="col-md-4">
-	            						<h5>关于我们</h5>
-	            						<p>深圳市轻语科技有限公司（以下简称“轻语”）于2016年11月21日成立，并于2017年2月正式入驻深圳市留学生创业园。轻语致力于提供一个便捷、实惠、高效的心理咨询服务平台。</p>
-	            						<h6 class="text-muted">info@therapu.com</h6>
-	            						<h6>深圳市南山区高新南环路29号留学生创业大厦1406室</h6>
-										
-									</div>
-	            					<div class="col-md-2 col-sm-4 col-xs-6">
-	            						<h5>网站</h5>
-	            						<ul class="links-vertical">
-	            							<li>
-	            								<a href="#pablo">
-	            								   常见问题
-	            								</a>
-	            							</li>
-	            							<li>
-	            								<a href="#pablo">
-	            									商务合作
-	            								</a>
-	            							</li>
-	            							<li>
-	            								<a href="#pablo">
-	            								  	加入我们
-	            								</a>
-	            							</li>
-	            						</ul>
-	            					</div>
-
-	            					<div class="col-md-2 col-sm-4 col-xs-6">
-	            						<h5>法律</h5>
-	            						<ul class="links-vertical">
-	            							<li>
-	            								<a href="#pablo">
-	            								   使用条款
-	            								</a>
-	            							</li>
-	            							<li>
-	            								<a href="#pablo">
-	            									隐私条款
-	            								</a>
-											</li>
-											<li>
-												<a href="">
-													  
-												</a>
-											</li>
-	            						</ul>
-	            					</div>
-
-	            					<div class="col-md-4 col-sm-4 col-xs-12 footer-follow">
-	            						<h5>关注轻语微信公众号</h5>
-										<img src="/images/qr.jpg" height="200" alt="">
-	            					</div>
-	            				</div>
-	            			</div>
-
-	            			<hr>
-
-	            			<div class="copyright pull-center">
-								Copyright © <script>document.write(new Date().getFullYear())</script>轻语科技 版权所有
-								<p><a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a></p>
-	            			</div>
-	            		</div>
-					</footer> -->
 					<footer class="footer footer-white footer-big">
 						<div class="container">
 
@@ -107,7 +37,7 @@
 
 							<hr>
 
-							<ul class="pull-left">
+							<ul class="footer-links">
 								<li>
 									<a href="#pablo">
 									   常见问题
@@ -135,7 +65,7 @@
 								</li>
 							</ul>
 
-							<div class="copyright pull-right">
+							<div class="copyright">
 								版权所有 © <script>document.write(new Date().getFullYear())</script> 轻语科技
 								<a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a>
 	            			</div>

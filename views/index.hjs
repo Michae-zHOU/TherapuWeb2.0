@@ -12,13 +12,13 @@
                 <div class="alert alert-success ">
                         <div class="container">
                             <div class="alert-icon">
-                                <i class="material-icons">info_outline</i>
+                                <i class="fa fa-info-circle"></i>
                             </div>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                            </button>
-
-                            <b>温馨提示:</b> {{banner}}
+							</button>
+							<span>
+								温馨提示: {{banner}}
+							</span>
 						</div>
                 </div>
 			</div>

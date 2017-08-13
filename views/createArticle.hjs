@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="btn-group bootstrap-select">
-                        <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98" onChange="$('#submitArticle').removeClass('disabled')">
+                        <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98">
                                 <option class="bs-title-option" value="">文章分类</option>
                                 <option disabled="" selected="">选择文章分类</option>
                                 <option value="两性,liangxing">两性</option>
@@ -69,13 +69,21 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-info btn-lg disabled" type="submit" id="submitArticle" >提交</button>
+                    <button class="btn btn-info btn-lg disabled" type="submit" id="submitArticle">提交</button>
                 </div>
             </div>
         </form>
     </section>
     <script>
-        CKEDITOR.replace( 'article' );
+        CKEDITOR.replace( 'article', {
+            language: 'ch',
+            font_names: 
+            '楷體/Georgia, "標楷體", BiauKai, DFKai-SB, "华文楷体", stkaiti, "楷體", KaiTi, "楷体", SimKai, serif;' +
+            '明體/"Times New Roman", Times, "細明體", MingLiU, "新細明體", PMingLiU, serif;' +
+            '宋體/"Times New Roman", Times, "儷宋 Pro", "LiSong Pro", "細宋體", SimSun, "新宋體", "宋体", NSimSun, serif;' +
+            '黑體/Arial, Helvetica, "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "黑體", "黑体", SimHei, sans-serif;' +
+            CKEDITOR.config.font_names
+        } );
         $('#articleImg').change(function() {
             var fileUploader = document.getElementById('articleImg')
             if (fileUploader.files[0].size > 5000000) {
@@ -88,6 +96,11 @@
                     alert('文件上传仅限图片格式，请确认后重试！');
                     fileUploader.value = null
                 }
+        })
+        $('#submitArticle').prop('disabled', true)
+        $('.selectpicker').change(function() {
+            $('#submitArticle').prop('disabled', false)
+            $('#submitArticle').removeClass('disabled')
         })
     </script>
 {{>footer}}
