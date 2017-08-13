@@ -32,17 +32,30 @@
                 </div>
               {{/analysis}}
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!--<a href="/survey/{{surveyData._id}}">重新测试</a>-->
+                    
+                </div>
+                <div class="col-md-6">
+                    <a href="/surveys" class="btn btn-large btn-success pull-right">更多测试</a>
+                </div>
+            </div>
         </section>
     </section>
     <script>
         if (Number($('.scoreSpan').text()) <= 25) {
             $('.scoreRange').eq(0).append('<i class="material-icons targetScore">check</i>')
+            $('.scoreRange').eq(0).addClass('targetBlock')
         } else if (Number($('.scoreSpan').text()) <= 50 && Number($('.scoreSpan').text()) > 25) {
             $('.scoreRange').eq(1).append('<i class="material-icons targetScore">check</i>')
+            $('.scoreRange').eq(1).addClass('targetBlock')
         } else if (Number($('.scoreSpan').text()) <= 75 && Number($('.scoreSpan').text()) > 50) {
             $('.scoreRange').eq(2).append('<i class="material-icons targetScore">check</i>')
+            $('.scoreRange').eq(2).addClass('targetBlock')
         } else if (Number($('.scoreSpan').text()) > 75) {
             $('.scoreRange').eq(3).append('<i class="material-icons targetScore">check</i>')
+            $('.scoreRange').eq(3).addClass('targetBlock')
         }
     </script>
       

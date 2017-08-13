@@ -3,6 +3,7 @@
 }
 h1 {
     font-size: 28px;
+    margin-bottom: 50px;
 }
 body {
     background-color: #fdfdfd;
@@ -16,4 +17,7 @@ body {
     right: 20px;
     font-size: 3em;
     color: #3c763d;
+}
+.targetBlock {
+    box-shadow: 0 0 20px green;
 }

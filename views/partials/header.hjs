@@ -9,7 +9,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="material-icons">menu</span>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/"><img src="../../images/logo-trans-long.png" alt=""></a>
             </div>
