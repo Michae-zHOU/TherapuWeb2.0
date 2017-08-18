@@ -71,3 +71,11 @@
 	            			</div>
 						</div>
 					</footer>
+					<script>
+						if (parseInt($('.checkAuth').val()) == 1) {
+								//author
+								$('.pageSetting').hide()
+								$('.userSetting').hide()
+								$('.primeSetting').hide()
+							}
+					</script>

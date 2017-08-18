@@ -7,9 +7,9 @@
             <ul class="nav nav-pills nav-pills-rose nav-stacked">
                 <li class="active"><a href="#articleManagement" data-toggle="tab" aria-expanded="true">文章管理</a></li>
                 <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">测试管理</a></li>
-                <li class=""><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
-                <li class=""><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
-                <li class=""><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li>
+                <li class="pageSetting"><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
+                <li class="userSetting"><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
+                <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li>
             </ul>
         </div>
         <div class="col-md-10">

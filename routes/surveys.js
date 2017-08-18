@@ -30,7 +30,7 @@ router.get('/survey/status', adminRequired, function(req, res, next) {
     res.json(surveyArray)
 })
 
-router.get('/survey/edit/:id', adminRequired ,function(req, res, next) {
+router.get('/survey/edit/:id', authorRequired ,function(req, res, next) {
     const {id} = req.params;
     surveyCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, survey) {
         res.render('editSurvey', { 
@@ -50,7 +50,7 @@ router.get('/survey/edit/:id', adminRequired ,function(req, res, next) {
         });
     })
 })
-router.post('/survey/edit/:id', adminRequired,function(req, res, next) {
+router.post('/survey/edit/:id', authorRequired,function(req, res, next) {
     const { id } = req.params;
     const updatedSurvey = req.body;
     surveyCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, original) {
