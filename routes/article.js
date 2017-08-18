@@ -251,7 +251,7 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
     
 })
 
-router.get('/article/edit/:id', adminRequired, (req, res, next) => {
+router.get('/article/edit/:id', authorRequired, (req, res, next) => {
     const { id } = req.params;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, article) {
         if (err) {
@@ -289,7 +289,7 @@ router.get('/article/edit/:id', adminRequired, (req, res, next) => {
         })
     })
 })
-router.post('/edit/article/:id', adminRequired, (req, res, next) => {
+router.post('/edit/article/:id', authorRequired, (req, res, next) => {
     const {id} = req.params;
     const article = req.body;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, original) {

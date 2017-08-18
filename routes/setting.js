@@ -21,6 +21,47 @@ function adminRequired(req, res, next) {
 	next()
 }
 /* GET home page. */
+router.get('/authorSetting', authorRequired, function(req, res, next) {
+    console.log(mongojs.ObjectId(req.user._id))
+
+    articleCollection.find({
+        "author._id": mongojs.ObjectId(req.user._id)
+    }).sort({_id: -1},function(err, articles) {
+        if (err) {
+            console.log(err)
+        }
+        console.log(articles, 123)
+        surveyCollection.find({
+            "author._id": mongojs.ObjectId(req.user._id)
+        }).sort({_id: -1}, function(err, surveys) {
+            if (err) {
+                console.log(err)
+            }
+            res.render('setting', { 
+                partials: {
+                header: '../views/partials/header',
+                footer: '../views/partials/footer',
+                head: '../views/partials/head',
+                scripts: '../views/partials/scripts'
+            },
+            title: 'Home',
+            articles,
+            surveys,
+            flash: req.flash('updateMessage'),
+            session: req.session,
+            auth: function() {
+                    if (req.user) {
+                        return req.user.admin
+                    }
+                    if (!req.user.admin) {
+                        return null
+                    }
+                }, 
+            }) 
+        })
+    })
+})
+
 
 router.get('/setting', adminRequired, function(req, res, next) {
     articleCollection.find().sort({_id: -1},function(err, articles) {
@@ -31,7 +72,6 @@ router.get('/setting', adminRequired, function(req, res, next) {
             if (err) {
                 console.log(err)
             }
-            console.log(surveys)
             siteDataCollection.find(function(err, siteData) {
                 if (err) {
                     console.log(err)
@@ -42,7 +82,6 @@ router.get('/setting', adminRequired, function(req, res, next) {
                     }
                     articleCollection.find().sort({priority: -1}, function(err, primes) {
                         var homePageBannerData = siteData[0].homePageBanner
-                        console.log(primes[0].priority, primes[1].priority, primes[2].priority)
                         
                         res.render('setting', { 
                             partials: {

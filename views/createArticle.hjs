@@ -62,7 +62,7 @@
                         <span class="material-input"></span>
                     </div>
                 </div>
-                <div class="col-md-offset-8 col-md-2 authorBlock">
+                <div class="col-md-offset-7 col-md-3 authorBlock">
                     <div class="form-group is-empty noMarginInput">
                             <img src="/assets/users/{{user.userAvatar.filename}}" class="img-circle img-raised img-responsive">
                             <span>{{user.fullName}}</span>
