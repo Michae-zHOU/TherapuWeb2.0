@@ -32,12 +32,14 @@
 				<!-- Set up your HTML -->
 				<div class="owl-carousel owl-theme" id="sync1">
 					{{#carouselArticles}}
-						<div class="item">
-							<img src="/assets/articles/{{articleImg.filename}}" alt="Awesome Image">
-							<div class="carousel-caption">
-								<a href="/article/{{_id}}"><h4>{{title}}</h4></a>
+						<a target="_blank" href="/article/{{_id}}">
+							<div class="item">
+								<img src="/assets/articles/{{articleImg.filename}}" alt="Awesome Image">
+								<div class="carousel-caption">
+									<h4>{{title}}</h4>
+								</div>
 							</div>
-						</div>
+						</a>
 					{{/carouselArticles}} 
 				</div>
 				<script>
@@ -63,7 +65,7 @@
                             <div class="divider"></div>
                             <ul>
                                 {{#featuredArticles}}
-                                <li><a href="/article/{{_id}}"><h6>{{title}}</h6></a></li>
+                                <li><a target="_blank" href="/article/{{_id}}"><h6>{{title}}</h6></a></li>
                                 {{/featuredArticles}}
                             </ul>
                         </div>
@@ -72,18 +74,21 @@
 	
 		<div class="row dailyArticleSection">
 			<div class="col-md-12">
-					<h2 class="title">每日精选</h2>
+					<h3 class="title">每日精选</h3>
+					<div class="divider"></div>
 					{{#dailyArticles}}
 					<div class="card card-plain card-blog">
 						<div class="row">
 							<div class="col-md-6">
-								<div class="card-image">
-									<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
-								</div>
+								<a target="_blank" href="/article/{{_id}}">
+									<div class="card-image">
+										<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+									</div>
+								</a>
 							</div>
 							<div class="col-md-6">
 								<h3 class="card-title">
-									<a href="/article/{{_id}}">{{title}}</a>
+									<a target="_blank" href="/article/{{_id}}">{{title}}</a>
 								</h3>
 								<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
 								<p class="card-description">
