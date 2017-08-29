@@ -8,40 +8,6 @@
 
 					
 <div class="row allSurveys">
-	<h2 class="title">每日精选</h2>
-        <div class="row dailysurveySection">
-			<div class="col-md-12">
-                        <div class="row"></div>
-							{{#featuredSurveys}}
-							
-								<div class="col-md-4">
-									<a href="/survey/{{_id}}" class="hoverable">
-                                        <div class="card">
-                                            <div class="card-content content-success">
-                                                <h5 class="category-social">
-                                                    <i class="material-icons">explore</i> <span>{{type}}</span>
-                                                </h5>
-                                                <h4 class="card-title">
-                                                    <a href="/survey/{{_id}}">{{title}}</a>
-                                                </h4>
-                                                <div class="footer">
-                                                    <div class="author">
-                                                        <a href="#pablo">
-                                                        <img src="assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-														<span>{{author.fullName}}</span>
-                                                        </a>
-                                                    </div>
-                                                <div class="stats">
-                                                        <i class="material-icons">share</i> <strong>{{views}}+</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-										</div>	
-									</a>
-                                </div>
-                            {{/featuredSurveys}}
-				</div>
-		</div>
 		<div class="row allsurveys">
 			<div class="card card-nav-tabs">
 				<div class="header header-success">
@@ -105,7 +71,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -115,20 +81,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -147,7 +113,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -157,20 +123,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -189,7 +155,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -199,20 +165,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -231,7 +197,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -241,20 +207,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -273,7 +239,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -283,20 +249,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -315,7 +281,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -325,20 +291,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -357,7 +323,7 @@
 																<div class="col-md-12">
 																	<div class="card row">
 																		<div class="card-img col-md-5">
-																			<img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt="">
+																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
 																			<div class="stats text-left">
@@ -367,20 +333,20 @@
 																			</div>
 																			<h4 class="card-title text-left">
 																				<span class="label label-success">{{type}}</span>
-																				<a href="/survey/{{_id}}"> {{title}}</a>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
 																			</h4>
 																			<p class="card-description">
-																				{{description}}<a href="/survey/{{_id}}">阅读更多</a>
+																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
 																				<div class="author left">
-																					<a href="/survey/{{_id}}">
+																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
 																				</div>
-																				<a href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
+																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
 																	</div>
@@ -394,6 +360,40 @@
 											</div>
 										</div>
 									</div>
+		</div>
+		<div class="row dailysurveySection">
+			<h2 class="title">每日精选</h2>
+			<div class="col-md-12">
+                        <div class="row"></div>
+							{{#featuredSurveys}}
+							
+								<div class="col-md-4">
+									<a target="_blank" href="/survey/{{_id}}" class="hoverable">
+                                        <div class="card">
+                                            <div class="card-content content-success">
+                                                <h5 class="category-social">
+                                                    <i class="material-icons">explore</i> <span>{{type}}</span>
+                                                </h5>
+                                                <h4 class="card-title">
+                                                    <a target="_blank" href="/survey/{{_id}}">{{title}}</a>
+                                                </h4>
+                                                <div class="footer">
+                                                    <div class="author">
+                                                        <a href="#pablo">
+                                                        <img src="assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
+														<span>{{author.fullName}}</span>
+                                                        </a>
+                                                    </div>
+                                                <div class="stats">
+                                                        <i class="material-icons">share</i> <strong>{{views}}+</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</div>	
+									</a>
+                                </div>
+                            {{/featuredSurveys}}
+				</div>
 		</div>
 	</div>
 

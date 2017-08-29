@@ -34,4 +34,10 @@ body {
         max-width: 100%;
         margin: 100px auto 0px auto;
     }
+    .card .col-md-4 {
+        padding: 0;
+    }
+    .card .card-content.col-md-8 {
+        padding: 10px;
+    }
 }

@@ -11,26 +11,35 @@
 	margin: 0;
 }
 .homeContent {
-	padding: 80px 10%;
-	max-width: 1200px;
+	padding: 80px 0%;
+	max-width: 1000px;
 	margin: 0 auto;
 }
 .articleList {
 	background-color: #fff;
-	padding: 10px 0;
+	padding: 0;
 	box-sizing: border-box;
 	max-height: 258px;
 	overflow: hidden;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+	height: auto;
+	min-height: 320px;
 }
 .articleList .title {
 	text-align: center;
-	margin: 5px 0 3px 0;
+	font-size: 30px;
+	margin: 0
 }
 .articleList .divider {
-	height: 3px;
-	width: 80px;
-	background-color: #444;
+	height: 1px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+}
+.divider {
+	height: 1px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
 }
 .articleList ul {
@@ -54,6 +63,8 @@
 }
 #body {
 	background-color: #fafafa;
+	width: 100vw;
+	overflow-x: hidden;
 }
 .no-gutter {
 	max-height: 320px;
@@ -107,7 +118,7 @@ h4.card-title {
 .dailyArticleSection {
 	background-color: #fff;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-	padding: 15px 10% 15px 15px;
+	padding: 15px;
 	margin-top: 25px;
 }
 .carousel .item {
@@ -150,6 +161,10 @@ h4.card-title {
 .dailyArticleSection .card-description {
 	font-size: 14px;
 	color: #444;
+}
+.dailyArticleSection .title {
+	font-size: 30px;
+	margin: 10px 0;
 }
 #sync1 .item {
   color: #FFF;
@@ -196,11 +211,7 @@ h4.card-title {
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 5px 0;
 }
-.articleList {
-	height: auto;
-	min-height: 320px;
-	padding-left: 10px;
-}
+
 .carousel-col {
 	padding-right: 10px;
 }

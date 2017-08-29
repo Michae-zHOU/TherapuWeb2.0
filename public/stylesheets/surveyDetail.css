@@ -135,4 +135,10 @@ h6.category {
     .progress {
         display: none;
     }
+    .userInfo .col-md-6:first-of-type {
+        padding: 0;
+    }
+    .userInfo .col-md-6:nth-of-type(2) {
+        padding: 0;
+    }
 }
