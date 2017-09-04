@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session')
 var db = require('./db');
 var cors = require('cors');
-
+var device = require('express-device');
 var api = require('./routes/api');
 var index = require('./routes/index');
 var createSurvey = require('./routes/createSurvey');
@@ -28,14 +28,19 @@ require('passport');
 var app = express();
 app.use(ddos.express);
 
-
+app.use(device.capture({parseUserAgent:true}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use((req, res, next) => {
+    if (req.device.parser.useragent.family == 'UC Browser') {
+        res.render('unsupport-browser', { user_browser : req.device.parser.useragent.family })
+    }
+    next()
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');

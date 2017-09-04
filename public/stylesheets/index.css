@@ -27,7 +27,7 @@
 }
 .articleList .title {
 	text-align: center;
-	font-size: 30px;
+	font-size: 23px;
 	margin: 0
 }
 .articleList .divider {
@@ -163,7 +163,7 @@ h4.card-title {
 	color: #444;
 }
 .dailyArticleSection .title {
-	font-size: 30px;
+	font-size: 23px;
 	margin: 10px 0;
 }
 #sync1 .item {
