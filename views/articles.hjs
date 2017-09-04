@@ -112,12 +112,12 @@
 															{{#AllArticle}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}">
 																			<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
 																		</a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -154,10 +154,10 @@
 															{{#popularArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -194,10 +194,10 @@
 															{{#zixunArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -234,10 +234,10 @@
 															{{#liangxingArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -274,10 +274,10 @@
 															{{#jiaoyuArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -314,10 +314,10 @@
 															{{#zhichangArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -354,10 +354,10 @@
 															{{#jiatingArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -394,10 +394,10 @@
 															{{#kepuArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -434,10 +434,10 @@
 															{{#chengzhangArticles}}
 															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>

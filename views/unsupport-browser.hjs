@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>轻语 - Therapu2.0 </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/unsupported-browser.css">
+</head>
+<body>
+    <div class="unsupported-browser">
+        <h1> 轻语 - Therapu2.0 </h1>
+        <p>对不起，您使用的 {{user_browser}} 不兼容此网站</p>
+        <p>
+            建议您使用：<a href="https://mozilla.org/firefox/">Mozilla Firefox 4+</a> ,
+            <a href="https://chrome.google.com">Google Chrome 7+</a> ,
+            <a href="http://windows.microsoft.com/ie">Internet Explorer 10+</a> .
+        </p>
+    </div>
+</body>
+</html>
