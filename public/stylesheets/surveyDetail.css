@@ -12,17 +12,17 @@ body {
 .details span {
     font-weight: 900;
     color: #388e3c;
-    margin: 0 25px;
+    margin: 5px 25px;
+    display: block;
 }
 .card-title {
     margin-left: 35px;
 }
 h6.category {
     display: inline;
-    float: right;
     clear: both;
     vertical-align: 20px;
-    margin-top: 0;
+    margin-left: 25px;
 }
 .topSection {
     margin-bottom: 20px;
@@ -101,11 +101,9 @@ h6.category {
 }
 .progress {
     position: fixed;
-    top: 100px;
+    top: 59px;
     width: 100%;
     z-index: 888;
-    margin: 0 20%;
-    max-width: 60%;
 }
 #submitForm {
     display: block;
@@ -118,7 +116,7 @@ h6.category {
     .details span {
         font-weight: 900;
         color: #388e3c;
-        margin: 5px 0;
+        margin: 5px 0 5px 25px;
         text-align: left;
         display: block;
     }
@@ -128,6 +126,7 @@ h6.category {
     h6.category {
         float: none;
         text-align: left;
+        margin-left: 25px;
     }
     .surveySection {
         padding: 10% 5px;

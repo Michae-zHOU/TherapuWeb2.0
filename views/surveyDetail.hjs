@@ -16,16 +16,6 @@
             <input type="number" hidden value="" id="questionNum" name="questionNum">
             <div class="card card-blog">
                 <div class="card-content">
-                    <div class="topSection">
-                        <span class="details text-left">
-                            <span><i class="material-icons">schedule</i> 发布于 {{survey.created_at}}</span>
-                            <span><i class="material-icons">visibility</i>{{survey.views}}+人测试过</span>
-                            <span class="questionNumber">本测试共 {{survey.questionNumber}} 题</span>
-                        </span>
-                        <h6 class="category text-success text-right">
-                            <i class="material-icons">trending_up</i> {{survey.type}}
-                        </h6>
-                    </div>
                     <div class="row">
                         <div class="col-md-5">
                              <div class="card-image">
@@ -36,6 +26,16 @@
                             <h4 class="card-title text-left">
                                 <a href="#pablo">{{survey.title}}</a>
                             </h4>
+                            <div class="topSection">
+                                    <span class="details text-left">
+                                        <span><i class="material-icons">schedule</i> 发布于 {{survey.created_at}}</span>
+                                        <span><i class="material-icons">visibility</i>{{survey.views}}+人测试过</span>
+                                        <span class="questionNumber">本测试共 {{survey.questionNumber}} 题</span>
+                                    </span>
+                                    <h6 class="category text-success text-right">
+                                        <i class="material-icons">trending_up</i> {{survey.type}}
+                                    </h6>
+                                </div>
                             <p class="card-description text-left">{{survey.description}}</p>
                         </div>
                     </div>
