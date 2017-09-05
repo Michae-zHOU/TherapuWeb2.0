@@ -28,7 +28,7 @@
 .articleList .title {
 	text-align: center;
 	font-size: 23px;
-	margin: 0
+	margin: 10px 0;
 }
 .articleList .divider {
 	height: 1px;
@@ -96,11 +96,10 @@ h4.card-title {
 }
 .card .card-content .label {
 	float: left;
-	position: relative;
-	top: 3px;
+	display: inline;
 }
-.card .card-content .author {
-	float: left;
+#body .card .card-content .author {
+	display: inline;
 }
 .card .card-content {
 	padding-top: 5px;
@@ -154,16 +153,24 @@ h4.card-title {
 }
 .card-blog .row .category {
 	margin: 15px 0;
+	display: inline;
 }
 .card-nav-tabs .col-md-8 .row .card {
 	height: 150px;
 }
-.dailyArticleSection .card-description {
+.dailyArticleSection .card-description p {
 	font-size: 14px;
 	color: #444;
+	display: inline;
+}
+.dailyArticleSection .card-description {
+	display: inline;
 }
 .dailyArticleSection .title {
 	font-size: 23px;
+	margin: 10px 0;
+}
+.dailyArticleSection .card-info {
 	margin: 10px 0;
 }
 #sync1 .item {
@@ -222,6 +229,9 @@ h4.card-title {
 	padding-left: 0;
 	padding-right: 0;
 	-webkit-display: none;
+}
+.card-title a {
+	font-size: 20px;
 }
 @media only screen and (max-width: 780px) {
 	.homeContent {

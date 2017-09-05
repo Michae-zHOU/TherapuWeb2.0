@@ -47,19 +47,19 @@ body {
 }
 .card-description {
     text-align: left;
-    margin: 10px 45px;
+    margin: 10px 0px;
     max-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .allsurveys .stats i {
     font-weight: 100;
-    color: #388e3c;
+    color: #444;
     vertical-align: -5px;
 }
 .stats span {
-    font-weight: 900;
-    color: #388e3c;
+    font-weight: 500;
+    color: #444;
 }
 .stats .questionNumber {
     margin: 0 25px;
@@ -79,10 +79,16 @@ body {
     display: block;
     max-width: 150px;
     margin: 10px auto 0 auto;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
 }
 .card .card-content {
     padding-bottom: 10px;
+    min-height: 250px;
+    position: relative;
 }
+
 .category-social i {
     color: #fafafa;
 }
@@ -107,6 +113,14 @@ body {
     }
     h2.title {
         padding-left: 30px;
+    }
+    .startSurvey {
+        display: none;
+    }
+}
+@media only screen and (max-width: 413px) {
+    .card-nav-tabs .nav-tabs, .card-plain {
+        padding: 0 40px;
     }
 }
 /*.creationDate {

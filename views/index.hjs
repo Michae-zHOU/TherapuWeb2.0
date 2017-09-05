@@ -79,25 +79,31 @@
 					{{#dailyArticles}}
 					<div class="card card-plain card-blog">
 						<div class="row">
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
 								<a target="_blank" href="/article/{{_id}}">
 									<div class="card-image">
 										<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
 									</div>
 								</a>
-							</div>
-							<div class="col-md-6">
+							</div> -->
+							<div class="col-md-12">
 								<h3 class="card-title">
 									<a target="_blank" href="/article/{{_id}}">{{title}}</a>
 								</h3>
-								<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
-								<p class="card-description">
-									{{article}} 
-								</p>
-								<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
-								<p class="author">
-									作者： <a href=""><b>{{author.fullName}}</b></a><br>创作于： {{created_at}}
-								</p>
+								<div class="card-info">
+									<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
+									<p class="author" style="display: inline;">
+										{{created_at}}
+									<a href=""><b>{{author.fullName}}</b></a>
+									</p>
+								</div>
+								<div>
+									<p class="card-description">
+										{{article}} 
+									</p>
+									<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+								</div>
+								<br>
 								<p class="views test" id="test">
 									阅读量： <b>{{views}}+</b>
 								</p>
