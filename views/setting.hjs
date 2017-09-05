@@ -9,7 +9,7 @@
                 <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">测试管理</a></li>
                 <li class="pageSetting"><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
                 <li class="userSetting"><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
-                <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li>
+                <!-- <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li> -->
             </ul>
         </div>
         <div class="col-md-10">
@@ -163,7 +163,7 @@
                                     </table>
                     </div>
                 </div>
-                <div class="tab-pane" id="primeManagement">
+                <!-- <div class="tab-pane" id="primeManagement">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-1">
                             <h1>文章置顶管理</h1>
@@ -214,7 +214,7 @@
                             </div>
                         </div>
 	                </div>
-	            </div>
+	            </div> -->
 	        </div>
 	    </div>
     </div>

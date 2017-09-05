@@ -74,26 +74,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -116,26 +116,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -158,26 +158,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -200,26 +200,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -242,26 +242,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -284,26 +284,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
@@ -326,26 +326,26 @@
 																			<a target="_blank" href="/survey/{{_id}}"><img src="/assets/surveys/{{surveyImg.filename}}" class="img-raised" alt=""></a>
 																		</div>
 																		<div class="card-content col-md-7">
+																			<h4 class="card-title text-left">
+																				<span class="label label-success">{{type}}</span>
+																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
+																			</h4>
 																			<div class="stats text-left">
 																					<span class="createdAt">{{created_at}} 发布</span>
 																					<span class="questionNumber">本测试共 <span>{{questionNumber}}</span> 题</span>
 																					 <span>{{views}}+人测试过</span>
 																			</div>
-																			<h4 class="card-title text-left">
-																				<span class="label label-success">{{type}}</span>
-																				<a target="_blank" href="/survey/{{_id}}"> {{title}}</a>
-																			</h4>
 																			<p class="card-description">
 																				{{description}}<a target="_blank" href="/survey/{{_id}}">阅读更多</a>
 																			</p>
 																			<div class="footer text-left">
-																				<div class="author left">
+																				<!-- <div class="author left">
 																					<a target="_blank" href="/survey/{{_id}}">
 																					<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
 																					<span>{{author.fullName}} - 专栏作家</span>
 																					<p class="authorDescription"><strong>作者简介</strong> - {{author.description}}</p>
 																					</a>
-																				</div>
+																				</div> -->
 																				<a target="_blank" href="/survey/{{_id}}" class="btn btn-rounded btn-success startSurvey">开始测试</a>
 																			</div>
 																		</div>
