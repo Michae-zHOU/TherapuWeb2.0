@@ -194,16 +194,21 @@ router.get('/article/:id', function(req, res, next) {
         if (err) {
             return err
         }
-        articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
-            if (err) {
-                console.log(err)
-            }
-            articleCollection.update({_id: mongojs.ObjectId(id)}, {$inc: {views: 1}}, function(err, doc) {
-                if (err) {
-                    console.log(err)
-                }
-                res.render('article', {
-                    partials: {
+        
+	if(!articleData){
+	    return err
+	}
+
+	articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
+        if (err) {
+            console.log(err)
+        }
+        articleCollection.update({_id: mongojs.ObjectId(id)}, {$inc: {views: 1}}, function(err, doc) {
+        if (err) {
+       	    console.log(err)
+        }
+        res.render('article', {
+       	 partials: {
                         header: '../views/partials/header',
                         footer: '../views/partials/footer',
                         head: '../views/partials/head',
