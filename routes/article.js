@@ -192,7 +192,7 @@ router.get('/article/:id', function(req, res, next) {
     const { id } = req.params;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, articleData) {
         if (err) {
-            console.log(err)
+            return err
         }
         articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
             if (err) {
