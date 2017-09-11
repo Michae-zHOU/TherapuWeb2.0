@@ -310,8 +310,7 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             typeIdentifier: original.typeIdentifier,
             type: original.type,
             articleImg: original.articleImg,
-            author: original.author,
-            views: original.views
+            author: original.author
         }, function(err, updatedArticle) {
             if (err) {
                 console.log(err)

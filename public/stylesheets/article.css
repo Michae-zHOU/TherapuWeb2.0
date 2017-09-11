@@ -6,6 +6,17 @@
     max-height: 300px;
     min-height: 300px;
 }
+
+.articleImg {
+    height: auto;
+    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    float: left;
+    clear: both;
+    display: block;
+    margin: 0px 20px 20px 0;
+}
 .articleTitle {
     text-align: center;
     margin: 30px 0;
@@ -41,9 +52,4 @@
     display: block;
     width: 70%;
     max-width: 900px;
-}
-.content-container {
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
 }

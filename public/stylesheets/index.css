@@ -1,9 +1,6 @@
 
 .homeContent .alert {
-	margin-bottom: 10px;
-}
-.alert .alert-icon i {
-	vertical-align: 5px;
+	margin-top: 20px;
 }
 .topArticles h3 {
 	margin: 20px 0;
@@ -14,7 +11,7 @@
 	margin: 0;
 }
 .homeContent {
-	padding: 80px 0% 20px 0;
+	padding: 80px 0%;
 	max-width: 1000px;
 	margin: 0 auto;
 }
@@ -35,7 +32,7 @@
 }
 .articleList .divider {
 	height: 1px;
-	width: 90%;
+	width: 100%;
 	background-color: rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
 }
@@ -46,20 +43,19 @@
 	margin: 0 auto;
 }
 .articleList ul {
+
 	margin: 20px 0 10px 0;
-	padding-left: 20px;
-	padding-right: 20px;
 }
 .articleList ul li {
 	list-style: none;
 	margin: 10px 0;
-	font-size: 21px;
-	max-width: 100%;
-	text-overflow: ellipsis;
+	font-size: 15px;
 }
 .articleList ul li a {
 	color: #444;
 	cursor: pointer;
+
+	font-size: 22px;
 }
 .articleList ul li a:hover {
 	color: #4caf50;
@@ -82,16 +78,11 @@ h4.card-title {
 		overflow: hidden;
 		text-align: left;
 		padding-left: 5px;
-		margin: 0;
 	}
 .dailyArticleSection .card.card-plain.card-blog {
-	padding-bottom: 20px;
-	padding-top: 15px;
+	padding-bottom: 25px;
 	border-bottom: 1px solid rgba(200, 200, 200, 0.5);
 	border-radius: 0px;
-}
-.dailyArticleContent {
-	padding-top: 5px;
 }
 .dailyArticleSection .card .card-image {
 	height: auto;
@@ -100,25 +91,12 @@ h4.card-title {
 	overflow: hidden;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 }
-.dailyArticleSection .divider {
-	height: 1px;
-	width: 100%;
-	background-color: rgba(0, 0, 0, 0.1);
-	margin: 0 auto;
-	margin-bottom: 5px;
-}
 .dailyArticleSection .card .card-image img {
-	height: 165px;
-	width: 300px;
+	height: 300px;
 }
 .card .card-content .label {
+	float: left;
 	display: inline;
-}
-.dailyArticleSection .card-blog .card-title {
-	margin-top: 0;
-	margin-bottom: 20px;
-	height: auto;
-	line-height: 1.2rem;
 }
 #body .card .card-content .author {
 	display: inline;
@@ -133,26 +111,14 @@ h4.card-title {
 .card .card-content .footer {
 	padding-bottom: 20px;
 }
-.dailyArticleSection .card.card-plain.card-blog:last-of-type {
-	border-bottom: none;
+.dailyArticleSection .card.card-plain.card-blog {
+	margin: 30px 0;
 }
 .dailyArticleSection {
 	background-color: #fff;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 	padding: 15px;
 	margin-top: 25px;
-}
-.dailyArticleSection .label.label-success {
-	vertical-align: 1px;
-	margin-right: 10px;
-}
-.dailyArticleContent .author a {
-	margin-left: 10px;
-	font-weight: 300;
-}
-.dailyArticleContent .author {
-	font-size: 13px;
-	display: block;
 }
 .carousel .item {
 	overflow: hidden;
@@ -199,8 +165,6 @@ h4.card-title {
 }
 .dailyArticleSection .card-description {
 	display: inline;
-	color: #555;
-	font-size: 14px;
 }
 .dailyArticleSection .title {
 	font-size: 23px;
@@ -271,46 +235,11 @@ h4.card-title {
 }
 @media only screen and (max-width: 780px) {
 	.homeContent {
-		padding: 80px 10px;
-		box-sizing: border-box;
-		width: 100%;
-		max-width: 100vw;
-		overflow-x: hidden;
+		padding: 80px 5px;
 	}
 	.footer-follow {
 		margin-top: 20px;
 		margin-bottom: 5px;
 	}
-	.articleList ul {
-		padding-left: 20px;
-	}
-	.articleList ul a {
-		font-weight: bold;
-	}
-	.dailyArticleSection .card-blog .card-title {
-		margin-top: 10px;
-		margin-bottom: 20px;
-		height: auto;
-		line-height: 2.6rem;
-	}
-	.dailyArticleSection .card.card-plain.card-blog {
-		padding-bottom: 15px;
-		border-bottom: 1px solid rgba(200, 200, 200, 0.5);
-		border-radius: 0px;
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-	.dailyArticleSection .dailyArticleImage {
-		padding: 0;
-	}
-	.dailyArticleSection .dailyArticleImage img {
-		max-width: 100%;
-	}
-	.dailyArticleContent {
-		padding-left: 0;
-		padding-right: 0;
-	}
-	.homeContent {
-		padding-bottom: 5px;
-	}
+
 }

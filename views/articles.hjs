@@ -78,7 +78,7 @@
 													<div id="fourArticleList">
 														<div class="list">
 															<!-- {{#primeArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
 																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
@@ -110,14 +110,14 @@
 															</div>
 															{{/primeArticles}} -->
 															{{#AllArticle}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}">
 																			<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
 																		</a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -152,12 +152,12 @@
 													<div id="popularArticles">
 														<div class="list">
 															{{#popularArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -192,12 +192,12 @@
 													<div id="popularArticles">
 														<div class="list">
 															{{#zixunArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -232,12 +232,12 @@
 													<div id="liangxingArticles">
 														<div class="list">
 															{{#liangxingArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -272,12 +272,12 @@
 													<div id="jiaoyuArticles">
 														<div class="list">
 															{{#jiaoyuArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -312,12 +312,12 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#zhichangArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -335,6 +335,7 @@
 																			</div>
 																		<div class="stats">
 																				<i class="material-icons">visibility</i> {{views}}
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -351,12 +352,12 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#jiatingArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -391,12 +392,12 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#kepuArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
@@ -431,12 +432,12 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#chengzhangArticles}}
-															<div class="col-md-12 articleItem">
+															<div class="col-md-12">
 																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
+																	<!-- <div class="card-img col-md-4 col-sm-4">
 																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
+																	</div> -->
+																	<div class="card-content col-md-12 col-sm-12 col-lg-12">
 																		<h4 class="card-title text-left">
 																			<span class="label label-success">{{type}}</span>
 																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>

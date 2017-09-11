@@ -51,8 +51,6 @@ router.post('/survey/new/generate', function(req, res, next) {
 })
 
 
-
-
 router.post('/survey/new/create',  upload.single('surveyImg'), function(req, res, next) {
     var survey = req.body;
     var survey = req.body;
