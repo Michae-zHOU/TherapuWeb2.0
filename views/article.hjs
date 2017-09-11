@@ -9,51 +9,44 @@
 			
 		</div>
     <div class="main main-raised">
-			<div class="container">
-            <div class="section section-text">
-                <div class="row">
-									<div class="col-md-10 col-md-offset-1">
-										<h1 class="articleTitle">{{articleData.title}}</h1>
-										<img src="/assets/articles/{{articleData.articleImg.filename}}" alt="" class="articleImg">
-										<p class="articleBody">{{articleData.article}} </p>
-										</div>
-								</div>
-						</div>
-
-			<div class="section section-blog-info">
-				<div class="authorSection">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="blog-tags">
-								标签:
-								<span class="label label-success">{{articleData.type}}</span>
-							</div>
-						</div>
-						
+				<div class="section section-text">
+					<div class="content-container">
+						<h1 class="articleTitle">{{articleData.title}}</h1>
+						<p class="articleBody">{{articleData.article}} </p>
 					</div>
-					<hr>
-					<div class="card card-profile card-plain">
+				</div>
+				<div class="section section-blog-info">
+					<div class="authorSection">
 						<div class="row">
-							<div class="col-md-2">
-								<div class="card-avatar">
-									<a href="#pablo">
-										<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">
-									</a>
-								<div class="ripple-container"></div></div>
+							<div class="col-md-6">
+								<div class="blog-tags">
+									标签:
+									<span class="label label-success">{{articleData.type}}</span>
+								</div>
 							</div>
-							<div class="col-md-8">
-								<h4 class="card-title">{{articleData.author.fullName}}</h4>
-								<p class="description">{{articleData.author.description}}</p>
-							</div>
-							<div class="col-md-2">
-								<button type="button" class="btn btn-simple pull-right btn-round">{{articleData.views}} 次阅读</button>
+							
+						</div>
+						<hr>
+						<div class="card card-profile card-plain">
+							<div class="row">
+								<div class="col-md-2">
+									<div class="card-avatar">
+										<a href="#pablo">
+											<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">
+										</a>
+									<div class="ripple-container"></div></div>
+								</div>
+								<div class="col-md-8">
+									<h4 class="card-title">{{articleData.author.fullName}}</h4>
+									<p class="description">{{articleData.author.description}}</p>
+								</div>
+								<div class="col-md-2">
+									<button type="button" class="btn btn-simple pull-right btn-round">{{articleData.views}} 次阅读</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-        	</div>
-
-        </div>
     </div>
     <div class="section">
 		<div class="container">

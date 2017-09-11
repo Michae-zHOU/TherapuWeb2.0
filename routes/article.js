@@ -202,7 +202,7 @@ router.get('/article/:id', function(req, res, next) {
 
 	articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
         if (err) {
-            console.log(err)
+            console.log(err);
         }
         articleCollection.update({_id: mongojs.ObjectId(id)}, {$inc: {views: 1}}, function(err, doc) {
         if (err) {
@@ -310,7 +310,8 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             typeIdentifier: original.typeIdentifier,
             type: original.type,
             articleImg: original.articleImg,
-            author: original.author
+            author: original.author,
+            views: original.views
         }, function(err, updatedArticle) {
             if (err) {
                 console.log(err)

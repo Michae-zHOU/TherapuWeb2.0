@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   /* GET home page. */
   
   
-articleCollection.find({}).sort({creationDateFormat: -1}).limit(5, function(err, featuredArticles) {
+articleCollection.find({}).sort({creationDateFormat: -1}).limit(6, function(err, featuredArticles) {
 
   //article list data
     if (err) {
@@ -76,14 +76,14 @@ articleCollection.find({}).sort({creationDateFormat: -1}).limit(5, function(err,
                         }
                         var chengzhangArticles = chengzhang
                         var topChengzhangArticle = chengzhang[0]
-                        articleCollection.find().limit(3).sort({priority: -1}, function(err, daily) {
+                        articleCollection.find().limit(3).sort({views: -1}, function(err, daily) {
                           if (err) {
                             console.log(err)
                           }
                         var dailyArticles = daily
                         siteDataCollection.find(function(err, siteData) {
                           var banner = siteData[0].homePageBanner;
-                          res.render('index', { 
+                          res.render('index', {
                             partials: {
                               header: '../views/partials/header',
                               head: '../views/partials/head',
