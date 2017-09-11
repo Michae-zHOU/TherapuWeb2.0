@@ -192,16 +192,17 @@ router.get('/article/:id', function(req, res, next) {
     const { id } = req.params;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, articleData) {
         if (err) {
-            return err
+            console.log(err);
+	    return err;
         }
         
-	if(!articleData){
-	    return err
+	if( !articleData){	           
+	    return res.render('404', { url: req.url });
 	}
 
 	articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
         if (err) {
-            console.log(err)
+            console.log(err);
         }
         articleCollection.update({_id: mongojs.ObjectId(id)}, {$inc: {views: 1}}, function(err, doc) {
         if (err) {
@@ -309,7 +310,8 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             typeIdentifier: original.typeIdentifier,
             type: original.type,
             articleImg: original.articleImg,
-            author: original.author
+            author: original.author,
+            views: original.views
         }, function(err, updatedArticle) {
             if (err) {
                 console.log(err)

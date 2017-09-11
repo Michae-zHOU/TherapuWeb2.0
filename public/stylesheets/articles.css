@@ -3,7 +3,7 @@ body {
 }
 .allArticles {
     max-width: 1000px;
-    margin: 100px auto;
+    margin: 70px auto;
 }
 .card-description {
 	font-size: 18px;
@@ -29,10 +29,13 @@ body {
 .label.label-warning {
     vertical-align: 5px;
 }
+ .articleItem {
+    padding: 0 1px;
+}
 @media only screen and (max-width: 892px) {
     .allArticles {
         max-width: 100%;
-        margin: 100px auto 0px auto;
+        margin: 60px auto 0px auto;
     }
     .card .col-md-4 {
         padding: 0;

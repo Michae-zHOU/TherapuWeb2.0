@@ -28,3 +28,8 @@
     text-overflow: none;
     overflow: none;
 }
+@media screen and (max-width: 768px) {
+    .features-4 .info:first-child {
+        padding-top: 10px;
+    }
+}
