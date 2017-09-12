@@ -77,67 +77,37 @@
 												<div class="row">
 													<div id="fourArticleList">
 														<div class="list">
-															<!-- {{#primeArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
-																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-sm-8">
-																		<h4 class="card-title text-left">
-																			<span class="label label-success">{{type}}</span>
-																			<span class="label label-warning">置顶</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															{{/primeArticles}} -->
 															{{#AllArticle}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}">
-																			<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
 																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -152,32 +122,36 @@
 													<div id="popularArticles">
 														<div class="list">
 															{{#popularArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -192,32 +166,36 @@
 													<div id="popularArticles">
 														<div class="list">
 															{{#zixunArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -232,32 +210,36 @@
 													<div id="liangxingArticles">
 														<div class="list">
 															{{#liangxingArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -272,32 +254,36 @@
 													<div id="jiaoyuArticles">
 														<div class="list">
 															{{#jiaoyuArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -312,31 +298,36 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#zhichangArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -351,32 +342,36 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#jiatingArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -391,32 +386,36 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#kepuArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -431,32 +430,36 @@
 													<div id="zhichangArticles">
 														<div class="list">
 															{{#chengzhangArticles}}
-															<div class="col-md-12 articleItem">
-																<div class="card row">
-																	<div class="card-img col-md-4 col-sm-4">
-																		<a target="_blank" href="/article/{{_id}}"><img src="/assets/articles/{{articleImg.filename}}" class="img-raised" alt=""></a>
+															<div class="card card-plain card-blog">
+																<div class="row articlesItem">
+																	<div class="col-md-4 dailyArticleImage">
+																		<a href="/article/{{_id}}">
+																			<div class="card-image">
+																				<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+																			</div>
+																		</a>
 																	</div>
-																	<div class="card-content col-md-8 col-sm-8 col-lg-8">
-																		<h4 class="card-title text-left">
+																	<div class="col-md-8 dailyArticleContent">
+																		<h3 class="card-title">
+																			<a href="/article/{{_id}}">{{title}}</a>
+																		</h3>
+																		<div class="card-info">
 																			<span class="label label-success">{{type}}</span>
-																			<a target="_blank" href="/article/{{_id}}"> {{title}}</a>
-																		</h4>
-																		<p class="card-description">
-																			{{description}}
-																		</p>
-																		<p class="text-info text-left"><a target="_blank" href="/article/{{_id}}">阅读更多</a></p>
-																		<div class="footer text-left">
-																			<div class="author left">
-																				<a target="_blank" href="/article/{{_id}}">
-																				<img src="/assets/users/{{author.userAvatar.filename}}" alt="..." class="avatar img-raised">
-																				<span>{{author.fullName}}</span>
-																				</a>
-																			</div>
-																		<div class="stats">
-																				<i class="material-icons">visibility</i> {{views}}
-																				
-																			</div>
+																			<p class="author" style="display: inline;">
+																				{{created_at}}
+																				<a href="">{{author.fullName}}</a>
+																			</p>
 																		</div>
+																		<div class="card-description-content">
+																			<p class="card-description">
+																				{{description}} 
+																			</p>
+																			<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+																		</div>
+																		<br>
+																		<p class="views test" id="test">
+																			阅读量： <b>{{views}}+</b>
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -482,7 +485,9 @@
 
 <script>
 				$.each($('.card-description'), function() {
-					$(this).text($(this).text().substr(0, 100))
+					$(this).text($(this).text().substr(0, 95))
+					var self = $(this).text()
+					$(this).text(self + '...')
 				})
 				var monkeyList = new List('fourArticleList', {
 					valueNames: ['card'],

@@ -1,6 +1,6 @@
 .allSurveys {
     max-width: 1000px;
-    margin: 100px auto;
+    margin: 70px auto;
     background-color: #fafafa;
 }
 .card-title a {
@@ -51,6 +51,7 @@ body {
     max-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: normal;
 }
 .allsurveys .stats i {
     font-weight: 100;

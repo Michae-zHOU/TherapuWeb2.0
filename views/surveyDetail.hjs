@@ -41,11 +41,11 @@
                     </div>
                     <div class="footer">
                         <div class="author">
-                            <a href="#pablo">
+                            <div>   
                                 <img src="/assets/users/{{survey.author.userAvatar.filename}}" alt="..." class="avatar img-raised">
                                 <span>{{survey.author.fullName}} - 专栏作者</span>
-                                <p class="card-description">作者简介 - {{survey.author.description}}</p>
-                            </a>
+                            </div>
+                            <p class="card-description">作者简介 - {{survey.author.description}}</p>
                         </div>
                     </div>
                 </div>
