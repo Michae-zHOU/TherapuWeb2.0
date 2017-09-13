@@ -310,7 +310,7 @@
 												</div>
 												<div class="tab-pane" id="quwei">
 													<div class="row">
-														<div id="quwei">
+														<div id="quweisurveys">
 															<div class="list">
 																{{#quweiSurveys}}
 																<div class="col-md-12">
@@ -399,8 +399,11 @@
 <script>
 	var carouselHeight = $('.card-carousel').height()
 	var adjustedsurveyHeight = carouselHeight - 20
+	$('.pagination').on('click', function() {
+				window.scrollTo(0, 0);
+			})
 	$('.surveyList').height(adjustedsurveyHeight)
-	new List('allSurvey', {
+	new List('foursurveyList', {
 		valueNames: ['card'],
 		page: 6,
 		pagination: true
@@ -411,6 +414,11 @@
 		pagination: true
 	});
 	new List('xinggesurveys', {
+		valueNames: ['card'],
+		page: 6,
+		pagination: true
+	});
+	new List('popularsurveys', {
 		valueNames: ['card'],
 		page: 6,
 		pagination: true

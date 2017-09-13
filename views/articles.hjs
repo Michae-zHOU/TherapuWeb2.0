@@ -163,7 +163,7 @@
 											</div>
 											<div class="tab-pane" id="zixun">
 												<div class="row">
-													<div id="popularArticles">
+													<div id="zixunArticles">
 														<div class="list">
 															{{#zixunArticles}}
 															<div class="card card-plain card-blog">
@@ -339,7 +339,7 @@
 											</div>
 											<div class="tab-pane" id="jiating">
 												<div class="row">
-													<div id="zhichangArticles">
+													<div id="jiatingArticles">
 														<div class="list">
 															{{#jiatingArticles}}
 															<div class="card card-plain card-blog">
@@ -383,7 +383,7 @@
 											</div>
 											<div class="tab-pane" id="kepu">
 												<div class="row">
-													<div id="zhichangArticles">
+													<div id="kepuArticles">
 														<div class="list">
 															{{#kepuArticles}}
 															<div class="card card-plain card-blog">
@@ -427,7 +427,7 @@
 											</div>
 											<div class="tab-pane" id="chengzhang">
 												<div class="row">
-													<div id="zhichangArticles">
+													<div id="chengzhangArticles">
 														<div class="list">
 															{{#chengzhangArticles}}
 															<div class="card card-plain card-blog">
@@ -481,20 +481,21 @@
 
 
 
-
+		<button id="test1">test</button>
 
 <script>
-				console.log('hit')
-			$('a.page').on('click', function() {
-				console.log('hit')
-				window.scrollTop() = 0;
-			})
+				
 				$.each($('.card-description'), function() {
 					$(this).text($(this).text().substr(0, 95))
 					var self = $(this).text()
 					$(this).text(self + '...')
 				})
 				var monkeyList = new List('fourArticleList', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('zixunArticles', {
 					valueNames: ['card'],
 					page: 6,
 					pagination: true
@@ -509,12 +510,22 @@
 					page: 6,
 					pagination: true
 				});
+				var monkeyList = new List('jiatingArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
 				var monkeyList = new List('liangxingArticles', {
 					valueNames: ['card'],
 					page: 6,
 					pagination: true
 				});
-				var monkeyList = new List('jiaoyuArticles', {
+				var monkeyList = new List('kepuArticles', {
+					valueNames: ['card'],
+					page: 6,
+					pagination: true
+				});
+				var monkeyList = new List('chengzhangArticles', {
 					valueNames: ['card'],
 					page: 6,
 					pagination: true
@@ -526,7 +537,9 @@
 				});
 			var parser = new DOMParser()
 			var cardDescriptions = document.getElementsByClassName('card-description');
-			
+			$('.pagination').on('click', function() {
+				window.scrollTo(0, 0);
+			})
 			
 			
 			for (var i = 0; i <=cardDescriptions.length; i++) {
