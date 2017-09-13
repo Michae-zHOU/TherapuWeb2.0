@@ -10,13 +10,13 @@
         <form action="/edit/article/{{articleId}}" method="post">
             <input type="text" id="articleId" data-api="/article/edit/{{articleId}}" name="id" hidden>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group is-empty">
                             <input type="text" value="{{articleTitle}}" class="form-control" name="title" id="title" required>
                             <span class="material-input"></span>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group is-empty">
                             <input type="text" value="{{articleDescription}}" class="form-control" id="description" name="description" required>
                             <span class="material-input"></span>

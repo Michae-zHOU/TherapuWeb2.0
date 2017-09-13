@@ -1,0 +1,18 @@
+.main.main-raised {
+    margin-top: 80px;
+}
+.main.main-raised .title h1 {
+    text-align: center;
+    font-size: 24px;
+}
+.waiverSection {
+    padding: 20px 10% 50px 10%;
+}
+blockquote {
+    border-color: #388e3c;
+}
+p {
+    line-height: 28px;
+    padding-left: 25px;
+    padding-right: 15px;
+}

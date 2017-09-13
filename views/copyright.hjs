@@ -1,0 +1,54 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/article.css">
+<link rel="stylesheet" href="../../stylesheets/waiver.css">
+<script>
+	//indicator for navbar 
+	$('.articleLink').addClass('active')
+</script>
+    <div class="main main-raised">
+            <div class="section section-text title">
+                <h1>版权及免责声明</h1>
+            </div>
+            <div class="waiverSection">
+                <blockquote>
+                    版权申明
+                </blockquote>
+                <p>轻语网站文章内容由本站原创、转载组成。我们转载的目的是为了提供更好的心理学资讯
+                        并服务大众。转载时，凡是原文有清晰的作者和出处，我们会完全注明。对原文中本无作
+                        者或不明首发何处的文章，若因文章质量优秀，我们亦会转载，并请原作者尽快联系我们
+                        ，邮箱：qingyu_tougao@outlook.com。
+                </p>
+                <blockquote>
+                    原创声明
+                </blockquote>
+                <p>
+                        原创作品版权归本站或著作者本人所有，受中国及国际版权法的保护。任何单位或个人转
+                        载、引用本网站内容，必须注明原作者和出处，凡是网页上注明：版权所有，不得转载之
+                        文章，未取得本站书面许可，任何人不得摘录转载。需要转载,请与我们联系,同时必须注明
+                        “来源于www.therapu.com”字样。
+                </p>
+                <blockquote>
+                    免责声明
+                </blockquote>
+                <p>
+                        请自觉遵守上述版权声明。凡有侵权行为的个人、法人或其它组织，必须立即停止侵权并
+                        对其因侵权造成的一切后果承担全部责任和相应赔偿。否则我们将依据中华人民共和国《
+                        著作权法》、《计算机软件保护条例》、《反不正当竞争法》等相关法律、法规追究其经
+                        济和法律责任。
+                </p>
+            </div>
+    </div>
+    <script>
+			var xmlString = $('.articleBody').text()
+			var parser = new DOMParser()
+			var newString = parser.parseFromString(xmlString, 'text/html')
+			console.log(newString.body)
+			$('.articleBody').html(newString.body)
+			$('.card-description').each(function() {
+				var shortcutText = $(this).text().substr(0, 43)
+				$(this).text(shortcutText)
+			})
+    </script>
+{{>footer}}
+{{>scripts}}
