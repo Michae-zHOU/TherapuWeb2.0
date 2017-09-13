@@ -200,7 +200,7 @@ router.get('/article/:id', function(req, res, next) {
 	    return res.render('404', { url: req.url });
 	}
 
-	articleCollection.find({type: articleData.type}).limit(3, function(err, relatedStories) {
+	articleCollection.find({type: articleData.type}).limit(4, function(err, relatedStories) {
         if (err) {
             console.log(err);
         }

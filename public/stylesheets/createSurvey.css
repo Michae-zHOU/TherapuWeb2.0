@@ -29,3 +29,8 @@ h1.createSurveyHeader {
 .fileinput .thumbnail>img {
     width: 100%;
 }
+.btn {
+    float: right;
+    position: relative;
+    top: -10px;
+}

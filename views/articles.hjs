@@ -484,6 +484,11 @@
 
 
 <script>
+				console.log('hit')
+			$('a.page').on('click', function() {
+				console.log('hit')
+				window.scrollTop() = 0;
+			})
 				$.each($('.card-description'), function() {
 					$(this).text($(this).text().substr(0, 95))
 					var self = $(this).text()
@@ -528,8 +533,8 @@
 				Encoder.EncodeType = "entity";
 				var decoded = Encoder.htmlDecode(cardDescriptions[i].innerHTML);
 				cardDescriptions[i].innerHTML = parser.parseFromString(decoded, 'text/html').documentElement.innerHTML
-				
 			}
+			
 			
     </script>
 {{>footer}}

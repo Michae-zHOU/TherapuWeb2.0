@@ -12,6 +12,8 @@
 				<div class="section section-text">
 					<div class="content-container">
 						<h1 class="articleTitle">{{articleData.title}}</h1>
+						标签:
+									<span class="label label-success">{{articleData.type}}</span>
 						<p class="articleBody">{{articleData.article}} </p>
 					</div>
 				</div>
@@ -20,8 +22,8 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="blog-tags">
-									标签:
-									<span class="label label-success">{{articleData.type}}</span>
+									
+									{{articleData.views}} 次阅读
 								</div>
 							</div>
 							
@@ -36,12 +38,9 @@
 										</a>
 									<div class="ripple-container"></div></div>
 								</div>
-								<div class="col-md-8">
+								<div class="col-md-10">
 									<h4 class="card-title">{{articleData.author.fullName}}</h4>
 									<p class="description">{{articleData.author.description}}</p>
-								</div>
-								<div class="col-md-2">
-									<button type="button" class="btn btn-simple pull-right btn-round">{{articleData.views}} 次阅读</button>
 								</div>
 							</div>
 						</div>
@@ -58,25 +57,25 @@
 					<br>
 					<div class="row">
                         {{#relatedStories}}
-						<div class="col-md-4">
-							<div class="card card-blog">
-								<div class="card-image">
-									<a href="#pablo">
+						<div class="col-md-3">
+							<a href="/article/{{_id}}">
+								<div class="card card-blog moreStories">
+									<div class="card-image">
 										<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
-									</a>
-								<div class="colored-shadow" style="background-image: url(/assets/articles/{{articleImg.filename}})"></div></div>
-
-								<div class="card-content">
-									<h6 class="category text-info">{{type}}</h6>
-									<h4 class="card-title">
-										<a href="#pablo">{{title}}</a>
-									</h4>
-									<p class="card-description">
-										{{description}}
-									</p>
-									<a href="/article/{{_id}}"> 阅读全文 </a>
+										<div class="colored-shadow" style="background-image: url(/assets/articles/{{articleImg.filename}})">
+										</div>
+									</div>
+									<div class="card-content">
+										<!--<h6 class="category text-info">{{type}}</h6>-->
+										<h4 class="card-title">
+											{{title}}
+										</h4>
+										<p class="card-description">
+											{{description}}
+										</p>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
                         {{/relatedStories}}
 					</div>
