@@ -481,8 +481,6 @@
 
 
 
-		<button id="test1">test</button>
-
 <script>
 				
 				$.each($('.card-description'), function() {
@@ -542,11 +540,6 @@
 			})
 			
 			
-			for (var i = 0; i <=cardDescriptions.length; i++) {
-				Encoder.EncodeType = "entity";
-				var decoded = Encoder.htmlDecode(cardDescriptions[i].innerHTML);
-				cardDescriptions[i].innerHTML = parser.parseFromString(decoded, 'text/html').documentElement.innerHTML
-			}
 			
 			
     </script>

@@ -1,0 +1,6 @@
+1.分页，一页6个
+2. 排序时间倒序，或访问量
+3. survey nav success margin left and right both 15px;
+4. pagination clicked go top
+5. front page monthly and weekly
+6. sort article date corre

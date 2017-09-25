@@ -84,3 +84,5 @@
 								$('.primeSetting').hide()
 							}
 					</script>
+		</div>
+		</body>

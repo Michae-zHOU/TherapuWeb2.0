@@ -1,5 +1,9 @@
 
-<body id="body">
+
+<body id="body" style="margin:0;">
+    
+
+
 
     <nav class="navbar navbar-primary navbar-fixed-top" id="sectionsNav">
         <input type="text" value="{{auth}}" class="checkAuth" hidden="">
@@ -136,6 +140,7 @@
                 </ul>
     </div>
 
+
     <script>
         //author
         if (parseInt($('.checkAuth').val()) == 1) {
@@ -165,6 +170,8 @@
         })
     </script>
     <!-- Modal -->
+
+
 <div class="modal fade" id="createSurveyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -211,26 +218,30 @@
         </div>
     </div>
 </div>
+
+
+
   <script>
-        for (i = 1; i <= 20; i ++) {
-                $('#questionNumber').append('<option value='+ i + '>' + i + '</option>')
-            }
-        var requiredInput = 0
-        if (requiredInput <= 2) {
-                $('.generateBtn').hide()
-            }
-        $('#surveyTypes').change(function() {
-            requiredInput ++
-            console.log(requiredInput)
-            if (requiredInput >= 2) {
-                $('.generateBtn').show()
-            }
-        })
-        $('#questionNumber').change(function() {
-            requiredInput ++
-            console.log(requiredInput)
-            if (requiredInput >= 2) {
-                $('.generateBtn').show()
-            }
-        })
+    var myVar;
+    for (i = 1; i <= 20; i ++) {
+            $('#questionNumber').append('<option value='+ i + '>' + i + '</option>')
+        }
+    var requiredInput = 0
+    if (requiredInput <= 2) {
+            $('.generateBtn').hide()
+        }
+    $('#surveyTypes').change(function() {
+        requiredInput ++
+        console.log(requiredInput)
+        if (requiredInput >= 2) {
+            $('.generateBtn').show()
+        }
+    })
+    $('#questionNumber').change(function() {
+        requiredInput ++
+        console.log(requiredInput)
+        if (requiredInput >= 2) {
+            $('.generateBtn').show()
+        }
+    })
     </script>
