@@ -3,7 +3,7 @@ body {
 }
 .allArticles {
     max-width: 1000px;
-    margin: 70px auto;
+    margin: 70px auto 20px auto;
 }
 .card-description {
 	font-size: 18px;
@@ -24,13 +24,57 @@ body {
     padding: 0 10px;
 }
 .label.label-success {
-    vertical-align: 5px;
+    vertical-align: 2px;
 }
 .label.label-warning {
     vertical-align: 5px;
 }
- .articleItem {
-    padding: 0 1px;
+ .articlesItem {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 15px 0;
+}
+.card-plain .card-image {
+    height: auto;
+    width: 100%;
+    max-width: 300px;
+}
+.card-plain .card-image img {
+    height: 165px;
+    width: 300px;
+}
+.card-blog {
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.card-blog p.author {
+    display: inline;
+    margin-left: 10px;
+}
+.card-blog * {
+    text-align: left;
+}
+.card-blog p.author a {
+    margin-left: 10px;
+}
+.card-description {
+    font-size: 14px;
+    color: #555;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline;
+    margin: 5px 0;
+}
+.card .card-content {
+    padding-bottom: 0;
+}
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+.card .card-description-content {
+    margin-top: 10px;
 }
 @media only screen and (max-width: 892px) {
     .allArticles {

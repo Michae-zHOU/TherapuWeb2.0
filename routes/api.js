@@ -168,7 +168,7 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
                 fullName: user.fullName,
                 created_at: newdate,
                 creationDateFormat: dateObj,
-                userAvatar: req.file,
+                userAvatar: req.file ? req.file : {filename: "user-default.jpg"},
             },  function(err, newUser) {
                 req.session.newUser = newUser
                 res.redirect('/setting')

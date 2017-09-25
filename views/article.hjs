@@ -1,101 +1,114 @@
+
 {{>head}}
-{{>header}}
-<link rel="stylesheet" href="../../stylesheets/article.css">
-<script>
-	//indicator for navbar 
-	$('.articleLink').addClass('active')
-</script>
+<div id="loader" style="display:block"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+		{{>header}}
+		<link rel="stylesheet" href="../../stylesheets/article.css">
+		<script>
+			//indicator for navbar 
+			$('.articleLink').addClass('active')
+		</script>
 		<div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/articles/{{articleData.articleImg.filename}}');">
 			
 		</div>
-    <div class="main main-raised">
-				<div class="section section-text">
-					<div class="content-container">
-						<h1 class="articleTitle">{{articleData.title}}</h1>
-						<p class="articleBody">{{articleData.article}} </p>
-					</div>
-				</div>
-				<div class="section section-blog-info">
-					<div class="authorSection">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="blog-tags">
-									标签:
-									<span class="label label-success">{{articleData.type}}</span>
-								</div>
-							</div>
-							
+		<div class="main main-raised">
+					<div class="section section-text">
+						<div class="content-container">
+							<h1 class="articleTitle">{{articleData.title}}</h1>
+							标签:
+										<span class="label label-success">{{articleData.type}}</span>
+							<p class="articleBody">{{articleData.article}} </p>
 						</div>
-						<hr>
-						<div class="card card-profile card-plain">
+					</div>
+					<div class="section section-blog-info">
+						<div class="authorSection">
 							<div class="row">
-								<div class="col-md-2">
-									<div class="card-avatar">
-										<a href="#pablo">
-											<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">
-										</a>
-									<div class="ripple-container"></div></div>
+								<div class="col-md-6">
+									<div class="blog-tags">
+										
+										{{articleData.views}} 次阅读
+									</div>
 								</div>
-								<div class="col-md-8">
-									<h4 class="card-title">{{articleData.author.fullName}}</h4>
-									<p class="description">{{articleData.author.description}}</p>
-								</div>
-								<div class="col-md-2">
-									<button type="button" class="btn btn-simple pull-right btn-round">{{articleData.views}} 次阅读</button>
+								
+							</div>
+							<hr>
+							<div class="card card-profile card-plain">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="card-avatar">
+											<a href="#pablo">
+												<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">
+											</a>
+										<div class="ripple-container"></div></div>
+									</div>
+									<div class="col-md-10">
+										<h4 class="card-title">{{articleData.author.fullName}}</h4>
+										<p class="description">{{articleData.author.description}}</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-    </div>
-    <div class="section">
-		<div class="container">
-			<div class="row">
+		</div>
+		<div class="section">
+			<div class="container">
+				<div class="row">
 
 
-				<div class="col-md-12">
-					<h2 class="title text-center">你可能对这些文章感兴趣</h2>
-					<br>
-					<div class="row">
-                        {{#relatedStories}}
-						<div class="col-md-4">
-							<div class="card card-blog">
-								<div class="card-image">
-									<a href="#pablo">
-										<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
-									</a>
-								<div class="colored-shadow" style="background-image: url(/assets/articles/{{articleImg.filename}})"></div></div>
-
-								<div class="card-content">
-									<h6 class="category text-info">{{type}}</h6>
-									<h4 class="card-title">
-										<a href="#pablo">{{title}}</a>
-									</h4>
-									<p class="card-description">
-										{{description}}
-									</p>
-									<a href="/article/{{_id}}"> 阅读全文 </a>
-								</div>
+					<div class="col-md-12">
+						<h2 class="title text-center">你可能对这些文章感兴趣</h2>
+						<br>
+						<div class="row">
+							{{#relatedStories}}
+							<div class="col-md-3">
+								<a href="/article/{{_id}}">
+									<div class="card card-blog moreStories">
+										<div class="card-image">
+											<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
+											<div class="colored-shadow" style="background-image: url(/assets/articles/{{articleImg.filename}})">
+											</div>
+										</div>
+										<div class="card-content">
+											<!--<h6 class="category text-info">{{type}}</h6>-->
+											<h4 class="card-title">
+												{{title}}
+											</h4>
+											<p class="card-description">
+												{{description}}
+											</p>
+										</div>
+									</div>
+								</a>
 							</div>
+							{{/relatedStories}}
 						</div>
-                        {{/relatedStories}}
+
 					</div>
 
 				</div>
-
 			</div>
 		</div>
+
+
+
+		<script>
+				
+
+
+				function showPage() {
+					document.getElementById("loader").style.display = "none";
+					document.getElementById("myDiv").style.display = "block";
+				}
+				var xmlString = $('.articleBody').text()
+				var parser = new DOMParser()
+				var newString = parser.parseFromString(xmlString, 'text/html')
+				$('.articleBody').html(newString.body)
+				$('.card-description').each(function() {
+					var shortcutText = $(this).text().substr(0, 43)
+					$(this).text(shortcutText)
+				})
+				showPage()
+		</script>
+		{{>footer}}
 	</div>
-    <script>
-			var xmlString = $('.articleBody').text()
-			var parser = new DOMParser()
-			var newString = parser.parseFromString(xmlString, 'text/html')
-			console.log(newString.body)
-			$('.articleBody').html(newString.body)
-			$('.card-description').each(function() {
-				var shortcutText = $(this).text().substr(0, 43)
-				$(this).text(shortcutText)
-			})
-    </script>
-{{>footer}}
 {{>scripts}}

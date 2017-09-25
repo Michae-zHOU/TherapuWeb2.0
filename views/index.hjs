@@ -2,9 +2,14 @@
 {{>header}}
 <link rel="stylesheet" href="../../stylesheets/index.css">
 <script>
+
 	//indicator for navbar 
 	$('.homeLink').addClass('active')
 </script>
+
+
+
+
 
 <section class="homeContent">
 	<div class="row">
@@ -118,11 +123,6 @@
 </section>
 
 
-<script>
-
-
-	
-</script>
 {{>scripts}}
 {{>footer}}
 
@@ -132,44 +132,4 @@
 					var self = $(this).text()
 					$(this).text(self + '...')
 				})
-				var monkeyList = new List('fourArticleList', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-				var monkeyList = new List('newestArticles', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-				var monkeyList = new List('popularArticles', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-				var monkeyList = new List('hunlianArticles', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-				var monkeyList = new List('jiankangArticles', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-				var monkeyList = new List('zhichangArticles', {
-					valueNames: ['card'],
-					page: 6,
-					pagination: true
-				});
-			var parser = new DOMParser()
-			var cardDescriptions = $('.card-description');
-			
-			
-			
-			for (var i = 0; i <=cardDescriptions.length; i++) {
-				Encoder.EncodeType = "entity";
-				var decoded = Encoder.htmlDecode(cardDescriptions[i].innerHTML);
-				cardDescriptions[i].innerHTML = parser.parseFromString(decoded, 'text/html').documentElement.innerHTML
-			}
     </script>

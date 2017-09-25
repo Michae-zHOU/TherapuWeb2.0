@@ -8,13 +8,32 @@
     <section class="createArticle">
         <form action="/create/article" method="post" enctype="multipart/form-data">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="form-group is-empty">
-                            <input type="text" value="" placeholder="文章标题" class="form-control" name="title" required>
-                            <span class="material-input"></span>
+                <div class="col-md-3">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail img-raised">
+                            <img src="../../assets/articles/article-default.png" alt="...">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                        <div>
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                                <span class="fileinput-new">选择图片</span>
+                                <span class="fileinput-exists">修改</span>
+                                <input type="file" name="img" id="articleImg" required>
+                            </span>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>移除</a>
+                            <p style="color: red" id="warningText">图片最大上传： 5MB</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-9">
+                    <div class="form-group is-empty articleTitleGroup">
+                        <input type="text" value="" placeholder="文章标题" class="form-control" name="title" required>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-group is-empty">
+                            <textarea type="text" placeholder="文章简介" class="form-control" name="description" required rows="4"></textarea>
+                            <span class="material-input"></span>
+                    </div>
                     <div class="btn-group bootstrap-select">
                         <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98">
                                 <option class="bs-title-option" value="">文章分类</option>
@@ -31,32 +50,6 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group is-empty">
-                            <textarea type="text" placeholder="文章简介" class="form-control" name="description" required rows="4"></textarea>
-                            <span class="material-input"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                    <div class="fileinput-new thumbnail img-raised">
-                                        <img src="../../assets/articles/article-default.png" alt="...">
-                                    </div>
-                                    <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-                                    <div>
-                                        <span class="btn btn-raised btn-round btn-default btn-file">
-                                            <span class="fileinput-new">选择图片</span>
-                                            <span class="fileinput-exists">修改</span>
-                                            <input type="file" name="img" id="articleImg" required>
-                                        </span>
-                                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>移除</a>
-                                        <p style="color: red" id="warningText">图片最大上传： 5MB</p>
-                                    </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
                     <div class="form-group label-floating is-empty noMarginInput">
                         <textarea id="article" class="form-control" rows="5" placeholder="文章正文" name="article"></textarea required>
                         <span class="material-input"></span>
@@ -82,7 +75,8 @@
             '明體/"Times New Roman", Times, "細明體", MingLiU, "新細明體", PMingLiU, serif;' +
             '宋體/"Times New Roman", Times, "儷宋 Pro", "LiSong Pro", "細宋體", SimSun, "新宋體", "宋体", NSimSun, serif;' +
             '黑體/Arial, Helvetica, "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "黑體", "黑体", SimHei, sans-serif;' +
-            CKEDITOR.config.font_names
+            CKEDITOR.config.font_names,
+            height: 800
         } );
         $('#articleImg').change(function() {
             var fileUploader = document.getElementById('articleImg')

@@ -9,13 +9,20 @@ var articleCollection = db.collection('articles');
 var siteDataCollection = db.collection('siteData')
 
 
-
+router.get('/test/article', (req, res) => {
+  articleCollection.find({}).sort({creationDateFormat: 1}).limit(10, function(err, featuredArticles) {
+    //------------?       console.log(featuredArticles);
+                  console.log(featuredArticles);
+                  res.json(featuredArticles)
+  })
+})
 router.get('/', function(req, res, next) {
   /* GET home page. */
   
   
 articleCollection.find({}).sort({creationDateFormat: -1}).limit(6, function(err, featuredArticles) {
-
+      //------------?       console.log(featuredArticles);
+                    console.log(featuredArticles);
   //article list data
     if (err) {
       console.log(err)
@@ -28,11 +35,13 @@ articleCollection.find({}).sort({creationDateFormat: -1}).limit(6, function(err,
             }
             var topAllArticle = AllArticle[0]
             var AllArticle = AllArticle
+           
         articleCollection.find().sort({views: -1}, function(err, popularArticles) {
          //热门文章
           if (err) {
             console.log(err)
           }
+          
           var topPopularArticle = popularArticles[0]
           var popularArticles = popularArticles
           articleCollection.find().sort({views: -1}).limit(5, function(err, carouselArticles) {
@@ -76,7 +85,9 @@ articleCollection.find({}).sort({creationDateFormat: -1}).limit(6, function(err,
                         }
                         var chengzhangArticles = chengzhang
                         var topChengzhangArticle = chengzhang[0]
-                        articleCollection.find().limit(3).sort({views: -1}, function(err, daily) {
+                        var dateSearch = new Date();
+                        dateSearch.setDate(dateSearch.getMonth() - 1);
+                        articleCollection.find({ creationDateFormat: { '$lte': dateSearch} }).limit(3).sort({ views: -1 }, function (err, daily) {
                           if (err) {
                             console.log(err)
                           }

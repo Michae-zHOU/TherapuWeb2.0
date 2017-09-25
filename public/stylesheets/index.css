@@ -162,9 +162,9 @@ h4.card-title {
 }
 .owl-carousel .item h4 {
 	color: white;
-	font-weight: 900;
-	font-size: 24px;
-
+	font-weight: 300;
+	font-size: 18px;
+	padding-top: 5px;
 }
 .owl-carousel .item img {
 	height: 320px;
@@ -268,6 +268,14 @@ h4.card-title {
 }
 .card-title a {
 	font-size: 20px;
+}
+.carousel-caption {
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	left: 0;
+	right: 0;
+	padding-top: 5px;
 }
 @media only screen and (max-width: 780px) {
 	.homeContent {
