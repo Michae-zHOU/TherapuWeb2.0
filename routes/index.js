@@ -11,8 +11,6 @@ var siteDataCollection = db.collection('siteData')
 
 router.get('/test/article', (req, res) => {
   articleCollection.find({}).sort({creationDateFormat: 1}).limit(10, function(err, featuredArticles) {
-    //------------?       console.log(featuredArticles);
-                  console.log(featuredArticles);
                   res.json(featuredArticles)
   })
 })
@@ -21,8 +19,6 @@ router.get('/', function(req, res, next) {
   
   
 articleCollection.find({}).sort({creationDateFormat: -1}).limit(6, function(err, featuredArticles) {
-      //------------?       console.log(featuredArticles);
-                    console.log(featuredArticles);
   //article list data
     if (err) {
       console.log(err)

@@ -1,88 +1,79 @@
-
-					<footer class="footer footer-white footer-big">
-						<div class="container">
-
-							<div class="content">
-								<div class="row">
-									<div class="col-md-4">
-										<h5>关于我们</h5>
-										<p>深圳市轻语科技有限公司（以下简称“轻语”）于2016年11月21日成立，并于2017年2月正式入驻深圳市留学生创业园。轻语致力于提供一个便捷、实惠、高效的心理咨询服务平台。</p>
-									</div>
-
-									<div class="col-md-4">
-										<h5>联系我们</h5>
-										<div class="social-feed">
-											<div class="feed-line">
-												<i class="fa fa-home"></i>
-												<p>深圳市南山区高新南环路29号留学生创业大厦1406室</p>
-											</div>
-											<div class="feed-line">
-												<i class="fa fa-envelope-o"></i>
-												<p>info@therapu.com</p>
-											</div>
-											<!-- <div class="feed-line">
-												<i class="fa fa-facebook-square"></i>
-												<p>A collection of 25 stunning sites that you can use for inspiration.</p>
-											</div> -->
-										</div>
-									</div>
-
-									<div class="col-md-4">
-										<h5>微信公众号</h5>
-										<img src="/images/qr.jpg" height="180" alt="">
-									</div>
-								</div>
-							</div>
-
-
-							<hr>
-
-							<ul class="footer-links">
-								<li>
-									<a href="#pablo">
-									   常见问题
-									</a>
-								</li>
-								<li>
-									<a href="#pablo">
-										商务合作
-									</a>
-								</li>
-								<li>
-									<a href="#pablo">
-									   加入我们
-									</a>
-								</li>
-								<li>
-									<a href="/about/waiver">
-										法律声明
-									</a>
-								</li>
-								<li>
-									<a href="/about/privacy">
-										隐私条款
-									</a>
-								</li>
-								<li>
-									<a href="/about/copyright">
-										版权声明
-									</a>
-								</li>
-							</ul>
-
-							<div class="copyright">
-								版权所有 © <script>document.write(new Date().getFullYear())</script> 轻语科技
-								<a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a>
-	            			</div>
-						</div>
-					</footer>
-					<script>
-						if (parseInt($('.checkAuth').val()) == 1) {
-								//author
-								$('.pageSetting').hide()
-								$('.userSetting').hide()
-								$('.primeSetting').hide()
-							}
-					</script>
-		</div>
-		</body>
+<footer class="footer footer-white footer-big">
+   <div class="container">
+      <div class="content">
+         <div class="row">
+            <div class="col-md-4">
+               <h5>关于我们</h5>
+               <p>深圳市轻语科技有限公司（以下简称“轻语”）于2016年11月21日成立，并于2017年2月正式入驻深圳市留学生创业园。轻语致力于提供一个便捷、实惠、高效的心理咨询服务平台。</p>
+            </div>
+            <div class="col-md-4">
+               <h5>联系我们</h5>
+               <div class="social-feed">
+                  <div class="feed-line">
+                     <i class="fa fa-home"></i>
+                     <p>深圳市南山区高新南环路29号留学生创业大厦1406室</p>
+                  </div>
+                  <div class="feed-line">
+                     <i class="fa fa-envelope-o"></i>
+                     <p>info@therapu.com</p>
+                  </div>
+                  <!-- <div class="feed-line">
+                     <i class="fa fa-facebook-square"></i>
+                     <p>A collection of 25 stunning sites that you can use for inspiration.</p>
+                     </div> -->
+               </div>
+            </div>
+            <div class="col-md-4">
+               <h5>微信公众号</h5>
+               <img src="/images/qr.jpg" height="180" alt="">
+            </div>
+         </div>
+      </div>
+      <hr>
+      <ul class="footer-links">
+         <li>
+            <a href="#pablo">
+            常见问题
+            </a>
+         </li>
+         <li>
+            <a href="#pablo">
+            商务合作
+            </a>
+         </li>
+         <li>
+            <a href="#pablo">
+            加入我们
+            </a>
+         </li>
+         <li>
+            <a href="/about/waiver">
+            法律声明
+            </a>
+         </li>
+         <li>
+            <a href="/about/privacy">
+            隐私条款
+            </a>
+         </li>
+         <li>
+            <a href="/about/copyright">
+            版权声明
+            </a>
+         </li>
+      </ul>
+      <div class="copyright">
+         版权所有 © <script>document.write(new Date().getFullYear())</script> 轻语科技
+         <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a>
+      </div>
+   </div>
+</footer>
+<script>
+   if (parseInt($('.checkAuth').val()) == 1) {
+   		//author
+   		$('.pageSetting').hide()
+   		$('.userSetting').hide()
+   		$('.primeSetting').hide()
+   	}
+</script>
+</body>

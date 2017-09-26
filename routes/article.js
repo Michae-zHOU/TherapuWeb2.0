@@ -299,7 +299,7 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
     const {id} = req.params;
     const article = req.body;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, original) {
-        console.log(original)
+          
         articleCollection.update({_id: mongojs.ObjectId(id)}, {
             title: article.title,
             author: article.author,

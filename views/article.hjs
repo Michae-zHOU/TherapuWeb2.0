@@ -99,10 +99,9 @@
 					document.getElementById("loader").style.display = "none";
 					document.getElementById("myDiv").style.display = "block";
 				}
-				var xmlString = $('.articleBody').text()
-				var parser = new DOMParser()
-				var newString = parser.parseFromString(xmlString, 'text/html')
-				$('.articleBody').html(newString.body)
+				var xmlString = $('.articleBody').text()				
+				$('.articleBody').html(xmlString)
+
 				$('.card-description').each(function() {
 					var shortcutText = $(this).text().substr(0, 43)
 					$(this).text(shortcutText)
