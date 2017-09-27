@@ -11,13 +11,13 @@ function authenticate(req, email, password, done) {
         email: email
     }, function(err, user) {
         if (!user || user.password !== password) {
-            console.log('user not found')
+            console.error('user not found')
             return done(null, false, req.flash('message', '登录失败，账号或密码错误'));
         }
         if (err) {
-            console.log(err)
+            console.error(err)
         }
-        console.log('User is ' + user.admin)
+        console.error('User is ' + user.admin)
         req.flash('message', '登录成功')
         done(null, user)
     })
@@ -32,7 +32,7 @@ passport.deserializeUser(function(id, done) {
         _id: mongojs.ObjectId(id)
     }, function(err, doc) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
         done(null, doc)
     })

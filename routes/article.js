@@ -40,7 +40,8 @@ var siteDataCollection = db.collection('siteData')
 
 /* GET home page. */
 router.post('/create/article', authorRequired, upload.single('img'), function(req, res, next) {
-        var article = req.body
+        var article = req.body        
+
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
         var day = dateObj.getUTCDate();
@@ -49,7 +50,6 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
 
         var typeArray = article.type.split(',')
 
-        console.log(req.file)
         var newArticle = {
             author: req.user,
             article: article.article,
@@ -63,9 +63,10 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
             views: 0,
             priority: 0,
         }
+        
         articleCollection.save(newArticle, (err, doc) => {
             if (err) {
-                console.log(err)
+                console.error(err)
             }
             res.redirect('/articles')
         })
@@ -76,71 +77,71 @@ router.get('/articles', function(req, res, next) {
 
   //article list data
     if (err) {
-      console.log(err)
+      console.error(err)
     }
       articleCollection.find().sort({creationDateFormat: -1}, function(err, AllArticle) {
             //全部文章
             if (err) {
-              console.log(err)
+              console.error(err)
             }
             var topAllArticle = AllArticle[0]
             var AllArticle = AllArticle
         articleCollection.find().sort({views: -1}, function(err, popularArticles) {
          //热门文章
           if (err) {
-            console.log(err)
+            console.error(err)
           }
           var topPopularArticle = popularArticles[0]
           var popularArticles = popularArticles
           articleCollection.find().sort({views: -1}).limit(5, function(err, carouselArticles) {
             //轮转文章
             if (err) {
-              console.log(err)
+              console.error(err)
             }
             articleCollection.find({typeIdentifier: "liangxing"}, function(err, liangxing) {
               if (err) {
-                console.log(err)
+                console.error(err)
               }
               var liangxingArticles = liangxing
               articleCollection.find({typeIdentifier: "jiaoyu"}, function(err, jiaoyu) {
                 if (err) {
-                  console.log(err)
+                  console.error(err)
                 }
                 var jiaoyuArticles = jiaoyu
                 articleCollection.find({typeIdentifier: "zhichang"}, function(err, zhichang) {
                   if (err) {
-                    console.log(err)
+                    console.error(err)
                   }
                   var zhichangArticles = zhichang
                   articleCollection.find({typeIdentifier: "jiating"}, function(err, jiating) {
                     if (err) {
-                      console.log(err)
+                      console.error(err)
                     }
                     var jiatingArticles = jiating
                     articleCollection.find({typeIdentifier: "kepu"}, function(err, kepu) {
                       if (err) {
-                        console.log(err)
+                        console.error(err)
                       }
                       var kepuArticles = kepu
                       articleCollection.find({typeIdentifier: "chengzhang"}, function(err, chengzhang) {
                         if (err) {
-                          console.log(err)
+                          console.error(err)
                         }
                         var chengzhangArticles = chengzhang
                         articleCollection.find({typeIdentifier: "zixun"}, function(err, zixun) {
                             if (err) {
-                                console.log(err)
+                                console.error(err)
                             }
                             var zixunArticles = zixun
                             articleCollection.find().sort({created_at:1}).limit(3, function(err, daily) {
                             if (err) {
-                                console.log(err)
+                                console.error(err)
                             }
                             var dailyArticles = daily
                             siteDataCollection.find(function(err, siteData) {
                                 articleCollection.find().limit(3).sort({priority: -1}, function(err, primeArticles) {
                                         if (err) {
-                                            console.log(err)
+                                            console.error(err)
                                         }
                                         var banner = siteData[0].homePageBanner;
                                         res.render('articles', { 
@@ -189,10 +190,11 @@ router.get('/articles', function(req, res, next) {
 })
 
 router.get('/article/:id', function(req, res, next) {
+    console.error("1");
     const { id } = req.params;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, articleData) {
         if (err) {
-            console.log(err);
+            console.error(err);
 	    return err;
         }
         
@@ -202,11 +204,11 @@ router.get('/article/:id', function(req, res, next) {
 
 	articleCollection.find({type: articleData.type}).limit(4, function(err, relatedStories) {
         if (err) {
-            console.log(err);
+            console.error(err);
         }
         articleCollection.update({_id: mongojs.ObjectId(id)}, {$inc: {views: 1}}, function(err, doc) {
         if (err) {
-       	    console.log(err)
+       	    console.error(err)
         }
         res.render('article', {
        	 partials: {
@@ -233,7 +235,7 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
     var types;
     articleTypes.find(function(err, docs) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
         types = docs
         res.render('createArticle', { 
@@ -261,14 +263,14 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
     const { id } = req.params;
     articleCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, article) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
         if (!article) {
-            console.log('document not found!')
+            console.error('document not found!')
         }
         articleTypes.find(function(err, types) {
             if (err) {
-                console.log(err)
+                console.error(err)
             }
             res.render('editArticle', {
                 partials: {
@@ -314,12 +316,12 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             views: original.views
         }, function(err, updatedArticle) {
             if (err) {
-                console.log(err)
+                console.error(err)
             }
             if (!article) {
-                console.log('document not updated!')
+                console.error('document not updated!')
             }
-            console.log('chagned:', updatedArticle)
+            console.error('chagned:', updatedArticle)
             res.redirect(`/article/${id}`)
         })
     })

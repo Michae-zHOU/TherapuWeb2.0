@@ -9,14 +9,14 @@ var surveyTypesCollection = db.collection('surveyTypes');
 var siteDataCollection = db.collection('siteData')
 
 function authorRequired(req, res, next) {
-    console.log(req.admin ? req.admin : 'no user')
+    console.error(req.admin ? req.admin : 'no user')
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')
     }
 	next()
 }
 function adminRequired(req, res, next) {
-    console.log(req.admin ? req.admin : 'no user')
+    console.error(req.admin ? req.admin : 'no user')
 	if (!req.user || req.user.admin == 1) {
 		return res.redirect('/login')
     }
@@ -526,41 +526,41 @@ router.post('/survey/edit/:id', authorRequired,function(req, res, next) {
 router.get('/surveys', function(req, res, next) {
     surveyCollection.find({}).sort({views: -1}).limit(3, function(err, featuredSurveys) {
         if (err) {
-        console.log(err)
+        console.error(err)
         }
       surveyCollection.find().sort({creationDateFormat: -1}, function(err, allSurveys) {   
             if (err) {
-              console.log(err)
+              console.error(err)
             }
             var allSurveys = allSurveys
         surveyCollection.find().sort({views: -1}, function(err, popularSurveys) {
           if (err) {
-            console.log(err)
+            console.error(err)
           }
           var popularSurveys = popularSurveys
             surveyCollection.find({py: "nengli"}, function(err, nengli) {
               if (err) {
-                console.log(err)
+                console.error(err)
               }
               var nengliSurveys = nengli
               surveyCollection.find({py: "xingge"}, function(err, xingge) {
                 if (err) {
-                  console.log(err)
+                  console.error(err)
                 }
                 var xinggeSurveys = xingge
                 surveyCollection.find({py: "jiandan"}, function(err, jiandan) {
                   if (err) {
-                    console.log(err)
+                    console.error(err)
                   }
                   var jiandanSurveys = jiandan
                   surveyCollection.find({py: "zhuanye"}, function(err, zhuanye) {
                     if (err) {
-                      console.log(err)
+                      console.error(err)
                     }
                     var zhuanyeSurveys = zhuanye
                     surveyCollection.find({py: "quwei"}, function(err, quwei) {
                       if (err) {
-                        console.log(err)
+                        console.error(err)
                       }
                       var quweiSurveys = quwei
                         siteDataCollection.find(function(err, siteData) {
@@ -644,9 +644,9 @@ router.post('/survey/done', (req, res, next)=> {
     //get range
     surveyCollection.find({_id: mongojs.ObjectId(survey_id)}, function(err, data) {
         if (err) {
-            console.log(err)
+            console.error(err)
         } 
-        console.log(data)
+        console.error(data)
         var newSurveyResult = {
             name: survey.name,
             email: survey.email,
@@ -697,10 +697,10 @@ router.get('/survey/result/:id', (req, res, next) => {
     const { id } = req.params;
     surveyResultsCollection.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
         if (doc) {
-            console.log(doc.analysis)
+            console.error(doc.analysis)
             res.render('surveyResult', { 
                 partials: {
                 header: '../views/partials/header',

@@ -123,9 +123,9 @@
 </section>
 
 
-{{>scripts}}
-{{>footer}}
 
+{{>footer}}
+{{>scripts}}
 <script>
 				$.each($('.card-description'), function() {
 					$(this).text($(this).text().substr(0, 95))

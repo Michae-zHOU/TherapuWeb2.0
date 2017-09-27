@@ -66,14 +66,14 @@ router.get('/primes', function(req, res, next) {
         if (err) {
             res.send(err)
         }
-        console.log(primes)
+        console.error(primes)
         res.json(primes)
     })
 })
 router.get('/surveyTypes', function(req, res, next) {
     surveyTypes.find(function(err, doc) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
     res.json(doc)
     })
@@ -81,7 +81,7 @@ router.get('/surveyTypes', function(req, res, next) {
 router.get('/articleTypes', function(req, res, next) {
     articleTypes.find(function(err, doc) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
     res.json(doc)
     })
@@ -90,7 +90,7 @@ router.get('/article/:type', function(req, res, next) {
     var type = req.params;
     articleCollection.find({typeIdentifier: type} ,function(err, doc) {
         if (err) {
-            console.log(err)
+            console.error(err)
         }
     res.json(doc)
     })
@@ -133,7 +133,7 @@ router.get('/update/homePageBanner/:newBanner', adminRequired, function(req, res
 })
 router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
     var { id } = req.params;
-     console.log(id)
+     console.error(id)
     userCollection.remove({_id:mongojs.ObjectId(id)}, function(err, removedUser) {
         if (err) {
             res.json(err)
@@ -141,13 +141,13 @@ router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
         if (!removedUser) {
             res.send('删除失败')
         }
-        console.log(removedUser)
+        console.error(removedUser)
         res.json(removedUser)
     })
 })
 router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
-    console.log(req.body)
-    console.log(req.file)
+    console.error(req.body)
+    console.error(req.file)
     var user = req.body
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12

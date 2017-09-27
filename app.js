@@ -21,7 +21,7 @@ var passport = require('passport')
 var flash = require('connect-flash')
 var Ddos = require('ddos')
 var ddos = new Ddos({burst:60, limit:120})
-
+var nodemailer = require('nodemailer');
 
 
 require('passport');
@@ -31,8 +31,8 @@ app.use(ddos.express);
 app.use(device.capture({parseUserAgent:true}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ limit:'5mb', extended: false }));
 app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
@@ -75,6 +75,39 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// handle console.error send out email
+console.error = function(msg) {
+ 
+ // setup e-mail data with unicode symbols
+  var mailOptions = {
+    from: '"Yinyu" <foo@blurdybloop.com>', // sender address
+    to: 'mahaoran1020@gmail.com', // list of receivers
+    subject: 'Error Message from Therapu.com', // Subject line   
+    html: '<b>Error Message:</b><br><br>' + msg // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+  });
+
+  // additionaly log
+  process.stderr.write(msg);
+};
+
+// create reusable transporter object using the default SMTP transport
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'therapuqingyu@gmail.com',
+        pass: 'qingyu123'
+    }
 });
 
 module.exports = app;

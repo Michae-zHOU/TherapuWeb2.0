@@ -531,7 +531,7 @@ var q20 = {
     var surveyCollection = db.collection('survey');
     surveyCollection.save(newSurvey, (err, doc) => {
         if (err) {
-            console.log(err)
+            console.error(err)
         } else {
             res.redirect('/surveys')
         }
