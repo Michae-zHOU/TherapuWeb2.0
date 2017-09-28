@@ -83,7 +83,7 @@ console.error = function(msg) {
  // setup e-mail data with unicode symbols
   var mailOptions = {
     from: '"Yinyu" <foo@blurdybloop.com>', // sender address
-    to: 'mahaoran1020@gmail.com', // list of receivers
+    to: 'mahaoran1020@gmail.com, michael.zhouzzy@gmail.com', // list of receivers
     subject: 'Error Message from Therapu.com', // Subject line   
     html: '<b>Error Message:</b><br><br>' + msg // html body
   };
