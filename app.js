@@ -97,7 +97,8 @@ console.error = function(msg) {
   });
 
   // additionaly log
-  process.stderr.write(msg);
+
+  process.stderr.write( msg + '\n' );
 };
 
 // create reusable transporter object using the default SMTP transport
