@@ -7,22 +7,22 @@ var surveyCollection = db.collection('survey')
 var siteDataCollection = db.collection('siteData')
 var usersCollection = db.collection('users')
 function authorRequired(req, res, next) {
-    console.error(req.admin ? req.admin : 'no user')
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')
     }
 	next()
 }
+
 function adminRequired(req, res, next) {
-    console.error(req.admin ? req.admin : 'no user')
 	if (!req.user || req.user.admin == 1) {
 		return res.redirect('/login')
     }
 	next()
 }
+
 /* GET home page. */
 router.get('/authorSetting', authorRequired, function(req, res, next) {
-    console.error(mongojs.ObjectId(req.user._id))
+    //console.error(mongojs.ObjectId(req.user._id))
 
     articleCollection.find({
         "author._id": mongojs.ObjectId(req.user._id)
@@ -30,7 +30,7 @@ router.get('/authorSetting', authorRequired, function(req, res, next) {
         if (err) {
             console.error(err)
         }
-        console.error(articles, 123)
+      
         surveyCollection.find({
             "author._id": mongojs.ObjectId(req.user._id)
         }).sort({_id: -1}, function(err, surveys) {

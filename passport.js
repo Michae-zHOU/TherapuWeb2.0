@@ -17,7 +17,7 @@ function authenticate(req, email, password, done) {
         if (err) {
             console.error(err)
         }
-        console.error('User is ' + user.admin)
+               
         req.flash('message', '登录成功')
         done(null, user)
     })
