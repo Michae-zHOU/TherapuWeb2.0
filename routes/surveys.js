@@ -9,14 +9,14 @@ var surveyTypesCollection = db.collection('surveyTypes');
 var siteDataCollection = db.collection('siteData')
 
 function authorRequired(req, res, next) {
-    console.error(req.admin ? req.admin : 'no user')
+    //console.error(req.admin ? req.admin : 'no user')
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')
     }
 	next()
 }
 function adminRequired(req, res, next) {
-    console.error(req.admin ? req.admin : 'no user')
+    //console.error(req.admin ? req.admin : 'no user')
 	if (!req.user || req.user.admin == 1) {
 		return res.redirect('/login')
     }
