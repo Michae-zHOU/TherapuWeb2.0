@@ -218,8 +218,7 @@ router.get('/articles', function(req, res, next) {
     })
 })
 
-router.get('/article/:id', function(req, res, next) {
-    console.error("1");
+router.get('/article/:id', function(req, res, next) {   
     const {
         id
     } = req.params;
@@ -352,17 +351,23 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
         id
     } = req.params;
     const article = req.body;
+    var typeArray = article.type.split(',')
+
     articleCollection.findOne({ _id: mongojs.ObjectId(id) }, function(err, original) {
         articleCollection.update({
             _id: mongojs.ObjectId(id)
         }, {
-            title: article.title,          
-            article: article.article,
-            description: article.description,
-            //creationDateFormat: original.creationDateFormat,          
-            typeIdentifier: original.typeIdentifier,
-            type: original.type,
-            //articleImg: original.articleImg,          
+            $set:{
+                title: article.title,          
+                article: article.article,
+                description: article.description,
+                //creationDateFormat: original.creationDateFormat,          
+                //typeIdentifier: original.typeIdentifier,
+                //type: original.type,
+                typeIdentifier: typeArray[1],
+                type: typeArray[0],
+                //articleImg: original.articleImg,   
+            }             
         }, function(err, updatedArticle) {
             if (err) {
                 console.error(err)
