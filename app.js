@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan= require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
@@ -22,15 +22,19 @@ var flash = require('connect-flash')
 var Ddos = require('ddos')
 var ddos = new Ddos({burst:60, limit:120})
 var nodemailer = require('nodemailer');
-
+var winston = require('winston');
 
 require('passport');
 var app = express();
 app.use(ddos.express);
-
 app.use(device.capture({parseUserAgent:true}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+// http request logging
+app.use(morgan('[:date[clf]] :method :url :status :res[content-length] - :response-time ms', {
+  skip: function (req, res) {
+    return res.statusCode < 400
+  }
+}));
 app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({ limit:'5mb', extended: false }));
 app.use(cookieParser('secret'));
@@ -66,7 +70,19 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handler
+// logging 
+const tsFormat = () => (new Date()).toLocaleTimeString();
+const logger = new (winston.Logger)({
+  transports: [
+    // colorize the output to the console
+    new (winston.transports.Console)({
+      timestamp: tsFormat,
+      colorize: true,
+    })
+  ]
+});
+
+// express error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -77,9 +93,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+logger.level = 'debug';
+//logger.info('Hello world');
+//logger.debug('Debugging info');
+
 // handle console.error send out email
 console.error = function(msg) {
- 
  // setup e-mail data with unicode symbols
   var mailOptions = {
     from: '"Yinyu" <foo@blurdybloop.com>', // sender address
@@ -97,12 +116,10 @@ console.error = function(msg) {
   });
 
   // additionaly log
-
   process.stderr.write( msg + '\n' );
 };
 
 // create reusable transporter object using the default SMTP transport
-
 var transporter = nodemailer.createTransport({
  service: 'gmail',
  auth: {
