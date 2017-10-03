@@ -219,9 +219,7 @@ router.get('/articles', function(req, res, next) {
     })
 })
 
-router.get('/article/:id', function(req, res, next) {  
-    
-    logger.error('1'); 
+router.get('/article/:id', function(req, res, next) {      
     const {
         id
     } = req.params;
