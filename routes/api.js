@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var mongojs = require('mongojs');
 var db = require('../db')
 var userCollection = db.collection('users');
@@ -66,14 +67,14 @@ router.get('/primes', function(req, res, next) {
         if (err) {
             res.send(err)
         }
-        console.error(primes)
+        logger.error(primes)
         res.json(primes)
     })
 })
 router.get('/surveyTypes', function(req, res, next) {
     surveyTypes.find(function(err, doc) {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
     res.json(doc)
     })
@@ -81,7 +82,7 @@ router.get('/surveyTypes', function(req, res, next) {
 router.get('/articleTypes', function(req, res, next) {
     articleTypes.find(function(err, doc) {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
     res.json(doc)
     })
@@ -90,7 +91,7 @@ router.get('/article/:type', function(req, res, next) {
     var type = req.params;
     articleCollection.find({typeIdentifier: type} ,function(err, doc) {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
     res.json(doc)
     })
@@ -133,7 +134,7 @@ router.get('/update/homePageBanner/:newBanner', adminRequired, function(req, res
 })
 router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
     var { id } = req.params;
-     console.error(id)
+     logger.error(id)
     userCollection.remove({_id:mongojs.ObjectId(id)}, function(err, removedUser) {
         if (err) {
             res.json(err)
@@ -141,13 +142,13 @@ router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
         if (!removedUser) {
             res.send('删除失败')
         }
-        console.error(removedUser)
+        logger.error(removedUser)
         res.json(removedUser)
     })
 })
 router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
-    console.error(req.body)
-    console.error(req.file)
+    logger.error(req.body)
+    logger.error(req.file)
     var user = req.body
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12

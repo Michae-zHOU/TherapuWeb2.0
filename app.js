@@ -21,8 +21,6 @@ var passport = require('passport')
 var flash = require('connect-flash')
 var Ddos = require('ddos')
 var ddos = new Ddos({burst:60, limit:120})
-var nodemailer = require('nodemailer');
-var winston = require('winston');
 
 require('passport');
 var app = express();
@@ -70,18 +68,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// logging 
-const tsFormat = () => (new Date()).toLocaleTimeString();
-const logger = new (winston.Logger)({
-  transports: [
-    // colorize the output to the console
-    new (winston.transports.Console)({
-      timestamp: tsFormat,
-      colorize: true,
-    })
-  ]
-});
-
 // express error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -91,41 +77,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-logger.level = 'debug';
-//logger.info('Hello world');
-//logger.debug('Debugging info');
-
-// handle console.error send out email
-console.error = function(msg) {
- // setup e-mail data with unicode symbols
-  var mailOptions = {
-    from: '"Yinyu" <foo@blurdybloop.com>', // sender address
-    to: 'mahaoran1020@gmail.com, michael.zhouzzy@gmail.com', // list of receivers
-    subject: 'Error Message from Therapu.com', // Subject line   
-    html: '<b>Error Message:</b><br><br>' + msg // html body
-  };
-
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-  });
-
-  // additionaly log
-  process.stderr.write( msg + '\n' );
-};
-
-// create reusable transporter object using the default SMTP transport
-var transporter = nodemailer.createTransport({
- service: 'gmail',
- auth: {
-        user: 'therapuqingyu@gmail.com',
-        pass: 'qingyu123'
-    }
 });
 
 module.exports = app;

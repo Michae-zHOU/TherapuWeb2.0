@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var multer = require('multer')
 var mongojs = require('mongojs');
 var db = require('../db')
@@ -69,7 +70,7 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
 
     articleCollection.save(newArticle, (err, doc) => {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
         res.redirect('/articles')
     })
@@ -82,14 +83,14 @@ router.get('/articles', function(req, res, next) {
 
         //article list data
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
         articleCollection.find().sort({
             creationDateFormat: -1
         }, function(err, AllArticle) {
             //全部文章
             if (err) {
-                console.error(err)
+                logger.error(err)
             }
             var topAllArticle = AllArticle[0]
             var AllArticle = AllArticle
@@ -98,7 +99,7 @@ router.get('/articles', function(req, res, next) {
             }, function(err, popularArticles) {
                 //热门文章
                 if (err) {
-                    console.error(err)
+                    logger.error(err)
                 }
                 var topPopularArticle = popularArticles[0]
                 var popularArticles = popularArticles
@@ -107,62 +108,62 @@ router.get('/articles', function(req, res, next) {
                 }).limit(5, function(err, carouselArticles) {
                     //轮转文章
                     if (err) {
-                        console.error(err)
+                        logger.error(err)
                     }
                     articleCollection.find({
                         typeIdentifier: "liangxing"
                     }, function(err, liangxing) {
                         if (err) {
-                            console.error(err)
+                            logger.error(err)
                         }
                         var liangxingArticles = liangxing
                         articleCollection.find({
                             typeIdentifier: "jiaoyu"
                         }, function(err, jiaoyu) {
                             if (err) {
-                                console.error(err)
+                                logger.error(err)
                             }
                             var jiaoyuArticles = jiaoyu
                             articleCollection.find({
                                 typeIdentifier: "zhichang"
                             }, function(err, zhichang) {
                                 if (err) {
-                                    console.error(err)
+                                    logger.error(err)
                                 }
                                 var zhichangArticles = zhichang
                                 articleCollection.find({
                                     typeIdentifier: "jiating"
                                 }, function(err, jiating) {
                                     if (err) {
-                                        console.error(err)
+                                        logger.error(err)
                                     }
                                     var jiatingArticles = jiating
                                     articleCollection.find({
                                         typeIdentifier: "kepu"
                                     }, function(err, kepu) {
                                         if (err) {
-                                            console.error(err)
+                                            logger.error(err)
                                         }
                                         var kepuArticles = kepu
                                         articleCollection.find({
                                             typeIdentifier: "chengzhang"
                                         }, function(err, chengzhang) {
                                             if (err) {
-                                                console.error(err)
+                                                logger.error(err)
                                             }
                                             var chengzhangArticles = chengzhang
                                             articleCollection.find({
                                                 typeIdentifier: "zixun"
                                             }, function(err, zixun) {
                                                 if (err) {
-                                                    console.error(err)
+                                                    logger.error(err)
                                                 }
                                                 var zixunArticles = zixun
                                                 articleCollection.find().sort({
                                                     created_at: 1
                                                 }).limit(3, function(err, daily) {
                                                     if (err) {
-                                                        console.error(err)
+                                                        logger.error(err)
                                                     }
                                                     var dailyArticles = daily
                                                     siteDataCollection.find(function(err, siteData) {
@@ -170,7 +171,7 @@ router.get('/articles', function(req, res, next) {
                                                             priority: -1
                                                         }, function(err, primeArticles) {
                                                             if (err) {
-                                                                console.error(err)
+                                                                logger.error(err)
                                                             }
                                                             var banner = siteData[0].homePageBanner;
                                                             res.render('articles', {
@@ -218,7 +219,9 @@ router.get('/articles', function(req, res, next) {
     })
 })
 
-router.get('/article/:id', function(req, res, next) {   
+router.get('/article/:id', function(req, res, next) {  
+    
+    logger.error('1'); 
     const {
         id
     } = req.params;
@@ -226,7 +229,7 @@ router.get('/article/:id', function(req, res, next) {
         _id: mongojs.ObjectId(id)
     }, function(err, articleData) {
         if (err) {
-            console.error(err);
+            logger.error(err);
             return err;
         }
 
@@ -240,7 +243,7 @@ router.get('/article/:id', function(req, res, next) {
             type: articleData.type
         }).limit(4, function(err, relatedStories) {
             if (err) {
-                console.error(err);
+                logger.error(err);
             }
             articleCollection.update({
                 _id: mongojs.ObjectId(id)
@@ -250,7 +253,7 @@ router.get('/article/:id', function(req, res, next) {
                 }
             }, function(err, doc) {
                 if (err) {
-                    console.error(err)
+                    logger.error(err)
                 }
                 res.render('article', {
                     partials: {
@@ -278,7 +281,7 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
     var types;
     articleTypes.find(function(err, docs) {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
         types = docs
         res.render('createArticle', {
@@ -311,14 +314,14 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
         _id: mongojs.ObjectId(id)
     }, function(err, article) {
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
         if (!article) {
-            console.error('document not found!')
+            logger.error('document not found!')
         }
         articleTypes.find(function(err, types) {
             if (err) {
-                console.error(err)
+                logger.error(err)
             }
             res.render('editArticle', {
                 partials: {
@@ -370,10 +373,10 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             }             
         }, function(err, updatedArticle) {
             if (err) {
-                console.error(err)
+                logger.error(err)
             }
             if (!article) {
-                console.error('document not updated!')
+                logger.error('document not updated!')
             }
             res.redirect(`/article/${id}`)
         })

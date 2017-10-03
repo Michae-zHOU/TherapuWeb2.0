@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var db = require('../db')
 var session = require('express-session')
 var passport = require('passport')

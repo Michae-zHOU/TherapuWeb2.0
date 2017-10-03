@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var mongojs = require('mongojs');
 var db = require('../db')
 var userCollection = db.collection('users');
@@ -25,7 +26,7 @@ router.get('/', function(req, res, next) {
     }).limit(6, function(err, featuredArticles) {
         //article list data
         if (err) {
-            console.error(err)
+            logger.error(err)
         }
 
         articleCollection.find().sort({
@@ -33,7 +34,7 @@ router.get('/', function(req, res, next) {
         }, function(err, AllArticle) {
             //全部文章
             if (err) {
-                console.error(err)
+                logger.error(err)
             }
             var topAllArticle = AllArticle[0]
             var AllArticle = AllArticle
@@ -43,7 +44,7 @@ router.get('/', function(req, res, next) {
             }, function(err, popularArticles) {
                 //热门文章
                 if (err) {
-                    console.error(err)
+                    logger.error(err)
                 }
 
                 var topPopularArticle = popularArticles[0]
@@ -53,13 +54,13 @@ router.get('/', function(req, res, next) {
                 }).limit(5, function(err, carouselArticles) {
                     //轮转文章
                     if (err) {
-                        console.error(err)
+                        logger.error(err)
                     }
                     articleCollection.find({
                         typeIdentifier: "hunlian"
                     }, function(err, hunlian) {
                         if (err) {
-                            console.error(err)
+                            logger.error(err)
                         }
                         var topHunlianArticle = hunlian[0]
                         var hunlianArticles = hunlian
@@ -67,7 +68,7 @@ router.get('/', function(req, res, next) {
                             typeIdentifier: "jiankang"
                         }, function(err, jiankang) {
                             if (err) {
-                                console.error(err)
+                                logger.error(err)
                             }
                             var jiankangArticles = jiankang
                             var topJiankangArticle = jiankang[0]
@@ -75,7 +76,7 @@ router.get('/', function(req, res, next) {
                                 typeIdentifier: "zhichang"
                             }, function(err, zhichang) {
                                 if (err) {
-                                    console.error(err)
+                                    logger.error(err)
                                 }
                                 var zhichangArticles = zhichang
                                 var topZhichangArticle = zhichang[0]
@@ -83,7 +84,7 @@ router.get('/', function(req, res, next) {
                                     typeIdentifier: "xingxinli"
                                 }, function(err, xingxinli) {
                                     if (err) {
-                                        console.error(err)
+                                        logger.error(err)
                                     }
                                     var xingxinliArticles = xingxinli
                                     var topXingxinliArticle = xingxinli[0]
@@ -91,7 +92,7 @@ router.get('/', function(req, res, next) {
                                         typeIdentifier: "kepu"
                                     }, function(err, kepu) {
                                         if (err) {
-                                            console.error(err)
+                                            logger.error(err)
                                         }
                                         var kepuArticles = kepu
                                         var topKepuArticle = kepu[0]
@@ -99,7 +100,7 @@ router.get('/', function(req, res, next) {
                                             typeIdentifier: "chengzhang"
                                         }, function(err, chengzhang) {
                                             if (err) {
-                                                console.error(err)
+                                                logger.error(err)
                                             }
                                             var chengzhangArticles = chengzhang
                                             var topChengzhangArticle = chengzhang[0]
@@ -113,7 +114,7 @@ router.get('/', function(req, res, next) {
                                                 views: -1
                                             }, function(err, daily) {
                                                 if (err) {
-                                                    console.error(err)
+                                                    logger.error(err)
                                                 }
                                                 var dailyArticles = daily
                                                 siteDataCollection.find(function(err, siteData) {
