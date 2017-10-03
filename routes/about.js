@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var mongojs = require('mongojs');
 var db = require('../db')
 var userCollection = db.collection('users');

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var logger = require('../logger');
 var db = require('../db')
 var multer  = require('multer')
 var storage = multer.diskStorage({
@@ -531,7 +532,7 @@ var q20 = {
     var surveyCollection = db.collection('survey');
     surveyCollection.save(newSurvey, (err, doc) => {
         if (err) {
-            console.error(err)
+            logger.error(err)
         } else {
             res.redirect('/surveys')
         }
