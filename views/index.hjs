@@ -7,10 +7,6 @@
 	$('.homeLink').addClass('active')
 </script>
 
-
-
-
-
 <section class="homeContent">
 	<div class="row">
             <div class="col-md-12 alertRow">

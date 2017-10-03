@@ -51,7 +51,6 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(cors());
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/', authRoute);
@@ -61,22 +60,29 @@ app.use('/', surveys);
 app.use('/', createSurvey);
 app.use('/api', api)
 app.use('/', setting)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  next(err);  
 });
 
 // express error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  // set locals, only providing error in development
+  res.locals.message = err.message;  
+  res.locals.error   = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page  
+  if(err.status === 404){
+    res.status(404);
+    res.render('404');
+  }else{
+    res.status(500);
+    res.render('500');
+  }  
 });
 
 module.exports = app;

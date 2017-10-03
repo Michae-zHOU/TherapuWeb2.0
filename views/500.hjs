@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <link rel="apple-touch-icon" sizes="76x76" href="stylesheets/images/icon.jpg">
+      <link rel="icon" type="image/jpg" href="images/icon.jpg" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta name="imagemode" content="force"/>
+      <meta name="renderer" content="webkit">
+      <meta name="format-detection" content="telephone=yes">
+      <meta name="layoutmode" content="fitscreen/standard">
+      <title>Therapu - 轻语</title>
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <!--     Fonts and icons     -->
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CRoboto+Slab:400,700%7CMaterial+Icons" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+      <!-- CSS Files -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+      <link href="../../stylesheets/material-kit.min.css" rel="stylesheet"/>
+      <link href="../../stylesheets/global.css" rel="stylesheet"/>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+      <script src="../../javascripts/ckeditor.js"></script>
+      <script src="https://www.strictly-software.com/scripts/downloads/encoder.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.green.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+      <link rel="stylesheet" href="../../stylesheets/preloader.css">
+   </head>
+   <body id="body" style="margin:0;">
+      <nav class="navbar navbar-primary navbar-fixed-top" id="sectionsNav">
+         <input type="text" value="{{auth}}" class="checkAuth" hidden="">
+         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <i class="fa fa-bars"></i>
+               </button>
+               <a class="navbar-brand" href="/"><img src="../../images/logo-trans-long.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li>
+                     <a href="/" class="homeLink">
+                     首页
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/about" class="aboutLink">
+                     我们
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/articles" class="articleLink">
+                     文章
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/surveys" class="surveyLink">
+                     测试
+                     </a>
+                  </li>
+                  <li class="dropdown" id="headerNavigationItems">
+                     <a class="dropdown-toggle manageBtn" data-toggle="dropdown">
+                     <i class="material-icons">android</i>  管理
+                     <b class="caret"></b>
+                     </a>
+                     <ul class="dropdown-menu dropdown-with-icons">
+                        <li>
+                           <a href="/article/new/create" class="createArticle">
+                           <i class="material-icons">dns</i> 添加文章
+                           </a>
+                        </li>
+                        <li>
+                           <a data-toggle="modal" data-target="#createSurveyModal" class="createSurvey">
+                           <i class="material-icons">dns</i> 添加测试
+                           </a>
+                        </li>
+                        <li class="adminBtn">
+                           <a href="/setting">
+                           <i class="material-icons">dns</i> 设置
+                           </a>
+                        </li>
+                        <li class="authorSetting">
+                           <a href="/authorSetting">
+                           <i class="material-icons">dns</i> 管理发表内容
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="button-container">
+                     <a href="/login" class="btn btn-round loginBtn">
+                     登录
+                     </a>
+                  </li>
+                  <li><a class="btn btn-round btn-danger logoutBtn" href="/logout">注销</a></li>
+                  <!-- Large modal -->
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="side-nav">
+         <ul class="nav navbar-nav navbar-right">
+            <li>
+               <a href="/" class="homeLink">
+               首页
+               </a>
+            </li>
+            <li>
+               <a href="/about" class="aboutLink">
+               我们
+               </a>
+            </li>
+            <li>
+               <a href="/articles" class="articleLink">
+               文章
+               </a>
+            </li>
+            <li>
+               <a href="/surveys" class="surveyLink">
+               测试
+               </a>
+            </li>
+            <li class="dropdown" id="headerNavigationItems">
+               <a class="dropdown-toggle manageBtn" data-toggle="dropdown">
+               <i class="material-icons">android</i>  管理
+               <b class="caret"></b>
+               </a>
+               <ul class="dropdown-menu dropdown-with-icons">
+                  <li>
+                     <a href="/article/new/create" class="createArticle">
+                     <i class="material-icons">dns</i> 添加文章
+                     </a>
+                  </li>
+                  <li>
+                     <a data-toggle="modal" data-target="#createSurveyModal" class="createSurvey">
+                     <i class="material-icons">dns</i> 添加测试
+                     </a>
+                  </li>
+                  <li class="authorSetting">
+                     <a href="/authorSetting">
+                     <i class="material-icons">dns</i> 管理发表内容
+                     </a>
+                  </li>
+                  <li class="adminBtn">
+                     <a href="/setting">
+                     <i class="material-icons">dns</i> 设置
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li class="button-container">
+               <a href="/login" class="btn btn-round loginBtn">
+               登录
+               </a>
+            </li>
+            <li><a class="btn btn-round btn-danger logoutBtn" href="/logout">注销</a></li>
+            <!-- Large modal -->
+         </ul>
+      </div>
+      <script>
+         //author
+         if (parseInt($('.checkAuth').val()) == 1) {
+             //author
+             $('.loginBtn').hide()
+             $('.logoutBtn').show()
+             $('.manageBtn').show()
+             $('.adminBtn').hide()
+             $('.authorSetting').show()
+             } else if (parseInt($('.checkAuth').val()) == 2) {
+             //admin
+             $('.loginBtn').hide()
+             $('.logoutBtn').show()
+             $('.manageBtn').show()
+             $('.adminBtn').show()
+             $('.authorSetting').hide()
+         } else {
+             //not logged in or not an author
+             $('.loginBtn').show()
+             $('.logoutBtn').hide()
+             $('.manageBtn').hide()
+             $('.adminBtn').hide()
+             $('.authorSetting').hide()
+         }
+         $('.navbar-toggle').click(function() {
+             $('.side-nav').toggleClass('activeNav');
+         })
+      </script>
+      <!-- Modal -->
+      <div class="modal fade" id="createSurveyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+               </div>
+               <div class="modal-body text-center">
+                  <h5>测试生成工具</h5>
+               </div>
+               <form action="/survey/new/generate" method="post" class="surveyGenerateForm">
+                  <div class="row">
+                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
+                        <div class="form-group is-empty">
+                           <input type="text" name="title" placeholder="测试标题" class="form-control" required>
+                           <span class="material-input"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
+                        <div class="btn-group bootstrap-select">
+                           <select required id="surveyTypes" name="type" class="selectpicker" data-style="btn btn-info btn-round" title="Single Select" data-size="7" tabindex="-98">
+                              <option class="bs-title-option" value="">测试分类</option>
+                              <option disabled="" selected="">选择测试分类</option>
+                              <option value="能力,nengli">能力</option>
+                              <option value="性格,xingge">性格</option>
+                              <option value="简单,jiandan">简单</option>
+                              <option value="专业,zhuanye">专业</option>
+                              <option value="趣味,quwei">趣味</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-offset-3 col-md-6 col-sm-3 col-sm-offset-3">
+                        <div class="btn-group bootstrap-select">
+                           <select required id="questionNumber" name="number" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98">
+                              <option class="bs-title-option" value="">问题数量</option>
+                              <option disabled="" selected="">选择测试问题数量</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer text-center">
+                     <button type="submit" class="btn btn-success btn-simple generateBtn">
+                        创建测试
+                        <div class="ripple-container"></div>
+                     </button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <section class="about-page">
+         <div class="team-4 section-image" style="background-image: url('../images/aboutus.jpg')">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2 text-center" style="height:450px">
+                     <h1 class="title" style="margin-top:100px">错误页面 500，点击<a href="/">这里</a>返回首页。</h1>
+                     <input type="text" class="error" value="{{message}}" hidden>
+                     <script>
+                        console.log(document.getElementsByClassName('error')[0].value)
+                     </script>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <footer class="footer footer-white footer-big">
+         <div class="container">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-4">
+                     <h5>关于我们</h5>
+                     <p>深圳市轻语科技有限公司（以下简称“轻语”）于2016年11月21日成立，并于2017年2月正式入驻深圳市留学生创业园。轻语致力于提供一个便捷、实惠、高效的心理咨询服务平台。</p>
+                  </div>
+                  <div class="col-md-4">
+                     <h5>联系我们</h5>
+                     <div class="social-feed">
+                        <div class="feed-line">
+                           <i class="fa fa-home"></i>
+                           <p>深圳市南山区高新南环路29号留学生创业大厦1406室</p>
+                        </div>
+                        <div class="feed-line">
+                           <i class="fa fa-envelope-o"></i>
+                           <p>info@therapu.com</p>
+                        </div>                       
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <h5>微信公众号</h5>
+                     <img src="/images/qr.jpg" height="180" alt="">
+                  </div>
+               </div>
+            </div>
+            <hr>
+            <ul class="footer-links">
+               <li>
+                  <a href="#pablo">
+                  常见问题
+                  </a>
+               </li>
+               <li>
+                  <a href="#pablo">
+                  商务合作
+                  </a>
+               </li>
+               <li>
+                  <a href="#pablo">
+                  加入我们
+                  </a>
+               </li>
+               <li>
+                  <a href="/about/waiver">
+                  法律声明
+                  </a>
+               </li>
+               <li>
+                  <a href="/about/privacy">
+                  隐私条款
+                  </a>
+               </li>
+               <li>
+                  <a href="/about/copyright">
+                  版权声明
+                  </a>
+               </li>
+            </ul>
+            <div class="copyright">
+               版权所有 © <script>document.write(new Date().getFullYear())</script> 轻语科技
+               <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17090739</a>
+            </div>
+         </div>
+      </footer>
+      <script>
+         if (parseInt($('.checkAuth').val()) == 1) {
+              //author
+              $('.pageSetting').hide()
+              $('.userSetting').hide()
+              $('.primeSetting').hide()
+          }
+      </script>
+   </body>
