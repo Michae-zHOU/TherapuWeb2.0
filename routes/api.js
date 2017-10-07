@@ -146,9 +146,10 @@ router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
         res.json(removedUser)
     })
 })
+
+// create a new user
 router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
-    logger.error(req.body)
-    logger.error(req.file)
+
     var user = req.body
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -157,6 +158,12 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
     newdate = year + " 年 " + month + " 月 " + day + " 日 ";
     
     userCollection.findOne({email: user.email}, function(err, duplicatedUser) {
+
+        if (err) {
+            logger.error(err);
+            return err;
+        }
+
         if (duplicatedUser) {
             req.session.duplicatedUser = duplicatedUser
             res.redirect(`/setting#userManagement`)
@@ -177,9 +184,9 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
         }
     })
 })
+
 router.get('/session', function(req,res,next) {
     res.json(req.session)
 })
-
 
 module.exports = router;

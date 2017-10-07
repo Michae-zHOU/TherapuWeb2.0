@@ -39,7 +39,8 @@ var logger = new winston.Logger({
 		host: 'smtp.gmail.com',
 		username: 'therapuqingyu@gmail.com',
 		password: 'qingyu123',
-		ssl: true
+		ssl: true,
+		port:465
 	})
 	],
 	exitOnError: false

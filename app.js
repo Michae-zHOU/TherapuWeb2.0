@@ -5,7 +5,6 @@ var morgan= require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
-var db = require('./db');
 var cors = require('cors');
 var device = require('express-device');
 var api = require('./routes/api');

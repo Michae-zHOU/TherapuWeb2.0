@@ -62,7 +62,6 @@ router.get('/authorSetting', authorRequired, function(req, res, next) {
     })
 })
 
-
 router.get('/setting', adminRequired, function(req, res, next) {
     articleCollection.find().sort({_id: -1},function(err, articles) {
         if (err) {
