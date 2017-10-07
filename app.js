@@ -20,9 +20,14 @@ var passport = require('passport')
 var flash = require('connect-flash')
 var Ddos = require('ddos')
 var ddos = new Ddos({burst:60, limit:120})
+var compression = require('compression')
 
 require('passport');
 var app = express();
+
+// compress all responses
+app.use(compression())
+
 app.use(ddos.express);
 app.use(device.capture({parseUserAgent:true}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
