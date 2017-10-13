@@ -50,6 +50,10 @@
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.articleList h6 {
+		overflow: hidden;
+		height: 28px;
+}
 .articleList ul li {
 	list-style: none;
 	margin: 10px 0;
@@ -108,8 +112,8 @@ h4.card-title {
 	margin-bottom: 5px;
 }
 .dailyArticleSection .card .card-image img {
-	height: 165px;
-	width: 300px;
+	height: 195px;
+	width: 345px;
 }
 .card .card-content .label {
 	display: inline;

@@ -16,7 +16,7 @@
 						<div class="content-container">
 							<h1 class="articleTitle">{{articleData.title}}</h1>
 							标签:
-										<span class="label label-success">{{articleData.type}}</span>
+										<span class="label label-success">{{articleData.type}}</span>&nbsp;&nbsp;&nbsp; {{articleData.created_at}}
 							<p class="articleBody">{{articleData.article}} </p>
 						</div>
 					</div>
@@ -34,7 +34,7 @@
 							<hr>
 							<div class="card card-profile card-plain">
 								<div class="row">
-									<div class="col-md-2">
+									<div class="col-md-2 col-sm-12">
 										<div class="card-avatar">
 											<a href="#pablo">
 												<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">

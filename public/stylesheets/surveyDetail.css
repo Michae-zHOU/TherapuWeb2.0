@@ -216,4 +216,7 @@ h6.category {
     .userInfo .col-md-6:nth-of-type(2) {
         padding: 0;
     }
+    footer {
+       display: none;
+   }
 }

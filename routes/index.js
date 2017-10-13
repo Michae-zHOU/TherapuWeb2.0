@@ -22,7 +22,8 @@ router.get('/', function(req, res, next) {
 
 
     articleCollection.find({}).sort({
-        creationDateFormat: -1
+        creationDateFormat: -1,
+        views: -1
     }).limit(6, function(err, featuredArticles) {
         //article list data
         if (err) {
@@ -30,7 +31,8 @@ router.get('/', function(req, res, next) {
         }
 
         articleCollection.find().sort({
-            creationDateFormat: -1
+            creationDateFormat: -1,
+            views: -1
         }, function(err, AllArticle) {
             //全部文章
             if (err) {
@@ -51,13 +53,19 @@ router.get('/', function(req, res, next) {
                 var popularArticles = popularArticles
                 articleCollection.find().sort({
                     views: -1
-                }).limit(5, function(err, carouselArticles) {
+                }).limit(5).sort({
+                   _id: -1,
+                    views: -1
+               }, function(err, carouselArticles) {
                     //轮转文章
                     if (err) {
                         logger.error(err)
                     }
                     articleCollection.find({
                         typeIdentifier: "hunlian"
+                           }).sort({
+                        _id: -1,
+                        views: -1
                     }, function(err, hunlian) {
                         if (err) {
                             logger.error(err)
@@ -66,6 +74,9 @@ router.get('/', function(req, res, next) {
                         var hunlianArticles = hunlian
                         articleCollection.find({
                             typeIdentifier: "jiankang"
+                               }).sort({
+                        _id: -1,
+                        views: -1
                         }, function(err, jiankang) {
                             if (err) {
                                 logger.error(err)
@@ -74,6 +85,9 @@ router.get('/', function(req, res, next) {
                             var topJiankangArticle = jiankang[0]
                             articleCollection.find({
                                 typeIdentifier: "zhichang"
+                                   }).sort({
+                        _id: -1,
+                        views: -1
                             }, function(err, zhichang) {
                                 if (err) {
                                     logger.error(err)
@@ -82,6 +96,9 @@ router.get('/', function(req, res, next) {
                                 var topZhichangArticle = zhichang[0]
                                 articleCollection.find({
                                     typeIdentifier: "xingxinli"
+                                       }).sort({
+                        _id: -1,
+                        views: -1
                                 }, function(err, xingxinli) {
                                     if (err) {
                                         logger.error(err)
@@ -90,6 +107,9 @@ router.get('/', function(req, res, next) {
                                     var topXingxinliArticle = xingxinli[0]
                                     articleCollection.find({
                                         typeIdentifier: "kepu"
+                                           }).sort({
+                        _id: -1,
+                        views: -1
                                     }, function(err, kepu) {
                                         if (err) {
                                             logger.error(err)
@@ -98,6 +118,9 @@ router.get('/', function(req, res, next) {
                                         var topKepuArticle = kepu[0]
                                         articleCollection.find({
                                             typeIdentifier: "chengzhang"
+                                               }).sort({
+                        _id: -1,
+                        views: -1
                                         }, function(err, chengzhang) {
                                             if (err) {
                                                 logger.error(err)
@@ -111,6 +134,7 @@ router.get('/', function(req, res, next) {
                                                     '$lte': dateSearch
                                                 }
                                             }).limit(3).sort({
+                                                _id: -1,
                                                 views: -1
                                             }, function(err, daily) {
                                                 if (err) {
