@@ -13,10 +13,8 @@
     font-size: 30px;
     font-weight: 800;
 }
-.articleBody  body {
-    margin: 20px 0;
-    font-size: 19px;
-    line-height: 32px;
+.articleBody {
+    margin: 15px 0;    
 }
 .card-profile {
     margin-top: 0;
@@ -67,11 +65,37 @@ h2.title {
     position: relative;
     z-index: 1;
 }
+
+blockquote {
+    margin-bottom: 5px;
+}
+
 .card-description, .description, .footer-big p {
     color: #444;
 }
+
 @media only screen and (max-width: 768px) {
+    .card .card-content {
+        min-height: 120px;
+        height: auto;
+    }
     .section {
         padding: 20px;
+    }
+    .card-blog .card-title {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    .card-description {
+        font-size: 14px;
+    }
+    .card-profile .card-avatar {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .card, .card-image img {
+        width: 100%;
     }
 }

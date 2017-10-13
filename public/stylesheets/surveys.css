@@ -1,7 +1,11 @@
 .allSurveys {
-    max-width: 1000px;
-    margin: 70px auto 20px auto;
+    max-width: 970px;
+    margin: 70px auto 0px auto;
+    padding: 0px;
     background-color: #fafafa;
+}
+.card-title{
+    margin-top:10px;
 }
 .card-title a {
     max-width: 100%;
@@ -35,7 +39,9 @@
     margin-bottom: 0;
 }
 .dailysurveySection .category-social {
+    margin-top:0px;
     margin-bottom: 5px;
+    padding-top:10px;
 }
 body {
     background-color: #fafafa;
@@ -103,8 +109,9 @@ p.description {
     margin: 10px 0
 }
 .card .card-content {
-    padding-bottom: 10px;
+  
     position: relative;
+    padding: 0px 30px 10px 30px;    
 }
 
 .category-social i {
@@ -119,7 +126,7 @@ p.description {
 .card img {
     height: 180px;
     width: 300px;
-    margin: 30px 0;
+    margin: 20px 0px 0px 0px;
 }
 @media only screen and (max-width: 500px) {
     .dailysurveySection {
@@ -144,12 +151,26 @@ p.description {
     .startSurvey {
         display: none;
     }
+    footer {
+        display: none;
+   }
 }
 @media only screen and (max-width: 413px) {
     .card-nav-tabs .nav-tabs, .card-plain {
         padding: 0 40px;
     }
 }
+
+@media only screen and (max-width: 360px) {
+    .allSurveys .card-img {
+        padding: 0;
+        height: auto;
+    }
+    .allSurveys .card-img img {
+        margin: 0;
+    }
+}
+
 /*.creationDate {
     width: 20px;
     overflow: hidden;

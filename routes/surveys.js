@@ -81,20 +81,20 @@ router.get('/survey/:id', function(req, res, next) {
 // fetch list of surveys
 router.get('/surveys', function(req, res, next) {
     surveyCollection.find({}).sort({
-        views: -1
+       _id: -1, views: -1
     }).limit(3, function(err, featuredSurveys) {
         if (err) {
             logger.error(err)
         }
         surveyCollection.find().sort({
-            creationDateFormat: -1
+            _id: -1, views: -1
         }, function(err, allSurveys) {
             if (err) {
                 logger.error(err)
             }
             var allSurveys = allSurveys
             surveyCollection.find().sort({
-                views: -1
+                _id: -1, views: -1
             }, function(err, popularSurveys) {
                 if (err) {
                     logger.error(err)
@@ -102,21 +102,21 @@ router.get('/surveys', function(req, res, next) {
                 var popularSurveys = popularSurveys
                 surveyCollection.find({
                     py: "nengli"
-                }, function(err, nengli) {
+                }).sort({creationDateFormat: -1, views: -1}, function(err, nengli) {
                     if (err) {
                         logger.error(err)
                     }
                     var nengliSurveys = nengli
                     surveyCollection.find({
                         py: "xingge"
-                    }, function(err, xingge) {
+                    }).sort({creationDateFormat: -1, views: -1}, function(err, xingge) {
                         if (err) {
                             logger.error(err)
                         }
                         var xinggeSurveys = xingge
                         surveyCollection.find({
                             py: "jiandan"
-                        }, function(err, jiandan) {
+                        }).sort({creationDateFormat: -1, views: -1}, function(err, jiandan) {
                             if (err) {
                                 logger.error(err)
                             }
@@ -124,7 +124,7 @@ router.get('/surveys', function(req, res, next) {
                                 jiandan
                             surveyCollection.find({
                                 py: "zhuanye"
-                            }, function(err,
+                            }).sort({creationDateFormat: -1, views: -1}, function(err,
                                 zhuanye) {
                                 if (err) {
                                     logger.error(
