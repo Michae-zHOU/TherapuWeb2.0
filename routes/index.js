@@ -3,187 +3,84 @@ var router = express.Router();
 var logger = require('../logger');
 var mongojs = require('mongojs');
 var db = require('../db')
-var userCollection = db.collection('users');
-var surveyCollection = db.collection('survey');
-var surveyResultsCollection = db.collection('surveyResults');
 var articleCollection = db.collection('articles');
 var siteDataCollection = db.collection('siteData')
 
 
-router.get('/test/article', (req, res) => {
-    articleCollection.find({}).sort({
-        creationDateFormat: 1
-    }).limit(10, function(err, featuredArticles) {
-        res.json(featuredArticles)
-    })
-})
 router.get('/', function(req, res, next) {
-    /* GET home page. */
 
-
+    //本月热门
     articleCollection.find({}).sort({
         creationDateFormat: -1,
         views: -1
-    }).limit(6, function(err, featuredArticles) {
+    }).limit(6, function(err, monthlyArticles) {
         //article list data
         if (err) {
             logger.error(err)
+            return
         }
 
-        articleCollection.find().sort({
-            creationDateFormat: -1,
+        //轮转文章
+        articleCollection.find().limit(5).sort({
+            priority: -1,
             views: -1
-        }, function(err, AllArticle) {
-            //全部文章
+        }, function(err, carouselArticles) {
+
             if (err) {
                 logger.error(err)
+                return
             }
-            var topAllArticle = AllArticle[0]
-            var AllArticle = AllArticle
 
-            articleCollection.find().sort({
+            var dateSearch = new Date();
+            dateSearch.setDate(dateSearch.getMonth());
+
+            //每周精选
+            articleCollection.find({
+                creationDateFormat: {
+                    '$gte': dateSearch
+                }
+            }).limit(3).sort({
+                creationDateFormat: -1,
                 views: -1
-            }, function(err, popularArticles) {
-                //热门文章
+            }, function(err, weekly) {
                 if (err) {
-                    logger.error(err)
+                    logger.error(err);
+                    return;
                 }
 
-                var topPopularArticle = popularArticles[0]
-                var popularArticles = popularArticles
-                articleCollection.find().sort({
-                    views: -1
-                }).limit(5).sort({
-                   _id: -1,
-                    views: -1
-               }, function(err, carouselArticles) {
-                    //轮转文章
+                var weeklyArticles = weekly
+
+                siteDataCollection.find(function(err, siteData) {
+
                     if (err) {
-                        logger.error(err)
+                        logger.error(err);
+                        return;
                     }
-                    articleCollection.find({
-                        typeIdentifier: "hunlian"
-                           }).sort({
-                        _id: -1,
-                        views: -1
-                    }, function(err, hunlian) {
-                        if (err) {
-                            logger.error(err)
-                        }
-                        var topHunlianArticle = hunlian[0]
-                        var hunlianArticles = hunlian
-                        articleCollection.find({
-                            typeIdentifier: "jiankang"
-                               }).sort({
-                        _id: -1,
-                        views: -1
-                        }, function(err, jiankang) {
-                            if (err) {
-                                logger.error(err)
+
+                    var banner = siteData[0].homePageBanner;
+                    res.render('index', {
+                        partials: {
+                            header: '../views/partials/header',
+                            head: '../views/partials/head',
+                            scripts: '../views/partials/scripts',
+                            footer: '../views/partials/footer'
+                        },
+                        weeklyArticles,
+                        monthlyArticles,                       
+                        carouselArticles,
+                        banner,
+                        title: 'Home',
+                        auth: function() {
+                            if (
+                                req
+                                .user
+                            ) {
+                                return req
+                                    .user
+                                    .admin
                             }
-                            var jiankangArticles = jiankang
-                            var topJiankangArticle = jiankang[0]
-                            articleCollection.find({
-                                typeIdentifier: "zhichang"
-                                   }).sort({
-                        _id: -1,
-                        views: -1
-                            }, function(err, zhichang) {
-                                if (err) {
-                                    logger.error(err)
-                                }
-                                var zhichangArticles = zhichang
-                                var topZhichangArticle = zhichang[0]
-                                articleCollection.find({
-                                    typeIdentifier: "xingxinli"
-                                       }).sort({
-                        _id: -1,
-                        views: -1
-                                }, function(err, xingxinli) {
-                                    if (err) {
-                                        logger.error(err)
-                                    }
-                                    var xingxinliArticles = xingxinli
-                                    var topXingxinliArticle = xingxinli[0]
-                                    articleCollection.find({
-                                        typeIdentifier: "kepu"
-                                           }).sort({
-                        _id: -1,
-                        views: -1
-                                    }, function(err, kepu) {
-                                        if (err) {
-                                            logger.error(err)
-                                        }
-                                        var kepuArticles = kepu
-                                        var topKepuArticle = kepu[0]
-                                        articleCollection.find({
-                                            typeIdentifier: "chengzhang"
-                                               }).sort({
-                        _id: -1,
-                        views: -1
-                                        }, function(err, chengzhang) {
-                                            if (err) {
-                                                logger.error(err)
-                                            }
-                                            var chengzhangArticles = chengzhang
-                                            var topChengzhangArticle = chengzhang[0]
-                                            var dateSearch = new Date();
-                                            dateSearch.setDate(dateSearch.getMonth() - 1);
-                                            articleCollection.find({
-                                                creationDateFormat: {
-                                                    '$lte': dateSearch
-                                                }
-                                            }).limit(3).sort({
-                                                _id: -1,
-                                                views: -1
-                                            }, function(err, daily) {
-                                                if (err) {
-                                                    logger.error(err)
-                                                }
-                                                var dailyArticles = daily
-                                                siteDataCollection.find(function(err, siteData) {
-                                                    var banner = siteData[0].homePageBanner;
-                                                    res.render('index', {
-                                                        partials: {
-                                                            header: '../views/partials/header',
-                                                            head: '../views/partials/head',
-                                                            scripts: '../views/partials/scripts',
-                                                            footer: '../views/partials/footer'
-                                                        },
-                                                        featuredArticles,
-                                                        AllArticle,
-                                                        popularArticles,
-                                                        topHunlianArticle,
-                                                        topAllArticle,
-                                                        hunlianArticles,
-                                                        topJiankangArticle,
-                                                        jiankangArticles,
-                                                        topZhichangArticle,
-                                                        zhichangArticles,
-                                                        xingxinliArticles,
-                                                        topXingxinliArticle,
-                                                        kepuArticles,
-                                                        topKepuArticle,
-                                                        chengzhangArticles,
-                                                        topChengzhangArticle,
-                                                        dailyArticles,
-                                                        carouselArticles,
-                                                        banner,
-                                                        title: 'Home',
-                                                        auth: function() {
-                                                            if (req.user) {
-                                                                return req.user.admin
-                                                            }
-                                                        },
-                                                    });
-                                                })
-                                            })
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
+                        },
+                    });
                 })
             })
         })

@@ -65,9 +65,9 @@
                             <h4 class="title">本月热门</h4>
                             <div class="divider"></div>
                             <ul>
-                                {{#featuredArticles}}
+                                {{#monthlyArticles}}
                                 <li><a href="/article/{{_id}}"><h6>{{title}}</h6></a></li>
-                                {{/featuredArticles}}
+                                {{/monthlyArticles}}
                             </ul>
                         </div>
             </div>	
@@ -77,7 +77,7 @@
 			<div class="col-md-12">
 					<h3 class="title">每周精选</h3>
 					<div class="divider"></div>
-					{{#dailyArticles}}
+					{{#weeklyArticles}}
 					<div class="card card-plain card-blog">
 						<div class="row">
 							<div class="col-md-4 dailyArticleImage">
@@ -111,7 +111,7 @@
 							</div>
 						</div>
 					</div>
-					{{/dailyArticles}}
+					{{/weeklyArticles}}
 				</div>
 		</div>
 

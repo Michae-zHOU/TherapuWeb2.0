@@ -9,7 +9,7 @@
                 <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">测试管理</a></li>
                 <li class="pageSetting"><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
                 <li class="userSetting"><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
-                <!-- <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">置顶管理</a></li> -->
+                <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">轮转文章管理</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -114,7 +114,7 @@
                                                     <span class="fileinput-new">添加头像</span>
                                                     <span class="fileinput-exists">修改</span>
                                                     <input type="file" name="avatar" id="avatar"></span>
-                                                <br>
+                                                <br>                                              
                                                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 删除</a>
                                             </div>
                                         </div>
@@ -152,10 +152,10 @@
                                                 <td>{{fullName}}</td>
                                                 <td>{{created_at}}</td>
                                                 <td class="isAdmin{{admin}}">{{admin}}</td>
-                                                <td class="td-actions text-right">
-                                                    <a type="button" rel="tooltip" class="btn btn-danger btn-simple deleteUser">
+                                                <td class="td-actions text-right">                                                     
+                                                    <a data-api="/api/delete/user/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
                                                         <i class="material-icons">close</i>
-                                                    </a>
+                                                    </a>                                        
                                                 </td>
                                             </tr>
                                             {{/users}}
@@ -163,30 +163,41 @@
                                     </table>
                     </div>
                 </div>
-                <!-- <div class="tab-pane" id="primeManagement">
+                <div class="tab-pane" id="primeManagement">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-1">
-                            <h1>文章置顶管理</h1>
+                            <h1>轮转文章管理</h1>
                             <div class="form-group label-floating is-empty">
                                 <label>置顶文章(输入文章ID）:</label>
-                                <form id="updatePrime" name="updatePrime">
-                                    <label id="prime1T"></label>: <br>
-                                    <input type="text" class="form-control" name="prime1" id="prime1">
-                                    <input type="number" class="form-control" name="prime1pt" id="prime1pt"><br>
-                                    <label id="prime2T"></label>: <br>
-                                    <input type="text" class="form-control" name="prime2" id="prime2">
-                                    <input type="number" class="form-control" name="prime2pt" id="prime2pt"><br>
-                                    <label id="prime3T"></label>: <br>
-                                    <input type="text" class="form-control" name="prime3" id="prime3">
-                                    <input type="number" class="form-control" name="prime3pt" id="prime3pt">
+                                <form id="updatePrime" name="updatePrime">                                                                    
+                                    <table class="table">                                       
+                                       <tbody>
+                                        {{#primes}}
+                                        <tr>
+                                            <td class="title">
+                                                <input type="text" id="prime{{idx}}" name="prime{{idx}}" value="{{_id}}" hidden>    
+                                                <div class="btn-group bootstrap-select col-md-12">
+                                                    <select name="type{{_id}}" class="selectpicker" id="type{{_id}}" data-width="90%" data-style="btn btn-success btn-round" title="Single Select" tabindex="-98">                                                    
+                                                     {{#articles}}
+                                                     <option value="{{_id}}">{{title}}, {{author.fullName}}, {{created_at}}</option>
+                                                     {{/articles}}
+                                                 </select>
+                                                </div>
+                                            </td>    
+
+
+                                        </tr>
+                                        {{/primes}}                                      
+                                        </tbody>
+                                    </table>
+                                  
                                     <button type="submit" class="btn btn-success">更新置顶文章</button>
                                 </form>
+
                                 <script>
                                     $('#updatePrime').submit(function(e) {
                                         e.preventDefault();
-                                        var prime1 = $('#prime1').val();
-                                        var prime2 = $('#prime2').val();
-                                        var prime3 = $('#prime3').val();
+
                                         $.ajax({
                                             url: '/api/updatePrime',
                                             method: 'post',
@@ -199,22 +210,16 @@
                                             }
                                         })
                                     })
-                                    $.get('/api/primes', function(data) {
-                                        $('#prime1').val(data[0]._id)
-                                        $('#prime2').val(data[1]._id)
-                                        $('#prime3').val(data[2]._id)
-                                        $('#prime1pt').val(data[0].priority)
-                                        $('#prime2pt').val(data[1].priority)
-                                        $('#prime3pt').val(data[2].priority)
-                                        $('#prime1T').text(data[0].title)
-                                        $('#prime2T').text(data[1].title)
-                                        $('#prime3T').text(data[2].title)
-                                    })
+
+                                    for (i = 0; i < 5; i++) { 
+                                        var id = $('#prime' + i ).val();                                    
+                                        $("#type"+ id +" option[value='"+ id +"']").attr('selected', true);      
+                                    }                                                                       
                                 </script>
                             </div>
                         </div>
 	                </div>
-	            </div> -->
+	            </div> 
 	        </div>
 	    </div>
     </div>
