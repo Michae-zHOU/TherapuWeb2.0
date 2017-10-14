@@ -29,6 +29,7 @@ router.get('/authorSetting', authorRequired, function(req, res, next) {
     }).sort({_id: -1},function(err, articles) {
         if (err) {
             console.error(err)
+            return
         }
       
         surveyCollection.find({
@@ -36,6 +37,7 @@ router.get('/authorSetting', authorRequired, function(req, res, next) {
         }).sort({_id: -1}, function(err, surveys) {
             if (err) {
                 console.error(err)
+                return
             }
             res.render('setting', { 
                 partials: {
@@ -66,20 +68,35 @@ router.get('/setting', adminRequired, function(req, res, next) {
     articleCollection.find().sort({_id: -1},function(err, articles) {
         if (err) {
             console.error(err)
+            return
         }
         surveyCollection.find().sort({_id: -1}, function(err, surveys) {
             if (err) {
                 console.error(err)
+                return
             }
             siteDataCollection.find(function(err, siteData) {
                 if (err) {
                     console.error(err)
+                    return
                 }
                 usersCollection.find().sort({creationDateFormat: -1}, function(err, users) {
                     if (err) {
                         console.error(err)
+                        return
                     }
-                    articleCollection.find().sort({priority: -1}, function(err, primes) {
+                    articleCollection.find().sort({priority: -1}).limit(5, function(err, primes) {  
+
+
+                        if (err) {
+                            console.error(err)
+                            return
+                        }
+
+                        primes.forEach(function(element, index){
+                            element.idx = index;
+                        });
+
                         var homePageBannerData = siteData[0].homePageBanner
                         
                         res.render('setting', { 

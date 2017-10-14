@@ -36,38 +36,30 @@ function adminRequired(req, res, next) {
 /* GET home page. */
 router.post('/updatePrime', function(req, res, next) {
     var primes = req.body;
-    articleCollection.update({_id: mongojs.ObjectId(primes.prime1)}, {$set: {priority: Number(primes.prime1pt)}}, function(err, prime1) {
-        if (err) {
-            res.send(err)
-        }
-        if (!prime1) {
-            res.send('没有查到第一个输入框内的文章ID，请确认后重试')
-        }
-        articleCollection.update({_id: mongojs.ObjectId(primes.prime2)}, {$set: {priority: Number(primes.prime2pt)}}, function(err, prime2) {
+     
+    for (var i in primes) {            
+        if (primes[i] !== null && primes[i] !== '')
+        {
+           articleCollection.update({_id: mongojs.ObjectId(primes[i])}, {$set: {priority:  new Date() }}, function(err, result) {
             if (err) {
                 res.send(err)
             }
-            if (!prime1) {
-                res.send('没有查到第二个输入框内的文章ID，请确认后重试')
-            }
-            articleCollection.update({_id: mongojs.ObjectId(primes.prime3)}, {$set: {priority: Number(primes.prime3pt)}}, function(err, prime3) {
-                if (err) {
-                    res.send(err)
-                }
-                if (!prime1) {
-                    res.send('没有查到第一个输入框内的文章ID，请确认后重试')
-                }
-                res.redirect('/setting')
-            })
-        })
-    })
+
+            if (!result) {
+                res.send('没有查到第一个输入框内的文章ID，请确认后重试')
+            }            
+        });
+       }                    
+   }
+
+    res.redirect('/setting');  
 })
 router.get('/primes', function(req, res, next) { 
-    articleCollection.find().sort({priority: -1}, function(err, primes) {
+    articleCollection.find().sort({priority: -1}).limit(5, function(err, primes) {       
         if (err) {
             res.send(err)
-        }
-        logger.error(primes)
+        }     
+      
         res.json(primes)
     })
 })
@@ -132,17 +124,16 @@ router.get('/update/homePageBanner/:newBanner', adminRequired, function(req, res
         })
     }
 })
-router.get('/deleteUser/:id', adminRequired, function(req, res, next) {
-    var { id } = req.params;
-     logger.error(id)
+router.get('/delete/user/:id', adminRequired, function(req, res, next) {
+    var { id } = req.params;   
     userCollection.remove({_id:mongojs.ObjectId(id)}, function(err, removedUser) {
-        if (err) {
-            res.json(err)
+        if (err) {          
+            logger.error(err)
+            return err
         }
         if (!removedUser) {
             res.send('删除失败')
-        }
-        logger.error(removedUser)
+        }        
         res.json(removedUser)
     })
 })
@@ -179,7 +170,7 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
                 userAvatar: req.file ? req.file : {filename: "user-default.jpg"},
             },  function(err, newUser) {
                 req.session.newUser = newUser
-                res.redirect('/setting')
+                res.redirect(`/setting#userManagement`)
             })
         }
     })
