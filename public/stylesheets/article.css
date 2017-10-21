@@ -98,4 +98,8 @@ blockquote {
     .card, .card-image img {
         width: 100%;
     }
+    .articleBody img {
+        width:100% !important;
+        height:100% !important;
+    }
 }

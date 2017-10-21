@@ -17,9 +17,16 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage: storage,
     limits: {
-        fileSize: 5000000
+        fileSize: 1000000 // 1MB
     }
-})
+});
+
+var uploadCKEditorImg = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000 // 1MB
+    }
+}).single('upload');
 
 function authorRequired(req, res, next) {
     if (!req.isAuthenticated()) {
@@ -75,6 +82,29 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
         res.redirect('/articles')
     })
 })
+
+router.post('/uploader', function(req, res, next){
+    uploadCKEditorImg(req, res, function(err){
+        if(err){
+            var result = {
+                "uploaded": 0,
+                "error": {
+                    "message" : "The file is too large."
+                }
+            }
+
+            return res.send(result);
+        };
+
+        var result = {
+            "uploaded" : 1,
+            "fileName": req.file.filename,
+            "url": "/assets/articles/" + req.file.filename,
+        };
+
+        res.send(result);
+    });
+});
 
 router.get('/articles', function(req, res, next) {
     articleCollection.find({}).sort({

@@ -6,24 +6,26 @@
         $('.articleLink').addClass('active')
     </script>
     <section class="createArticle">
-        <h1>修改文章</h1>
+        <div class="col-md-8 col-md-offset-2"> <h1>修改文章</h1>
+        </div>
+       
         <form action="/edit/article/{{articleId}}" method="post">
             <input type="text" id="articleId" data-api="/article/edit/{{articleId}}" name="id" hidden>
             <input type="text" id="articleType" name="articleType" value="{{articleType}},{{articlePy}}" hidden>         
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
                             <input type="text" value="{{articleTitle}}" class="form-control" name="title" id="title" required>
                             <span class="material-input"></span>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
                             <input type="text" value="{{articleDescription}}" class="form-control" id="description" name="description" required>
                             <span class="material-input"></span>
                     </div>
                 </div>
-                <div class="btn-group bootstrap-select col-md-12">
+                <div class="bootstrap-select col-md-2 col-md-offset-2">
                         <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98" value="2">
                                 <option class="bs-title-option" value="">文章分类</option>
                                 <option disabled="" >选择文章分类</option>
@@ -39,13 +41,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="form-group label-floating is-empty noMarginInput">
                         <textarea id="article" class="form-control" rows="5" name="article" required>{{articleBody}}</textarea>
                         <span class="material-input"></span>
                     </div>
                 </div>
-                <div class="col-md-1 col-md-offset-10">
+                <div class="col-md-1 col-md-offset-8">
                     <button class="btn btn-info btn-lg" type="submit">提交</button>
                 </div>
             </div>
@@ -60,7 +62,10 @@
             '宋體/"Times New Roman", Times, "儷宋 Pro", "LiSong Pro", "細宋體", SimSun, "新宋體", "宋体", NSimSun, serif;' +
             '黑體/Arial, Helvetica, "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "黑體", "黑体", SimHei, sans-serif;' +
             CKEDITOR.config.font_names,
-            height: 800
+            height: 800,
+            width: 1000,
+            extraPlugins: 'uploadimage',
+            uploadUrl: '/uploader',
         } );
      
        $('.selectpicker').val( $('#articleType').val() ); 
