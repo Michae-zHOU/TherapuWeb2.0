@@ -93,12 +93,12 @@ router.get('/setting', adminRequired, function(req, res, next) {
                             return
                         }
 
-                        primes.forEach(function(element, index){
+                        primes.forEach(function(element, index){ 
                             element.idx = index;
                         });
-
+ 
                         var homePageBannerData = siteData[0].homePageBanner
-                        
+
                         res.render('setting', { 
                             partials: {
                             header: '../views/partials/header',
@@ -107,7 +107,7 @@ router.get('/setting', adminRequired, function(req, res, next) {
                             scripts: '../views/partials/scripts'
                         },
                         title: 'Home',
-                        articles,
+                        articles, 
                         surveys,
                         users,
                         primes,

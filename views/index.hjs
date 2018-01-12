@@ -95,7 +95,7 @@
 									<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
 									<p class="author" style="display: inline;">
 										{{created_at}}
-									<a href="">{{author.fullName}}</a>
+									<a href="">{{author}}</a>
 									</p>
 								</div>
 								<div>

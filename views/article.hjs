@@ -25,8 +25,14 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="blog-tags">
-										
-										{{articleData.views}} 次阅读
+										作者:&nbsp&nbsp&nbsp&nbsp{{articleData.author}}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="text-right">
+										<div class="blog-tags">
+											{{articleData.views}} 次阅读
+										</div>
 									</div>
 								</div>
 								
@@ -37,13 +43,13 @@
 									<div class="col-md-2 col-sm-12">
 										<div class="card-avatar">
 											<a href="#pablo">
-												<img class="img" src="/assets/users/{{articleData.author.userAvatar.filename}}">
+												<img class="img" src="/assets/users/{{articleData.creator.userAvatar.filename}}">
 											</a>
 										<div class="ripple-container"></div></div>
 									</div>
 									<div class="col-md-10">
-										<h4 class="card-title">{{articleData.author.fullName}}</h4>
-										<p class="description">{{articleData.author.description}}</p>
+										<h4 class="card-title">{{articleData.creator.fullName}}</h4>
+										<p class="description">{{articleData.creator.description}}</p>
 									</div>
 								</div>
 							</div>

@@ -21,6 +21,12 @@
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
+                        <input type="text" value="{{articleAuthor}}" placeholder="作者名字" class="form-control" name="author">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group is-empty">
                             <input type="text" value="{{articleDescription}}" class="form-control" id="description" name="description" required>
                             <span class="material-input"></span>
                     </div>

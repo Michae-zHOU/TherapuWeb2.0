@@ -95,7 +95,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -139,7 +139,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -183,7 +183,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -227,7 +227,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{authorfullName}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -271,7 +271,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -315,7 +315,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -359,7 +359,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -403,7 +403,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">
@@ -447,7 +447,7 @@
 																			<span class="label label-success">{{type}}</span>
 																			<p class="author" style="display: inline;">
 																				{{created_at}}
-																				<a href="">{{author.fullName}}</a>
+																				<a href="">{{author}}</a>
 																			</p>
 																		</div>
 																		<div class="card-description-content">

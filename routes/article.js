@@ -59,10 +59,12 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
     var year = dateObj.getUTCFullYear();
     newdate = year + " 年 " + month + " 月 " + day + " 日 ";
 
-    var typeArray = article.type.split(',')
+    var typeArray = article.type.split(',');
+    var authorShown = article.author === ''? req.user.fullName : article.author;
 
     var newArticle = {
-        author: req.user,
+        creator: req.user,
+        author: authorShown,
         article: article.article,
         title: article.title,
         description: article.description ? article.description : '',
@@ -104,7 +106,7 @@ router.post('/uploader', function(req, res, next){
 
         res.send(result);
     });
-});
+}); 
 
 router.get('/articles', function(req, res, next) {
     articleCollection.find({}).sort({
@@ -347,6 +349,7 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
         if (!article) {
             logger.error('document not found!')
         }
+        
         articleTypes.find(function(err, types) {
             if (err) {
                 logger.error(err)
@@ -361,8 +364,10 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
                 articleId: id,
                 types,
                 articleTitle: article.title,
+                articleAuthor: article.author,
+                articleCreator: article.creator,
                 articleDescription: article.description,
-                articleBody: article.article,
+                articleBody: article.article.full,
                 //articleImg: article.articleImg,            
                 articleType: article.type,
                 articlePy: article.typeIdentifier,
@@ -389,7 +394,8 @@ router.post('/edit/article/:id', authorRequired, (req, res, next) => {
             _id: mongojs.ObjectId(id)
         }, {
             $set:{
-                title: article.title,          
+                title: article.title, 
+                author: article.author,      
                 article: article.article,
                 description: article.description,
                 //creationDateFormat: original.creationDateFormat,          
