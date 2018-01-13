@@ -367,7 +367,7 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
                 articleAuthor: article.author,
                 articleCreator: article.creator,
                 articleDescription: article.description,
-                articleBody: article.article.full,
+                articleBody: article.article,
                 //articleImg: article.articleImg,            
                 articleType: article.type,
                 articlePy: article.typeIdentifier,
