@@ -11,6 +11,7 @@ var surveyCollection = db.collection('survey');
 var articleTypes = db.collection('articleTypes');
 var siteDataCollection = db.collection('siteData')
 var userCollection = db.collection('users')
+var crypt = require('../crypt');
 var multer  = require('multer')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -180,6 +181,8 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
     
     userCollection.findOne({email: user.email}, function(err, duplicatedUser) {
 
+        let passwordData = crypt.createPassword(user.password);
+
         if (err) {
             logger.error(err);
             return err;
@@ -188,10 +191,11 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
         if (duplicatedUser) {
             req.session.duplicatedUser = duplicatedUser
             res.redirect(`/setting#userManagement`)
-        } else {
+        } else {            
             userCollection.save({
                 email: user.email,
-                password: user.password,
+                password: passwordData.passwordHash,
+                salt: passwordData.salt,
                 description: user.description,
                 admin: 1,
                 fullName: user.fullName,
