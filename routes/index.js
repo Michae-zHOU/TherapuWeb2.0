@@ -1,90 +1,40 @@
 var express = require('express');
 var router = express.Router();
-var logger = require('../logger');
-var mongojs = require('mongojs');
-var db = require('../db')
-var articleCollection = db.collection('articles');
-var siteDataCollection = db.collection('siteData')
-
+var chatDB = require("../chatDB");
+const Promise = require('bluebird');
 
 router.get('/', function(req, res, next) {
 
-    //本月热门
-    articleCollection.find({}).sort({
-        creationDateFormat: -1,
-        views: -1
-    }).limit(6, function(err, monthlyArticles) {
-        //article list data
-        if (err) {
-            logger.error(err)
-            return
-        }
+    var dateSearch = new Date();
+    dateSearch.setDate(dateSearch.getMonth());
 
-        //轮转文章
-        articleCollection.find().limit(5).sort({
-            priority: -1,
-            views: -1
-        }, function(err, carouselArticles) {
+    var promises = [    
+      chatDB.Article.find({}).sort({creationDateFormat: -1, views: -1}).limit(6).exec(),                                          // [0] 本月热门
+      chatDB.Article.find({}).sort({priority: -1, views: -1}).limit(5).exec(),                                                    // [1] 轮转文章
+      chatDB.Article.find({creationDateFormat: {'$gte': dateSearch}}).sort({creationDateFormat: -1, views: -1}).limit(3).exec(),  // [2] 本周精选      
+      chatDB.SiteData.find({}).exec(),                                                                                            // [3] site 
+    ];
 
-            if (err) {
-                logger.error(err)
-                return
-            }
-
-            var dateSearch = new Date();
-            dateSearch.setDate(dateSearch.getMonth());
-
-            //每周精选
-            articleCollection.find({
-                creationDateFormat: {
-                    '$gte': dateSearch
+    Promise.all(promises).then(function(results) {
+        res.render('index', {
+            partials: {
+                header: '../views/partials/header',
+                head: '../views/partials/head',
+                scripts: '../views/partials/scripts',
+                footer: '../views/partials/footer'
+            },
+            monthlyArticles: results[0],
+            carouselArticles: results[1],
+            weeklyArticles: results[2],
+            siteData: results[3][0],          
+            title: 'Home',
+            auth: function() {
+                if (req.user) {
+                    return req.user.admin
                 }
-            }).limit(3).sort({
-                creationDateFormat: -1,
-                views: -1
-            }, function(err, weekly) {
-                if (err) {
-                    logger.error(err);
-                    return;
-                }
-
-                var weeklyArticles = weekly
-
-                siteDataCollection.find(function(err, siteData) {
-
-                    if (err) {
-                        logger.error(err);
-                        return;
-                    }
-
-                    var banner = siteData[0].homePageBanner;
-                    res.render('index', {
-                        partials: {
-                            header: '../views/partials/header',
-                            head: '../views/partials/head',
-                            scripts: '../views/partials/scripts',
-                            footer: '../views/partials/footer'
-                        },
-                        weeklyArticles,
-                        monthlyArticles,                       
-                        carouselArticles,
-                        banner,
-                        title: 'Home',
-                        auth: function() {
-                            if (
-                                req
-                                .user
-                            ) {
-                                return req
-                                    .user
-                                    .admin
-                            }
-                        },
-                    });
-                })
-            })
-        })
-    })
+            },
+        });
+    }).catch(next);
 })
 
 module.exports = router;

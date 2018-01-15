@@ -4,6 +4,8 @@ var logger = require('../logger');
 var multer = require('multer')
 var mongojs = require('mongojs');
 var db = require('../db')
+var chatDB = require("../chatDB");
+const Promise = require('bluebird');
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -45,45 +47,111 @@ function adminRequired(req, res, next) {
 var userCollection = db.collection('users');
 var surveyCollection = db.collection('survey');
 var surveyResultsCollection = db.collection('surveyResults');
-var articleCollection = db.collection('articles');
 var articleTypes = db.collection('articleTypes')
 var siteDataCollection = db.collection('siteData')
 
-/* GET home page. */
-router.post('/create/article', authorRequired, upload.single('img'), function(req, res, next) {
-    var article = req.body
+router.get('/articles', function(req, res, next) {
+    var promises = [    
+      chatDB.Article.find({}).sort({creationDateFormat: -1}).exec(),            // [0] all article
+      chatDB.Article.find({}).sort({views: -1}).limit(5).exec(),                // [1] carouselArticles
+      chatDB.Article.find({typeIdentifier: "liangxing"}).exec(),                // [2] liangxing
+      chatDB.Article.find({typeIdentifier: "jiaoyu"}).exec(),                   // [3] jiaoyu
+      chatDB.Article.find({typeIdentifier: "zhichang"}).exec(),                 // [4] zhichang
+      chatDB.Article.find({typeIdentifier: "jiating"}).exec(),                  // [5] jiating
+      chatDB.Article.find({typeIdentifier: "kepu"}).exec(),                     // [6] jiaoyu
+      chatDB.Article.find({typeIdentifier: "chengzhang"}).exec(),               // [7] chengzhang     
+      chatDB.Article.find({typeIdentifier: "zixun"}).exec(),                    // [8] zixun   
+      chatDB.Article.find({}).sort({created_at: 1}).limit(3).exec(),            // [9] daily
+      chatDB.Article.find({}).sort({views: -1}).limit(20).exec(),               // [10] popular       
+    ];
 
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
-    newdate = year + " 年 " + month + " 月 " + day + " 日 ";
-
-    var typeArray = article.type.split(',');
-    var authorShown = article.author === ''? req.user.fullName : article.author;
-
-    var newArticle = {
-        creator: req.user,
-        author: authorShown,
-        article: article.article,
-        title: article.title,
-        description: article.description ? article.description : '',
-        creationDateFormat: new Date(),
-        created_at: newdate,
-        typeIdentifier: typeArray[1],
-        type: typeArray[0],
-        articleImg: req.file,
-        views: 0,
-        priority: 0,
-    }
-
-    articleCollection.save(newArticle, (err, doc) => {
-        if (err) {
-            logger.error(err)
-        }
-        res.redirect('/articles')
-    })
+    Promise.all(promises).then(function(results) {
+        res.render('articles', {
+            partials: {
+                header: '../views/partials/header',
+                head: '../views/partials/head',
+                scripts: '../views/partials/scripts',
+                footer: '../views/partials/footer'
+            },
+            AllArticle: results[0],
+            liangxingArticles: results[2],
+            jiaoyuArticles: results[3],
+            zhichangArticles: results[4],
+            jiatingArticles: results[5],
+            zixunArticles: results[8],
+            kepuArticles: results[6],
+            chengzhangArticles: results[7],
+            dailyArticles: results[9],
+            carouselArticles: results[1],
+            popularArticles: results[10],
+            title: 'Home',
+            auth: function() {
+                if (req.user) {
+                    return req.user.admin
+                }
+            },
+        });
+    }).catch(next);
 })
+
+router.get('/article/:id', function(req, res, next) {
+    chatDB.Article.findById(req.params.id, '-author').exec().then(function(article) {
+            chatDB.Article.find({
+                    type: article.type
+                }, '-author').sort({
+                    views: -1
+                }).limit(4).exec()
+                .then(function(relatedStories) {
+                    res.render('article', {
+                        partials: {
+                            header: '../views/partials/header',
+                            footer: '../views/partials/footer',
+                            head: '../views/partials/head',
+                            scripts: '../views/partials/scripts'
+                        },
+                        title: '文章',
+                        article,
+                        relatedStories,
+                        auth: function() {
+                            if (req.user) {
+                                return req.user.admin
+                            }
+                        },
+                    })
+                });
+        })
+        .catch(next);
+})
+
+router.post('/create/article', authorRequired, upload.single('img'), function(req, res, next) {
+    var article = new chatDB.Article();
+    articleFromRequestBody(article, req);
+    article.save().then(() => res.redirect('/articles')).catch(next);
+})
+
+function articleFromRequestBody(article, req) {
+        var content = req.body
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+        var newdate = year + " 年 " + month + " 月 " + day + " 日 ";
+        var typeArray = content.type.split(',');
+        var authorShown = content.author === ''? req.user.fullName : content.author;
+
+         article.creator = req.user;
+         article.author= authorShown;
+         article.article= content.article;
+         article.title= content.title;
+         article.description = content.description ? content.description : '';
+         article.creationDateFormat = new Date();
+         article.created_at = newdate;
+         article.typeIdentifier = typeArray[1];
+         article.type = typeArray[0];
+         article.articleImg = req.file;
+         article.views = 0;
+         article.priority= 0;
+}
 
 router.post('/uploader', function(req, res, next){
     uploadCKEditorImg(req, res, function(err){
@@ -94,217 +162,16 @@ router.post('/uploader', function(req, res, next){
                     "message" : "The file is too large."
                 }
             }
-
             return res.send(result);
         };
-
         var result = {
             "uploaded" : 1,
             "fileName": req.file.filename,
             "url": "/assets/articles/" + req.file.filename,
         };
-
         res.send(result);
     });
 }); 
-
-router.get('/articles', function(req, res, next) {
-    articleCollection.find({}).sort({
-        creationDateFormat: -1
-    }).limit(5, function(err, featuredArticles) {
-
-        //article list data
-        if (err) {
-            logger.error(err)
-        }
-        articleCollection.find().sort({
-            creationDateFormat: -1
-        }, function(err, AllArticle) {
-            //全部文章
-            if (err) {
-                logger.error(err)
-            }
-            var topAllArticle = AllArticle[0]
-            var AllArticle = AllArticle
-            articleCollection.find().sort({
-                views: -1
-            }, function(err, popularArticles) {
-                //热门文章
-                if (err) {
-                    logger.error(err)
-                }
-                var topPopularArticle = popularArticles[0]
-                var popularArticles = popularArticles
-                articleCollection.find().sort({
-                    views: -1
-                }).limit(5, function(err, carouselArticles) {
-                    //轮转文章
-                    if (err) {
-                        logger.error(err)
-                    }
-                    articleCollection.find({
-                        typeIdentifier: "liangxing"
-                    }, function(err, liangxing) {
-                        if (err) {
-                            logger.error(err)
-                        }
-                        var liangxingArticles = liangxing
-                        articleCollection.find({
-                            typeIdentifier: "jiaoyu"
-                        }, function(err, jiaoyu) {
-                            if (err) {
-                                logger.error(err)
-                            }
-                            var jiaoyuArticles = jiaoyu
-                            articleCollection.find({
-                                typeIdentifier: "zhichang"
-                            }, function(err, zhichang) {
-                                if (err) {
-                                    logger.error(err)
-                                }
-                                var zhichangArticles = zhichang
-                                articleCollection.find({
-                                    typeIdentifier: "jiating"
-                                }, function(err, jiating) {
-                                    if (err) {
-                                        logger.error(err)
-                                    }
-                                    var jiatingArticles = jiating
-                                    articleCollection.find({
-                                        typeIdentifier: "kepu"
-                                    }, function(err, kepu) {
-                                        if (err) {
-                                            logger.error(err)
-                                        }
-                                        var kepuArticles = kepu
-                                        articleCollection.find({
-                                            typeIdentifier: "chengzhang"
-                                        }, function(err, chengzhang) {
-                                            if (err) {
-                                                logger.error(err)
-                                            }
-                                            var chengzhangArticles = chengzhang
-                                            articleCollection.find({
-                                                typeIdentifier: "zixun"
-                                            }, function(err, zixun) {
-                                                if (err) {
-                                                    logger.error(err)
-                                                }
-                                                var zixunArticles = zixun
-                                                articleCollection.find().sort({
-                                                    created_at: 1
-                                                }).limit(3, function(err, daily) {
-                                                    if (err) {
-                                                        logger.error(err)
-                                                    }
-                                                    var dailyArticles = daily
-                                                    siteDataCollection.find(function(err, siteData) {
-                                                        articleCollection.find().limit(3).sort({
-                                                            priority: -1
-                                                        }, function(err, primeArticles) {
-                                                            if (err) {
-                                                                logger.error(err)
-                                                            }
-                                                            var banner = siteData[0].homePageBanner;
-                                                            res.render('articles', {
-                                                                partials: {
-                                                                    header: '../views/partials/header',
-                                                                    head: '../views/partials/head',
-                                                                    scripts: '../views/partials/scripts',
-                                                                    footer: '../views/partials/footer'
-                                                                },
-                                                                featuredArticles,
-                                                                AllArticle,
-                                                                popularArticles,
-                                                                topAllArticle,
-                                                                liangxingArticles,
-                                                                jiaoyuArticles,
-                                                                zhichangArticles,
-                                                                jiatingArticles,
-                                                                zixunArticles,
-                                                                kepuArticles,
-                                                                chengzhangArticles,
-                                                                dailyArticles,
-                                                                carouselArticles,
-                                                                banner,
-                                                                primeArticles,
-                                                                title: 'Home',
-                                                                auth: function() {
-                                                                    if (req.user) {
-                                                                        return req.user.admin
-                                                                    }
-                                                                },
-                                                            });
-                                                        })
-                                                    })
-                                                })
-                                            })
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    })
-})
-
-router.get('/article/:id', function(req, res, next) {      
-    const {
-        id
-    } = req.params;
-    articleCollection.findOne({
-        _id: mongojs.ObjectId(id)
-    }, function(err, articleData) {
-        if (err) {
-            logger.error(err);
-            return err;
-        }
-
-        if (!articleData) {
-            return res.render('404', {
-                url: req.url
-            });
-        }
-
-        articleCollection.find({
-            type: articleData.type
-        }).limit(4, function(err, relatedStories) {
-            if (err) {
-                logger.error(err);
-            }
-            articleCollection.update({
-                _id: mongojs.ObjectId(id)
-            }, {
-                $inc: {
-                    views: 1
-                }
-            }, function(err, doc) {
-                if (err) {
-                    logger.error(err)
-                }
-                res.render('article', {
-                    partials: {
-                        header: '../views/partials/header',
-                        footer: '../views/partials/footer',
-                        head: '../views/partials/head',
-                        scripts: '../views/partials/scripts'
-                    },
-                    title: '文章',
-                    articleData,
-                    relatedStories,
-                    auth: function() {
-                        if (req.user) {
-                            return req.user.admin
-                        }
-                    },
-                })
-            })
-        })
-    })
-})
 
 /* GET home page. */
 router.get('/article/new/create', authorRequired, function(req, res, next) {
@@ -331,8 +198,6 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
             user: req.user
         })
     })
-
-
 })
 
 /* Load Data to Edit Article Page */
