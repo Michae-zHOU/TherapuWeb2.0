@@ -1,5 +1,6 @@
 const crypto = require('crypto');
-const secret = 'abcdefg';
+var common = require('./util');
+var config = common.config();
 /**
  * generates random string of characters i.e salt
  * @function
@@ -18,7 +19,7 @@ var genRandomString = function(length){
  * @param {string} salt - Data to be validated.
  */
 var sha512 = function(password, salt){
-    var hash = crypto.createHmac('sha512', secret); /** Hashing algorithm sha512 */
+    var hash = crypto.createHmac('sha512', config.pwd_secret); /** Hashing algorithm sha512 */
     hash.update(password + salt);
     var value = hash.digest('hex');
     return {
