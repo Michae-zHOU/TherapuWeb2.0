@@ -18,12 +18,12 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							</button>
 							<span>
-								温馨提示: {{banner}}
+								温馨提示: {{siteData.homePageBanner}}
 							</span>
 						</div>
                 </div>
 			</div>
-			<input type="text" hidden value="{{banner}}" id="alert-text">
+			<input type="text" hidden value="{{siteData.homePageBanner}}" id="alert-text">
 			<script>
 				if ($('#alert-text').val() == '') {
 					$('.alert-success').hide()

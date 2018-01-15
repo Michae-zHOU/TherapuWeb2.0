@@ -3,6 +3,7 @@ var router = express.Router();
 var logger = require('../logger');
 var mongojs = require('mongojs');
 var db = require('../db')
+var chatDB = require("../chatDB");
 var userCollection = db.collection('users');
 var surveyTypes = db.collection('surveyTypes');
 var articleCollection = db.collection('articles');
@@ -10,10 +11,7 @@ var surveyCollection = db.collection('survey');
 var articleTypes = db.collection('articleTypes');
 var siteDataCollection = db.collection('siteData')
 var userCollection = db.collection('users')
-const crypto = require('crypto');
-
-const secret = 'abcdefg';
-
+var crypt = require('../crypt');
 var multer  = require('multer')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -58,15 +56,25 @@ router.post('/updatePrime', function(req, res, next) {
 
     res.redirect('/setting');  
 })
-router.get('/primes', function(req, res, next) { 
-    articleCollection.find().sort({priority: -1}).limit(5, function(err, primes) {       
-        if (err) {
-            res.send(err)
-        }     
-      
-        res.json(primes)
+
+var Article = require("../models/article");
+
+router.get("/articles", function (req, res, next) {
+   chatDB.Article.find({},'-author').exec()
+    .then(function (articles) {
+      res.json(articles);
     })
-})
+    .catch(next);
+});
+
+router.get("/articles/:articleId", function (req, res, next) {
+   chatDB.Article.find({},'title').exec()
+    .then(function (articles) {
+      res.json(articles);
+    })
+    .catch(next);
+});
+
 router.get('/surveyTypes', function(req, res, next) {
     surveyTypes.find(function(err, doc) {
         if (err) {
@@ -141,25 +149,25 @@ router.get('/delete/user/:id', adminRequired, function(req, res, next) {
         res.json(removedUser)
     })
 })
-router.get('/articles', function(req, res, next) { 
-    var pageNo = parseInt(req.query.pg)
-    var size = parseInt(req.query.size)
-    var query = {}
-    if(pageNo < 0 || pageNo === 0) {
-        response = {"error" : true,"message" : "invalid page number, should start with 1"};
-        return res.json(response)
-    }
-    query.skip = size * (pageNo - 1)
-    query.limit = size 
-    // Find some documents
-    articleCollection.find().skip(query.skip).sort({priority: -1}).limit(query.limit, function(err, primes) {       
-        if (err) {
-            res.send(err)
-        }     
+// router.get('/articles', function(req, res, next) { 
+//     var pageNo = parseInt(req.query.pg)
+//     var size = parseInt(req.query.size)
+//     var query = {}
+//     if(pageNo < 0 || pageNo === 0) {
+//         response = {"error" : true,"message" : "invalid page number, should start with 1"};
+//         return res.json(response)
+//     }
+//     query.skip = size * (pageNo - 1)
+//     query.limit = size 
+//     // Find some documents
+//     articleCollection.find().skip(query.skip).sort({priority: -1}).limit(query.limit, function(err, primes) {       
+//         if (err) {
+//             res.send(err)
+//         }     
       
-        res.json(primes)
-    })
-})
+//         res.json(primes)
+//     })
+// })
 
 // create a new user
 router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
@@ -173,7 +181,7 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
     
     userCollection.findOne({email: user.email}, function(err, duplicatedUser) {
 
-        let passwordData = saltHashPassword(user.password);
+        let passwordData = crypt.createPassword(user.password);
 
         if (err) {
             logger.error(err);

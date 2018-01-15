@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+const secret = 'abcdefg';
 /**
  * generates random string of characters i.e salt
  * @function
@@ -27,9 +29,20 @@ var sha512 = function(password, salt){
 
 function saltHashPassword(userpassword) {
     var salt = genRandomString(16); /** Gives us salt of length 16 */
-    var passwordData = sha512(userpassword, salt);
-    console.log('UserPassword = '+userpassword);
-    console.log('Passwordhash = '+passwordData.passwordHash);
-    console.log('nSalt = '+passwordData.salt);
+    var passwordData = sha512(userpassword, salt);   
     return passwordData;
+}
+
+function verifyHashPassword(pwd, salt, hash){
+    var passwordData = sha512(pwd, salt);  
+    return (passwordData.passwordHash == hash)
+}
+
+module.exports = {
+    createPassword: function (pwd) {
+        return saltHashPassword(pwd);   
+    },
+    verifyPassword: function(pwd, salt, hash){
+        return verifyHashPassword(pwd, salt, hash);
+    }
 }

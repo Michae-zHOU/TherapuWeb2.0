@@ -8,16 +8,16 @@
 			//indicator for navbar 
 			$('.articleLink').addClass('active')
 		</script>
-		<div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/articles/{{articleData.articleImg.filename}}');">
+		<div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/articles/{{article.articleImg.filename}}');">
 			
 		</div>
 		<div class="main main-raised">
 					<div class="section section-text">
 						<div class="content-container">
-							<h1 class="articleTitle">{{articleData.title}}</h1>
+							<h1 class="articleTitle">{{article.title}}</h1>
 							标签:
-										<span class="label label-success">{{articleData.type}}</span>&nbsp;&nbsp;&nbsp; {{articleData.created_at}}
-							<p class="articleBody">{{articleData.article}} </p>
+										<span class="label label-success">{{article.type}}</span>&nbsp;&nbsp;&nbsp; {{article.created_at}}
+							<p class="articleBody">{{article.article}} </p>
 						</div>
 					</div>
 					<div class="section section-blog-info">
@@ -25,13 +25,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="blog-tags">
-										作者:&nbsp&nbsp&nbsp&nbsp{{articleData.author}}
+										作者:&nbsp&nbsp&nbsp&nbsp{{article.author}}
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="text-right">
 										<div class="blog-tags">
-											{{articleData.views}} 次阅读
+											{{article.views}} 次阅读
 										</div>
 									</div>
 								</div>
@@ -48,8 +48,8 @@
 										<div class="ripple-container"></div></div>
 									</div>
 									<div class="col-md-10">
-										<h4 class="card-title">{{articleData.creator.fullName}}</h4>
-										<p class="description">{{articleData.creator.description}}</p>
+										<h4 class="card-title">{{article.creator.fullName}}</h4>
+										<p class="description">{{article.creator.description}}</p>
 									</div>
 								</div>
 							</div>

@@ -8,6 +8,7 @@
     "import": "mongoimport --db therapu --collection articleTypes --file ./db/articleTypes.json && mongoimport --db therapu --collection articles --file ./db/articles.json && mongoimport --db therapu --collection articles --file ./db/articles.json && mongoimport --db therapu --collection siteData --file ./db/siteData.json && mongoimport --db therapu --collection survey --file ./db/survey.json && mongoimport --db therapu --collection surveyResults --file ./db/surveyResults.json && mongoimport --db therapu --collection surveyTypes --file ./db/surveyTypes.json && mongoimport --db therapu --collection users --file ./db/users.json"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "~1.15.2",
     "compression": "^1.7.1",
     "connect-flash": "^0.1.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "eslint": "^4.15.0",
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-html": "^4.0.1"
   }
 }
