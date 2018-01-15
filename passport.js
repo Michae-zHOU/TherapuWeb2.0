@@ -9,6 +9,13 @@ function authenticate(req, email, password, done) {
     userCollection.findOne({
         email: email,
     }, function(err, user) {
+
+
+
+
+
+
+        
         if (!user || user.password !== password) {
             console.error('user not found');
             return done(null, false, req.flash('message', '登录失败，账号或密码错误'));
