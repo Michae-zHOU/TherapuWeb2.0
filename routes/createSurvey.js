@@ -39,13 +39,7 @@ router.post('/survey/new/generate', authorRequired, function(req, res, next) {
     var typeInfo = surveyInfo.type.split(',')
     var type = typeInfo[0]
     var py = typeInfo[1]
-    res.render('createSurvey', {
-        partials: {
-            header: '../views/partials/header',
-            footer: '../views/partials/footer',
-            head: '../views/partials/head',
-            scripts: '../views/partials/scripts'
-        },
+    res.render('createSurvey', {    
         title: '测试创建工具',
         surveyTitle: surveyInfo.title,
         surveyNumber: surveyInfo.number,

@@ -123,9 +123,23 @@
 {{>footer}}
 {{>scripts}}
 <script>
-				$.each($('.card-description'), function() {
-					$(this).text($(this).text().substr(0, 95))
-					var self = $(this).text()
-					$(this).text(self + '...')
-				})
-    </script>
+	$.each($('.card-description'), function() {
+		$(this).text($(this).text().substr(0, 95))
+		var self = $(this).text()
+		$(this).text(self + '...')
+	});
+
+		$.ajax({
+			url: '/articles',
+			method: 'get',
+			data: {
+				test:'test'
+			},
+			error: function(err) {
+					console.log(err)
+			},
+			success: function(response) {
+				console.log(response);					
+			}
+		})
+</script>

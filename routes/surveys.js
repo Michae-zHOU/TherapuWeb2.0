@@ -56,13 +56,7 @@ router.get('/survey/:id', function(req, res, next) {
                 });
             }
 
-            res.render('surveyDetail', {
-                partials: {
-                    header: '../views/partials/header',
-                    footer: '../views/partials/footer',
-                    head: '../views/partials/head',
-                    scripts: '../views/partials/scripts'
-                },
+            res.render('surveyDetail', {              
                 title: 'Home',
                 surveyData: JSON.stringify(surveyInfo),
                 survey: surveyInfo,
@@ -167,13 +161,7 @@ router.get('/surveys', function(req, res, next) {
                                                             .homePageBanner;
                                                         res
                                                             .render(
-                                                                'surveys', {
-                                                                    partials: {
-                                                                        header: '../views/partials/header',
-                                                                        head: '../views/partials/head',
-                                                                        scripts: '../views/partials/scripts',
-                                                                        footer: '../views/partials/footer'
-                                                                    },
+                                                                'surveys', {                                                                   
                                                                     featuredSurveys,
                                                                     allSurveys,
                                                                     popularSurveys,
@@ -302,13 +290,7 @@ router.get('/survey/result/:id', (req, res, next) => {
         }
 
         if (doc) {
-            res.render('surveyResult', {
-                partials: {
-                    header: '../views/partials/header',
-                    footer: '../views/partials/footer',
-                    head: '../views/partials/head',
-                    scripts: '../views/partials/scripts'
-                },
+            res.render('surveyResult', {              
                 title: 'Home',
                 surveyData: doc,
                 userName: doc.name ? doc.name : '亲',
@@ -342,13 +324,7 @@ router.get('/survey/edit/:id', authorRequired, function(req, res, next) {
             });
         }
 
-        res.render('editSurvey', {
-            partials: {
-                header: '../views/partials/header',
-                head: '../views/partials/head',
-                scripts: '../views/partials/scripts',
-                footer: '../views/partials/footer'
-            },
+        res.render('editSurvey', {           
             survey,
             title: 'Edit Survey',
             auth: function() {

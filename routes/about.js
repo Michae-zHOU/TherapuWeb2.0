@@ -7,13 +7,7 @@ var userCollection = db.collection('users');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('about', {
-        partials: {
-            header: '../views/partials/header',
-            head: '../views/partials/head',
-            scripts: '../views/partials/scripts',
-            footer: '../views/partials/footer',
-            },
+    res.render('about', {       
         title: 'about',
         auth: function() {
             if (req.user) {
@@ -23,13 +17,7 @@ router.get('/', function(req, res, next) {
     });
 });
 router.get('/waiver', function(req, res, next) {
-    res.render('waiver', {
-        partials: {
-            header: '../views/partials/header',
-            head: '../views/partials/head',
-            scripts: '../views/partials/scripts',
-            footer: '../views/partials/footer',
-            },
+    res.render('waiver', {       
         title: '法律声明',
         auth: function() {
             if (req.user) {
@@ -39,13 +27,7 @@ router.get('/waiver', function(req, res, next) {
     });
 });
 router.get('/copyright', function(req, res, next) {
-    res.render('copyright', {
-        partials: {
-            header: '../views/partials/header',
-            head: '../views/partials/head',
-            scripts: '../views/partials/scripts',
-            footer: '../views/partials/footer',
-            },
+    res.render('copyright', {     
         title: '版权及免责声明',
         auth: function() {
             if (req.user) {
@@ -55,13 +37,7 @@ router.get('/copyright', function(req, res, next) {
     });
 });
 router.get('/privacy', function(req, res, next) {
-    res.render('privacy', {
-        partials: {
-            header: '../views/partials/header',
-            head: '../views/partials/head',
-            scripts: '../views/partials/scripts',
-            footer: '../views/partials/footer',
-            },
+    res.render('privacy', {       
         title: '隐私权保护声明',
         auth: function() {
             if (req.user) {

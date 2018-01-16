@@ -66,13 +66,7 @@ router.get('/articles', function(req, res, next) {
     ];
 
     Promise.all(promises).then(function(results) {
-        res.render('articles', {
-            partials: {
-                header: '../views/partials/header',
-                head: '../views/partials/head',
-                scripts: '../views/partials/scripts',
-                footer: '../views/partials/footer'
-            },
+        res.render('articles', {           
             AllArticle: results[0],
             liangxingArticles: results[2],
             jiaoyuArticles: results[3],
@@ -102,13 +96,7 @@ router.get('/article/:id', function(req, res, next) {
                     views: -1
                 }).limit(4).exec()
                 .then(function(relatedStories) {
-                    res.render('article', {
-                        partials: {
-                            header: '../views/partials/header',
-                            footer: '../views/partials/footer',
-                            head: '../views/partials/head',
-                            scripts: '../views/partials/scripts'
-                        },
+                    res.render('article', {                      
                         title: '文章',
                         article,
                         relatedStories,
@@ -181,13 +169,7 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
             logger.error(err)
         }
         types = docs
-        res.render('createArticle', {
-            partials: {
-                header: '../views/partials/header',
-                footer: '../views/partials/footer',
-                head: '../views/partials/head',
-                scripts: '../views/partials/scripts'
-            },
+        res.render('createArticle', {          
             title: 'Home',
             types,
             auth: function() {
@@ -219,13 +201,7 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
             if (err) {
                 logger.error(err)
             }
-            res.render('editArticle', {
-                partials: {
-                    header: '../views/partials/header',
-                    footer: '../views/partials/footer',
-                    head: '../views/partials/head',
-                    scripts: '../views/partials/scripts'
-                },
+            res.render('editArticle', {               
                 articleId: id,
                 types,
                 articleTitle: article.title,

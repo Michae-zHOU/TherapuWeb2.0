@@ -21,6 +21,7 @@ var flash = require('connect-flash')
 var Ddos = require('ddos')
 var ddos = new Ddos({burst:60, limit:120})
 var compression = require('compression')
+var hjs = require('express-handlebars');
 
 require('passport');
 var app = express();
@@ -48,6 +49,12 @@ app.use((req, res, next) => {
     next()
 })
 // view engine setup
+
+app.engine('hjs', hjs({
+  extname: 'hjs',  
+  partialsDir: __dirname + '/views/partials/'
+}));
+//app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 app.use(session({ secret: "i love cookie", resave: false, rolling: true, saveUninitialized: false, cookie: {maxAage: 600000}}))

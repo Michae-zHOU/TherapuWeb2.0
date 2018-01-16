@@ -16,13 +16,7 @@ router.get('/', function(req, res, next) {
     ];
 
     Promise.all(promises).then(function(results) {
-        res.render('index', {
-            partials: {
-                header: '../views/partials/header',
-                head: '../views/partials/head',
-                scripts: '../views/partials/scripts',
-                footer: '../views/partials/footer'
-            },
+        res.render('index', {          
             monthlyArticles: results[0],
             carouselArticles: results[1],
             weeklyArticles: results[2],
@@ -35,6 +29,14 @@ router.get('/', function(req, res, next) {
             },
         });
     }).catch(next);
-})
+});
+
+// router.get('/articles', function(req, res, next){
+//     var dateSearch = new Date();
+//     dateSearch.setDate(dateSearch.getMonth());
+//     chatDB.Article.find({creationDateFormat: {'$gte': dateSearch}}).sort({creationDateFormat: -1, views: -1}).limit(3).exec().then(function(article) {
+//           res.json(article);                      
+//     }).catch(next);
+// });
 
 module.exports = router;

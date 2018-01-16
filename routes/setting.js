@@ -39,13 +39,7 @@ router.get('/authorSetting', authorRequired, function(req, res, next) {
                 console.error(err)
                 return
             }
-            res.render('setting', { 
-                partials: {
-                header: '../views/partials/header',
-                footer: '../views/partials/footer',
-                head: '../views/partials/head',
-                scripts: '../views/partials/scripts'
-            },
+            res.render('setting', {            
             title: 'Home',
             articles,
             surveys,
@@ -99,13 +93,7 @@ router.get('/setting', adminRequired, function(req, res, next) {
  
                         var homePageBannerData = siteData[0].homePageBanner
 
-                        res.render('setting', { 
-                            partials: {
-                            header: '../views/partials/header',
-                            footer: '../views/partials/footer',
-                            head: '../views/partials/head',
-                            scripts: '../views/partials/scripts'
-                        },
+                        res.render('setting', {                           
                         title: 'Home',
                         articles, 
                         surveys,
