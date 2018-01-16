@@ -59,6 +59,15 @@ router.post('/updatePrime', function(req, res, next) {
 
 var Article = require("../models/article");
 
+router.get('/get_week', function(req, res, next){
+    var dateSearch = new Date();
+    dateSearch.setDate(dateSearch.getMonth());
+    chatDB.Article.find({creationDateFormat: {'$gte': dateSearch}}).sort({creationDateFormat: -1, views: -1}).limit(3).exec().then(function(article) {
+          res.json(article);                      
+    }).catch(next);
+});
+
+
 router.get("/articles", function (req, res, next) {
    chatDB.Article.find({},'-author').exec()
     .then(function (articles) {

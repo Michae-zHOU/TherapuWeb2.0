@@ -2,144 +2,147 @@
 {{>header}}
 <link rel="stylesheet" href="../../stylesheets/index.css">
 <script>
-
-	//indicator for navbar 
-	$('.homeLink').addClass('active')
+   //indicator for navbar 
+   $('.homeLink').addClass('active')
 </script>
-
 <section class="homeContent">
-	<div class="row">
-            <div class="col-md-12 alertRow">
-                <div class="alert alert-success ">
-                        <div class="container">
-                            <div class="alert-icon">
-                                <i class="fa fa-info-circle"></i>
-                            </div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							</button>
-							<span>
-								温馨提示: {{siteData.homePageBanner}}
-							</span>
-						</div>
-                </div>
-			</div>
-			<input type="text" hidden value="{{siteData.homePageBanner}}" id="alert-text">
-			<script>
-				if ($('#alert-text').val() == '') {
-					$('.alert-success').hide()
-				}
-			</script>
-            <div class="col-md-6 no-gutter carousel-col">
-				<!-- Set up your HTML -->
-				<div class="owl-carousel owl-theme" id="sync1">
-					{{#carouselArticles}}
-						<a href="/article/{{_id}}">
-							<div class="item">
-								<img src="/assets/articles/{{articleImg.filename}}" alt="Awesome Image">
-								<div class="carousel-caption">
-									<h4>{{title}}</h4>
-								</div>
-							</div>
-						</a>
-					{{/carouselArticles}} 
-				</div>
-				<script>
-					
-						var sync1 = $("#sync1");
-						var syncedSecondary = true;
-
-						sync1.owlCarousel({
-							items : 1,
-							slideSpeed : 2000,
-							nav: true,
-							autoplay: true,
-							dots: true,
-							loop: true,
-							responsiveRefreshRate : 200,
-							navText: ['<i class="fa fa-arrow-left" aria-hidden="true"></i>', '<i class="fa fa-arrow-right" aria-hidden="true"></i>'],
-						});
-				</script>
+   <div class="row">
+      <div class="col-md-12 alertRow">
+         <div class="alert alert-success ">
+            <div class="container">
+               <div class="alert-icon">
+                  <i class="fa fa-info-circle"></i>
+               </div>
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               </button>
+               <span>
+               温馨提示: {{siteData.homePageBanner}}
+               </span>
             </div>
-            <div class="col-md-6 no-gutter">
-                        <div class="articleList">
-                            <h4 class="title">本月热门</h4>
-                            <div class="divider"></div>
-                            <ul>
-                                {{#monthlyArticles}}
-                                <li><a href="/article/{{_id}}"><h6>{{title}}</h6></a></li>
-                                {{/monthlyArticles}}
-                            </ul>
-                        </div>
-            </div>	
-        </div>
-	
-		<div class="row dailyArticleSection">
-			<div class="col-md-12">
-					<h3 class="title">每周精选</h3>
-					<div class="divider"></div>
-					{{#weeklyArticles}}
-					<div class="card card-plain card-blog">
-						<div class="row">
-							<div class="col-md-4 dailyArticleImage">
-								<a href="/article/{{_id}}">
-									<div class="card-image">
-										<img class="img img-raised" src="/assets/articles/{{articleImg.filename}}">
-									</div>
-								</a>
-							</div>
-							<div class="col-md-8 dailyArticleContent">
-								<h3 class="card-title">
-									<a href="/article/{{_id}}">{{title}}</a>
-								</h3>
-								<div class="card-info">
-									<h6 class="category text-info"><span class="label label-success">{{type}}</span></h6>
-									<p class="author" style="display: inline;">
-										{{created_at}}
-									<a href="">{{author}}</a>
-									</p>
-								</div>
-								<div>
-									<p class="card-description">
-										{{description}} 
-									</p>
-									<a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
-								</div>
-								<br>
-								<p class="views test" id="test">
-									阅读量： <b>{{views}}+</b>
-								</p>
-							</div>
-						</div>
-					</div>
-					{{/weeklyArticles}}
-				</div>
-		</div>
-
-
+         </div>
+      </div>
+      <input type="text" hidden value="{{siteData.homePageBanner}}" id="alert-text">
+      <script>
+         if ($('#alert-text').val() == '') {
+         	$('.alert-success').hide()
+         }
+      </script>
+      <div class="col-md-6 no-gutter carousel-col">
+         <!-- Set up your HTML -->
+         <div class="owl-carousel owl-theme" id="sync1">
+            {{#carouselArticles}}
+            <a href="/article/{{_id}}">
+               <div class="item">
+                  <img src="/assets/articles/{{articleImg.filename}}" alt="Awesome Image">
+                  <div class="carousel-caption">
+                     <h4>{{title}}</h4>
+                  </div>
+               </div>
+            </a>
+            {{/carouselArticles}} 
+         </div>
+         <script>
+            var sync1 = $("#sync1");
+            var syncedSecondary = true;
+            
+            sync1.owlCarousel({
+            	items : 1,
+            	slideSpeed : 2000,
+            	nav: true,
+            	autoplay: true,
+            	dots: true,
+            	loop: true,
+            	responsiveRefreshRate : 200,
+            	navText: ['<i class="fa fa-arrow-left" aria-hidden="true"></i>', '<i class="fa fa-arrow-right" aria-hidden="true"></i>'],
+            });
+         </script>
+      </div>
+      <div class="col-md-6 no-gutter">
+         <div class="articleList">
+            <h4 class="title">本月热门</h4>
+            <div class="divider"></div>
+            <ul>
+               {{#monthlyArticles}}
+               <li>
+                  <a href="/article/{{_id}}">
+                     <h6>{{title}}</h6>
+                  </a>
+               </li>
+               {{/monthlyArticles}}
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="row dailyArticleSection">
+      <div class="col-md-12">
+         <h3 class="title">每周精选</h3>
+         <div class="divider"></div>
+         <div id="weekArt"></div>
+      </div>
+   </div>
 </section>
-
-
-
 {{>footer}}
 {{>scripts}}
+<script id="entry-template" type="text/x-handlebars-template">
+  \{{#weekArts}}
+  <div class="card card-plain card-blog">
+   <div class="row">
+      <div class="col-md-4 dailyArticleImage">
+        <a href="/article/\{{_id}}">
+          <div class="card-image">
+            <img class="img img-raised" src="/assets/articles/\{{articleImg.filename}}">
+          </div>
+        </a>
+      </div>
+      <div class="col-md-8 dailyArticleContent">
+        <h3 class="card-title">
+          <a href="/article/{{_id}}">\{{title}}</a>
+        </h3>
+        <div class="card-info">
+          <h6 class="category text-info"><span class="label label-success">\{{type}}</span></h6>
+          <p class="author" style="display: inline;">
+            \{{created_at}}
+            <a href="">\{{author}}</a>
+          </p>
+        </div>
+        <div>
+          <p class="card-description">
+            \{{description}}
+          </p>
+          <a class="read-all" href="/article/{{_id}}"> 阅读全文 </a>
+        </div>
+        <br>
+        <p class="views test" id="test">
+          阅读量： <b>\{{views}}+</b>
+        </p>
+      </div>
+    </div>
+  </div>
+  \{{/weekArts}}
+</script>
 <script>
-	$.each($('.card-description'), function() {
-		$(this).text($(this).text().substr(0, 95))
-		var self = $(this).text()
-		$(this).text(self + '...')
-	});
+    $.each($('.card-description'), function() {
+        $(this).text($(this).text().substr(0, 95))
+        var self = $(this).text()
+        $(this).text(self + '...')
+    });
 
-		$.ajax({
-			url: '/articles',
-			method: 'get',
-			data: {
-				test:'test'
-			},
-			error: function(err) {
-					console.log(err)
-			},
-			success: function(response) {
-				console.log(response);					
-			}
-		})
+    $.ajax({
+        url: '/api/get_week',
+        method: 'get',
+        data: {
+            test: 'test'
+        },
+        error: function(err) {
+            console.log(err)
+        },
+        success: function(response) {
+            var source = document.getElementById("entry-template").innerHTML;
+            var template = Handlebars.compile(source);
+            var html = template({
+                weekArts: response
+            });
+            document.getElementById("weekArt").innerHTML = html;
+        }
+    })
 </script>
