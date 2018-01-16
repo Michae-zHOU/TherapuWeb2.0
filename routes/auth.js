@@ -12,13 +12,7 @@ var userCollection = db.collection('users');
 /* GET home page. */
 router.get('/login', function(req, res, next) {
 	
-   res.render('login', { 
-    partials: {
-      header: '../views/partials/header',
-      footer: '../views/partials/footer',
-	  head: '../views/partials/head',
-	  scripts: '../views/partials/scripts'
-    },
+   res.render('login', {    
     title: 'Home',
 	auth: function() {
             if (req.user) {
