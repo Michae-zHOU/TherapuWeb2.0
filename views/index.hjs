@@ -4,6 +4,7 @@
 <script>
    //indicator for navbar 
    $('.homeLink').addClass('active')
+   var pgNum = 1;
 </script>
 <section class="homeContent">
    <div class="row">
@@ -77,7 +78,10 @@
       <div class="col-md-12">
          <h3 class="title">每周精选</h3>
          <div class="divider"></div>
-         <div id="weekArt"></div>
+         <div id="weekArt"></div>                 
+      </div>
+      <div class="col-md-12 text-center"> 
+         <button id="read_more" type="button" class="btn btn-primary">阅读更多</button>
       </div>
    </div>
 </section>
@@ -131,18 +135,39 @@
         url: '/api/get_week',
         method: 'get',
         data: {
-            test: 'test'
+            pg: pgNum++            
         },
         error: function(err) {
             console.log(err)
         },
         success: function(response) {
-            var source = document.getElementById("entry-template").innerHTML;
+            var source = $('#entry-template').html();
             var template = Handlebars.compile(source);
             var html = template({
                 weekArts: response
             });
-            document.getElementById("weekArt").innerHTML = html;
+             $('#weekArt').html(html);
         }
     })
+
+    $( "#read_more" ).click(function() {        
+       $.ajax({
+           url: '/api/get_week',
+           method: 'get',
+           data: {
+               pg: pgNum++            
+           },
+           error: function(err) {
+               console.log(err)
+           },
+           success: function(response) {
+               var source = $('#entry-template').html();
+               var template = Handlebars.compile(source);
+               var html = template({
+                   weekArts: response
+               });
+                $('#weekArt').append(html);
+           }
+       })
+   });
 </script>

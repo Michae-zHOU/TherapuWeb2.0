@@ -57,12 +57,21 @@ router.post('/updatePrime', function(req, res, next) {
     res.redirect('/setting');  
 })
 
-var Article = require("../models/article");
-
 router.get('/get_week', function(req, res, next){
+    var pageNo = parseInt(req.query.pg)
+    var size = 3
+    var query = {}
+    if(pageNo < 0 || pageNo === 0 || pageNo > 50 || size > 20) {
+        response = {"error" : true,"message" : "invalid page number, should start with 1"};
+        return res.json(response)
+    }
+    query.skip = size * (pageNo - 1)
+    query.limit = size 
+
     var dateSearch = new Date();
     dateSearch.setDate(dateSearch.getMonth());
-    chatDB.Article.find({creationDateFormat: {'$gte': dateSearch}}).sort({creationDateFormat: -1, views: -1}).limit(3).exec().then(function(article) {
+    //chatDB.Article.find({creationDateFormat: {'$gte': dateSearch}}).sort({creationDateFormat: -1, views: -1}).exec().then(function(article) {
+    chatDB.Article.find().sort({creationDateFormat: -1, views: -1}).limit(query.limit).skip(query.skip).exec().then(function(article) {
           res.json(article);                      
     }).catch(next);
 });
@@ -158,25 +167,6 @@ router.get('/delete/user/:id', adminRequired, function(req, res, next) {
         res.json(removedUser)
     })
 })
-// router.get('/articles', function(req, res, next) { 
-//     var pageNo = parseInt(req.query.pg)
-//     var size = parseInt(req.query.size)
-//     var query = {}
-//     if(pageNo < 0 || pageNo === 0) {
-//         response = {"error" : true,"message" : "invalid page number, should start with 1"};
-//         return res.json(response)
-//     }
-//     query.skip = size * (pageNo - 1)
-//     query.limit = size 
-//     // Find some documents
-//     articleCollection.find().skip(query.skip).sort({priority: -1}).limit(query.limit, function(err, primes) {       
-//         if (err) {
-//             res.send(err)
-//         }     
-      
-//         res.json(primes)
-//     })
-// })
 
 // create a new user
 router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
