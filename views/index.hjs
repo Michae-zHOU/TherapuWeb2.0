@@ -100,7 +100,7 @@
       </div>
       <div class="col-md-8 dailyArticleContent">
         <h3 class="card-title">
-          <a href="/article/{{_id}}">\{{title}}</a>
+          <a href="/article/\{{_id}}">\{{title}}</a>
         </h3>
         <div class="card-info">
           <h6 class="category text-info"><span class="label label-success">\{{type}}</span></h6>
