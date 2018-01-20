@@ -9,25 +9,25 @@
         <div class="col-md-8 col-md-offset-2"> <h1>修改文章</h1>
         </div>
        
-        <form action="/edit/article/{{articleId}}" method="post">
-            <input type="text" id="articleId" data-api="/article/edit/{{articleId}}" name="id" hidden>
-            <input type="text" id="articleType" name="articleType" value="{{articleType}},{{articlePy}}" hidden>         
+        <form method="post">
+            <input type="text" id="articleId" data-api="/article/edit/{{article.id}}" name="id" hidden>
+            <input type="text" id="articleType" name="articleType" value="{{article.type}},{{article.typeIdentifier}}" hidden>         
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
-                            <input type="text" value="{{articleTitle}}" class="form-control" name="title" id="title" required>
+                            <input type="text" value="{{article.title}}" class="form-control" name="title" id="title" required>
                             <span class="material-input"></span>
                     </div>
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
-                        <input type="text" value="{{articleAuthor}}" placeholder="作者名字" class="form-control" name="author">
+                        <input type="text" value="{{article.author}}" placeholder="作者名字" class="form-control" name="author">
                         <span class="material-input"></span>
                     </div>
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group is-empty">
-                            <input type="text" value="{{articleDescription}}" class="form-control" id="description" name="description" required>
+                            <input type="text" value="{{article.description}}" class="form-control" id="description" name="description" required>
                             <span class="material-input"></span>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group label-floating is-empty noMarginInput">
-                        <textarea id="article" class="form-control" rows="5" name="article" required>{{articleBody}}</textarea>
+                        <textarea id="article" class="form-control" rows="5" name="article" required>{{article.article}}</textarea>
                         <span class="material-input"></span>
                     </div>
                 </div>

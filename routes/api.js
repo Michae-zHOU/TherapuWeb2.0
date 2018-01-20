@@ -89,20 +89,19 @@ router.get("/articlesP", function (req, res, next) {
     var offset =  parseInt(req.query.offset) || 0,
         limit =  parseInt(req.query.limit) || 800,      
         search = req.query.search || '',
-        name = req.query.sort,
-        order = req.query.order || 'asc',
-
-                i,
-        max = offset + limit,
-        rows = [],
+        name = req.query.sort || 'created_at',
+        order = req.query.order || 'desc',
+        sort = {},  
         result = {
                     total: req.query.total || 800,
                     rows: []
                 };
 
+    sort[name] = order;
+
     var promises = [    
       chatDB.Article.count({}).exec(),
-      chatDB.Article.find({'title': {'$regex': search}},'-author').skip(offset).limit(limit).exec()  
+      chatDB.Article.find({'title': {'$regex': search}},'-author').sort(sort).skip(offset).limit(limit).exec()  
     ];
 
     Promise.all(promises).then(function(results) {

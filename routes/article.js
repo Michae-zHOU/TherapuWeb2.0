@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var logger = require('../logger');
 var multer = require('multer')
-var mongojs = require('mongojs');
-var db = require('../db')
 var chatDB = require("../chatDB");
 const Promise = require('bluebird');
 
@@ -44,11 +42,29 @@ function adminRequired(req, res, next) {
     next()
 }
 
-var userCollection = db.collection('users');
-var surveyCollection = db.collection('survey');
-var surveyResultsCollection = db.collection('surveyResults');
-var articleTypes = db.collection('articleTypes')
-var siteDataCollection = db.collection('siteData')
+function articleFromRequestBody(article, req) {
+        var content = req.body
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+        var newdate = year + " 年 " + month + " 月 " + day + " 日 ";
+        var typeArray = content.type.split(',');
+        var authorShown = content.author === ''? req.user.fullName : content.author;
+
+         article.creator = req.user;
+         article.author= authorShown;
+         article.article= content.article;
+         article.title= content.title;
+         article.description = content.description ? content.description : '';
+         article.creationDateFormat = new Date();
+         article.created_at = newdate;
+         article.typeIdentifier = typeArray[1];
+         article.type = typeArray[0];
+         article.articleImg = req.file;
+         article.views = 0;
+         article.priority= 0;
+}
 
 router.get('/articles', function(req, res, next) {
     var promises = [    
@@ -117,30 +133,6 @@ router.post('/create/article', authorRequired, upload.single('img'), function(re
     article.save().then(() => res.redirect('/articles')).catch(next);
 })
 
-function articleFromRequestBody(article, req) {
-        var content = req.body
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-        var newdate = year + " 年 " + month + " 月 " + day + " 日 ";
-        var typeArray = content.type.split(',');
-        var authorShown = content.author === ''? req.user.fullName : content.author;
-
-         article.creator = req.user;
-         article.author= authorShown;
-         article.article= content.article;
-         article.title= content.title;
-         article.description = content.description ? content.description : '';
-         article.creationDateFormat = new Date();
-         article.created_at = newdate;
-         article.typeIdentifier = typeArray[1];
-         article.type = typeArray[0];
-         article.articleImg = req.file;
-         article.views = 0;
-         article.priority= 0;
-}
-
 router.post('/uploader', function(req, res, next){
     uploadCKEditorImg(req, res, function(err){
         if(err){
@@ -161,7 +153,6 @@ router.post('/uploader', function(req, res, next){
     });
 }); 
 
-/* GET home page. */
 router.get('/article/new/create', authorRequired, function(req, res, next) {
     var types;
     articleTypes.find(function(err, docs) {
@@ -182,67 +173,41 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
     })
 })
 
-/* Load Data to Edit Article Page */
-router.get('/article/edit/:id', authorRequired, (req, res, next) => {
-
-     chatDB.Article.findById(req.params.id, '-author').exec().then(
-              res.render('editArticle', {               
-                articleId: id,
-                types,
-                articleTitle: article.title,
-                articleAuthor: article.author,
-                articleCreator: article.creator,
-                articleDescription: article.description,
-                articleBody: article.article,
-                //articleImg: article.articleImg,            
-                articleType: article.type,
-                articlePy: article.typeIdentifier,
-                auth: function() {
-                    if (req.user) {
-                        return req.user.admin
-                    }
-                },
-            })
-
-
-        )
-        .catch(next);
-})
-
 /* Post Data from Edit Article Page to DB */
-router.post('/edit/article/:id', authorRequired, (req, res, next) => {
-    const {
-        id
-    } = req.params;
-    const article = req.body;
-    var typeArray = article.type.split(',')
-
-    articleCollection.findOne({ _id: mongojs.ObjectId(id) }, function(err, original) {
-        articleCollection.update({
-            _id: mongojs.ObjectId(id)
-        }, {
-            $set:{
-                title: article.title, 
-                author: article.author,      
-                article: article.article,
-                description: article.description,
-                //creationDateFormat: original.creationDateFormat,          
-                //typeIdentifier: original.typeIdentifier,
-                //type: original.type,
-                typeIdentifier: typeArray[1],
-                type: typeArray[0],
-                //articleImg: original.articleImg,   
-            }             
-        }, function(err, updatedArticle) {
-            if (err) {
-                logger.error(err)
-            }
+router.route('/article/edit/:id').all(function(req, res, next) {
+    var id = req.params.id;
+    chatDB.Article.findById(id).exec()
+        .then(article => {
             if (!article) {
-                logger.error('document not updated!')
+                res.sendStatus(404);
+                return;
             }
-            res.redirect(`/article/${id}`)
+            res.locals.article = article;
+            next()
+        }).catch(next);
+    })
+    .get(function(req, res) {
+        res.render('editArticle', {
+            article: res.locals.article,
+            auth: function() {
+                if (req.user) {
+                    return req.user.admin
+                }
+            },
         })
     })
-})
+    .post(function(req, res, next) {
+        articleFromRequestBody(res.locals.article, req);
+        res.locals.article.save()
+            .then(() => res.redirect("/article/" + res.locals.article.id))
+            .catch(error => {
+                if (error.name === "ValidationError") {
+                    res.locals.errors = error.errors;
+                    res.render("/edit/article");
+                    return;
+                }
+                next(error);
+            });
+    });
 
 module.exports = router;
