@@ -10,10 +10,12 @@ mongoose.connect(url);
 mongoose.set('debug', true);
 
 var Article = require("./models/article");
+var ArticleType = require("./models/articleType");
 var SiteData = require("./models/siteData");
 module.exports = {
   connect,
   Article,
+  ArticleType,
   SiteData,
   close: function () {
     connect.then(db => db.close());

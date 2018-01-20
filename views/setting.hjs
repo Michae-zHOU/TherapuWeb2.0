@@ -19,7 +19,7 @@
                 <div class="tab-pane active" id="articleManagement">                  
                     <div class="table-responsive"> 
                     <div id="toolbar">
-                        <a href="/article/new/create" class="createArticle">
+                        <a href="/article/new" class="createArticle">
                         <i class="material-icons">dns</i> 添加文章
                         </a>
                     </div>                      
@@ -263,7 +263,7 @@
                         sortable: true,           
                     },{
                         title: '发布时间',
-                        field: 'created_at',                     
+                        field: 'creationDateFormat',                     
                         align: 'left',
                         valign: 'middle',
                         sortable: true,                     

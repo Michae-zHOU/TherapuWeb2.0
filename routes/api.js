@@ -89,7 +89,7 @@ router.get("/articlesP", function (req, res, next) {
     var offset =  parseInt(req.query.offset) || 0,
         limit =  parseInt(req.query.limit) || 800,      
         search = req.query.search || '',
-        name = req.query.sort || 'created_at',
+        name = req.query.sort || 'creationDateFormat',
         order = req.query.order || 'desc',
         sort = {},  
         result = {

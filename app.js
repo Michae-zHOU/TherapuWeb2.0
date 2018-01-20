@@ -65,7 +65,7 @@ app.use(cors());
 app.use('/', index);
 app.use('/users', users);
 app.use('/', authRoute);
-app.use('/', article);
+app.use('/article', article);
 app.use('/about', about);
 app.use('/', surveys);
 app.use('/', createSurvey);

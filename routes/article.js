@@ -66,7 +66,29 @@ function articleFromRequestBody(article, req) {
          article.priority= 0;
 }
 
-router.get('/articles', function(req, res, next) {
+router.route('/new', authorRequired).all(function(req, res, next) {
+    chatDB.ArticleType.find({}).exec()
+        .then(types => {
+            res.locals.types = types;
+            next()
+        }).catch(next);
+}).get(function(req, res) {
+    res.render('createArticle', {
+        types: res.locals.types,
+        auth: function() {
+            if (req.user) {
+                return req.user.admin
+            }
+        },
+        user: req.user
+    })
+}).post(authorRequired, upload.single('img'), function(req, res, next) {
+    var article = new chatDB.Article();
+    articleFromRequestBody(article, req);
+    article.save().then(() => res.redirect('/setting')).catch(next);
+});
+
+router.get('/', function(req, res, next) {
     var promises = [    
       chatDB.Article.find({}).sort({creationDateFormat: -1}).exec(),            // [0] all article
       chatDB.Article.find({}).sort({views: -1}).limit(5).exec(),                // [1] carouselArticles
@@ -104,7 +126,7 @@ router.get('/articles', function(req, res, next) {
     }).catch(next);
 })
 
-router.get('/article/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     chatDB.Article.findById(req.params.id, '-author').exec().then(function(article) {
             chatDB.Article.find({
                     type: article.type
@@ -127,54 +149,8 @@ router.get('/article/:id', function(req, res, next) {
         .catch(next);
 })
 
-router.post('/create/article', authorRequired, upload.single('img'), function(req, res, next) {
-    var article = new chatDB.Article();
-    articleFromRequestBody(article, req);
-    article.save().then(() => res.redirect('/articles')).catch(next);
-})
-
-router.post('/uploader', function(req, res, next){
-    uploadCKEditorImg(req, res, function(err){
-        if(err){
-            var result = {
-                "uploaded": 0,
-                "error": {
-                    "message" : "The file is too large."
-                }
-            }
-            return res.send(result);
-        };
-        var result = {
-            "uploaded" : 1,
-            "fileName": req.file.filename,
-            "url": "/assets/articles/" + req.file.filename,
-        };
-        res.send(result);
-    });
-}); 
-
-router.get('/article/new/create', authorRequired, function(req, res, next) {
-    var types;
-    articleTypes.find(function(err, docs) {
-        if (err) {
-            logger.error(err)
-        }
-        types = docs
-        res.render('createArticle', {          
-            title: 'Home',
-            types,
-            auth: function() {
-                if (req.user) {
-                    return req.user.admin
-                }
-            },
-            user: req.user
-        })
-    })
-})
-
 /* Post Data from Edit Article Page to DB */
-router.route('/article/edit/:id').all(function(req, res, next) {
+router.route('/edit/:id', authorRequired).all(function(req, res, next) {
     var id = req.params.id;
     chatDB.Article.findById(id).exec()
         .then(article => {
@@ -209,5 +185,25 @@ router.route('/article/edit/:id').all(function(req, res, next) {
                 next(error);
             });
     });
+
+router.post('/uploader', function(req, res, next){
+    uploadCKEditorImg(req, res, function(err){
+        if(err){
+            var result = {
+                "uploaded": 0,
+                "error": {
+                    "message" : "The file is too large."
+                }
+            }
+            return res.send(result);
+        };
+        var result = {
+            "uploaded" : 1,
+            "fileName": req.file.filename,
+            "url": "/assets/articles/" + req.file.filename,
+        };
+        res.send(result);
+    });
+}); 
 
 module.exports = router;

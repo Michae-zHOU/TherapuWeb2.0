@@ -6,7 +6,7 @@
    $('.articleLink').addClass('active')
 </script>
 <section class="createArticle">
-   <form action="/create/article" method="post" enctype="multipart/form-data">
+   <form method="post" enctype="multipart/form-data">
       <div class="row">
          <div class="col-md-8 col-md-offset-2">
             <div class="form-group is-empty articleTitleGroup">
