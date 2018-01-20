@@ -18,4 +18,6 @@ var schema = new mongoose.Schema({
   priority: Number,
 }, schemaOptions);
 
+schema.index({title: 'text'});
+
 module.exports = mongoose.model("article", schema);

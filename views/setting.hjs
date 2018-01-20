@@ -4,51 +4,42 @@
 <section class="settingSection">
     <div class="row">
         <div class="col-md-2">
+            
             <ul class="nav nav-pills nav-pills-rose nav-stacked">
-                <li class="active"><a href="#articleManagement" data-toggle="tab" aria-expanded="true">文章管理</a></li>
-                <li class=""><a href="#surveyManagement" data-toggle="tab" aria-expanded="false">测试管理</a></li>
-                <li class="pageSetting"><a href="#pageManagement" data-toggle="tab" aria-expanded="false">页面管理</a></li>
-                <li class="userSetting"><a href="#userManagement" data-toggle="tab" aria-expanded="false">用户管理</a></li>
-                <li class="primeSetting"><a href="#primeManagement" data-toggle="tab" aria-expanded="false">轮转文章管理</a></li>
+                <li class="active"><a  href="#articleManagement" data-toggle="tab">文章管理</a></li>
+                <li><a href="#surveyManagement" data-toggle="tab" >测试管理</a></li>
+                <li><a href="#pageManagement" data-toggle="tab" >页面管理</a></li>
+                <li><a href="#userManagement" data-toggle="tab">用户管理</a></li>
+                <li><a href="#primeManagement" data-toggle="tab" ">轮转文章管理</a></li>
             </ul>
+         
         </div>
         <div class="col-md-10">
             <div class="tab-content">
-                <div class="tab-pane active" id="articleManagement">
-                    <h3>文章管理</h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>标题</th>
-                                    <th>创建者</th>
-                                    <th>作者</th>
-                                    <th>点击量</th>
-                                    <th>发布时间</th> 
-                                    <th class="text-right">标签</th>
-                                    <th class="text-right">操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#articles}}
-                                <tr>
-                                    <td class="title"><a href="/article/{{_id}}">{{title}}</a></td>
-                                    <td>{{creator.fullName}}</td>
-                                    <td>{{author}}</td>
-                                    <td>{{views}}+</td>
-                                    <td>{{created_at}}</td>
-                                    <td class="text-right">{{type}}</td>
-                                    <td class="td-actions text-right">
-                                        <a href="/article/edit/{{_id}}" data-api="/api/edit/article/{{_id}}" type="button" rel="tooltip" class="btn btn-success btn-simple editBtn">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                        <a data-api="/api/delete/article/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
-                                            <i class="material-icons">close</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                {{/articles}}
-                            </tbody>
+                <div class="tab-pane active" id="articleManagement">                  
+                    <div class="table-responsive"> 
+                    <div id="toolbar">
+                        <a href="/article/new/create" class="createArticle">
+                        <i class="material-icons">dns</i> 添加文章
+                        </a>
+                    </div>                      
+                        <table id="table"
+                               data-toolbar="#toolbar"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-show-columns="true"                           
+                               data-detail-view="true"                            
+                               data-minimum-count-columns="2"
+                               data-show-pagination-switch="true"
+                               data-pagination="true"
+                               data-id-field="id"
+                               data-page-list="[10, 25, 50, 100, ALL]"
+                               data-show-footer="false"
+                               data-side-pagination="server"
+                               data-url="/api/articlesP"
+                               data-sort-order = "desc"
+                               data-page-size=15>
                         </table>
                     </div>
                 </div>
@@ -244,26 +235,202 @@
   </div>
 </div>
 <script>
+    var $table = $('#table'),
+        $remove = $('#remove'),
+        selections = [];
 
+    function initTable() {
+        $table.bootstrapTable({           
+            columns: [
+                [
+                {
+                        title: '标题',
+                        field: 'title',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,                        
+                    }, {
+                        title: '作者',
+                        field: 'author',                     
+                        align: 'center',
+                        valign: 'middle',
+                        sortable: true,    
+                    },{
+                        title: '点击量',
+                        field: 'views',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,           
+                    },{
+                        title: '发布时间',
+                        field: 'created_at',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,                     
+                    },{
+                        title: '标签',
+                        field: 'type',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,
+                    
+                    },{                       
+                        title: '操作',     
+                        align: 'center',
+                        events: operateEvents,
+                        formatter: operateFormatter
+                    }
+                ]
+            ]
+        });
+        // sometimes footer render error.
+        setTimeout(function () {
+            $table.bootstrapTable('resetView');
+        }, 200);
+        $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
 
-    $('.deleteBtn').click(function() {
-        var self = $(this)
-        $('#confirmModal').modal()
-        $('#confirm').click(function() {
-            console.log('hit')
-            var apiUrl = self.attr('data-api')
-            var title = self.parent().siblings('.title')[0].innerText;
-            console.log(apiUrl)
-            $.ajax({
-                url: apiUrl,
-                type: 'get',
-                success: function(result) {
-                    self.parent().parent().hide()
-                    $('#confirmModal').modal('hide')
+            // save your data, here just save the current page
+            selections = getIdSelections();
+            // push or splice the selections if you want to save all data selections
+        });
+        $table.on('expand-row.bs.table', function (e, index, row, $detail) {                  
+            $detail.html(row.article);
+        });
+
+        $remove.click(function () {
+            var ids = getIdSelections();
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            });
+            $remove.prop('disabled', true);
+        });
+        $(window).resize(function () {
+            // $table.bootstrapTable('resetView', {
+            //     height: getHeight()
+            // });
+        });
+    }
+
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.id
+        });
+    }
+
+    function responseHandler(res) {
+        $.each(res.rows, function (i, row) {
+            row.state = $.inArray(row.id, selections) !== -1;
+        });
+        return res;
+    }
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="edit" href="javascript:void(0)" title="编辑">',
+            '<i class="glyphicon glyphicon-edit"></i>',
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="删除">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+    window.operateEvents = {
+        'click .edit': function (e, value, row, index) {
+              window.location.replace("/article/edit/" + row._id);                    
+        },
+        'click .remove': function (e, value, row, index) {
+            var self = $(this)
+            $('#confirmModal').modal()
+            $('#confirm').click(function() {                                                
+                $.ajax({
+                    url: '/api/delete/article/' + row._id,
+                    type: 'get',
+                    success: function(result) {
+                        self.parent().parent().hide()
+                        $('#confirmModal').modal('hide')
+                    }
+                });
+            });            
+        }
+    };
+
+    function getHeight() {
+         return $(window).height() - $('h3').outerHeight(true);      
+    }
+
+    $(function () {
+        var scripts = [
+                location.search.substring(1) || '../../javascripts/bootstrap-table/src/bootstrap-table.js',
+                '../../javascripts/bootstrap-table/src/extensions/export/bootstrap-table-export.js',
+                'http://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js',
+                '../../javascripts/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js',
+                'http://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js'
+            ],
+            eachSeries = function (arr, iterator, callback) {
+                callback = callback || function () {};
+                if (!arr.length) {
+                    return callback();
                 }
-            })
-        })
-    })
+                var completed = 0;
+                var iterate = function () {
+                    iterator(arr[completed], function (err) {
+                        if (err) {
+                            callback(err);
+                            callback = function () {};
+                        }
+                        else {
+                            completed += 1;
+                            if (completed >= arr.length) {
+                                callback(null);
+                            }
+                            else {
+                                iterate();
+                            }
+                        }
+                    });
+                };
+                iterate();
+            };
+
+        eachSeries(scripts, getScript, initTable);
+    });
+
+    function getScript(url, callback) {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.src = url;
+
+        var done = false;
+        // Attach handlers for all browsers
+        script.onload = script.onreadystatechange = function() {
+            if (!done && (!this.readyState ||
+                    this.readyState == 'loaded' || this.readyState == 'complete')) {
+                done = true;
+                if (callback)
+                    callback();
+
+                // Handle memory leak in IE
+                script.onload = script.onreadystatechange = null;
+            }
+        };
+
+        head.appendChild(script);
+
+        // We handle everything using the script element injection
+        return undefined;
+    }
+</script>
+
+
+
+
+
+<script>
+   
    $('#changeBannerBtn').click(function() {
        var newBanner = $('#mainPageBanner').val();
        var self = $(this)

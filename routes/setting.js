@@ -6,6 +6,8 @@ var articleCollection = db.collection('articles')
 var surveyCollection = db.collection('survey')
 var siteDataCollection = db.collection('siteData')
 var usersCollection = db.collection('users')
+var chatDB = require("../chatDB");
+
 function authorRequired(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')

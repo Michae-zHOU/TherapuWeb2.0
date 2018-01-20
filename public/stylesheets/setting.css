@@ -1,5 +1,5 @@
 .settingSection {
-    margin: 10%;
+    margin: 60px 10% 10% 10%;
     background-color: white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     min-height: 200px;
@@ -33,3 +33,9 @@
     width: 40%;
     display: inline-block;
 }
+
+/*.nav-pills .active {
+   background-color: #e91e63 !important;
+   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(233, 30, 99, .6);
+   color: #FFF;
+}*/
