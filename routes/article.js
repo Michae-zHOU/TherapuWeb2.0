@@ -184,24 +184,9 @@ router.get('/article/new/create', authorRequired, function(req, res, next) {
 
 /* Load Data to Edit Article Page */
 router.get('/article/edit/:id', authorRequired, (req, res, next) => {
-    const {
-        id
-    } = req.params;
-    articleCollection.findOne({
-        _id: mongojs.ObjectId(id)
-    }, function(err, article) {
-        if (err) {
-            logger.error(err)
-        }
-        if (!article) {
-            logger.error('document not found!')
-        }
-        
-        articleTypes.find(function(err, types) {
-            if (err) {
-                logger.error(err)
-            }
-            res.render('editArticle', {               
+
+     chatDB.Article.findById(req.params.id, '-author').exec().then(
+              res.render('editArticle', {               
                 articleId: id,
                 types,
                 articleTitle: article.title,
@@ -218,8 +203,10 @@ router.get('/article/edit/:id', authorRequired, (req, res, next) => {
                     }
                 },
             })
-        })
-    })
+
+
+        )
+        .catch(next);
 })
 
 /* Post Data from Edit Article Page to DB */
