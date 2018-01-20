@@ -13,16 +13,30 @@ var siteDataCollection = db.collection('siteData')
 var userCollection = db.collection('users')
 var crypt = require('../crypt');
 var multer  = require('multer')
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/assets/users/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}${file.originalname}`)
-  }
-})
 
-var upload = multer({ storage: storage })
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/assets/articles/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, `${Date.now()}${file.originalname}`)
+    }
+});
+
+var upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000 // 1MB
+    }
+});
+
+var uploadCKEditorImg = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000 // 1MB
+    }
+}).single('upload');
+
 function authorRequired(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return res.redirect('/login')
@@ -89,7 +103,7 @@ router.get("/articlesP", function (req, res, next) {
     var offset =  parseInt(req.query.offset) || 0,
         limit =  parseInt(req.query.limit) || 800,      
         search = req.query.search || '',
-        name = req.query.sort || 'created_at',
+        name = req.query.sort || 'creationDateFormat',
         order = req.query.order || 'desc',
         sort = {},  
         result = {
@@ -110,6 +124,34 @@ router.get("/articlesP", function (req, res, next) {
           res.json(result);
     }).catch(next);
 });
+
+
+router.get("/users", adminRequired, function (req, res, next) {
+    var offset =  parseInt(req.query.offset) || 0,
+        limit =  parseInt(req.query.limit) || 800,      
+        search = req.query.search || '',
+        name = req.query.sort || 'creationDateFormat',
+        order = req.query.order || 'desc',
+        sort = {},  
+        result = {
+                    total: req.query.total || 800,
+                    rows: []
+                };
+
+    sort[name] = order;
+
+    var promises = [    
+      chatDB.User.count({}).exec(),
+      chatDB.User.find({'email': {'$regex': search}}).sort(sort).skip(offset).limit(limit).exec()  
+    ];
+
+    Promise.all(promises).then(function(results) {
+          result.total = results[0];
+          result.rows = results[1];
+          res.json(result);
+    }).catch(next);
+});
+
 
 router.get("/articles/:articleId", function (req, res, next) {
    chatDB.Article.findbyId({_id: req.params.id}).exec()
@@ -234,8 +276,31 @@ router.post('/register', adminRequired, upload.single('avatar'), function(req, r
     })
 })
 
+router.post('/uploader', adminRequired,  function(req, res, next){  
+    uploadCKEditorImg(req, res, function(err){
+        if(err){
+            var result = {
+                "uploaded": 0,
+                "error": {
+                    "message" : "The file is too large."
+                }
+            }
+            return res.send(result);
+        };
+     
+        var result = {
+            "uploaded" : 1,
+            "fileName": req.file.filename,
+            "url": "/assets/articles/" + req.file.filename,
+        };
+        res.send(result);
+    });
+}); 
+
+
 router.get('/session', function(req,res,next) {
     res.json(req.session)
 })
+
 
 module.exports = router;

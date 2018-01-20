@@ -23,7 +23,7 @@
                   </a>
                </li>
                <li>
-                  <a href="/articles" class="articleLink">
+                  <a href="/article" class="articleLink">
                   文章
                   </a>
                </li>
@@ -39,7 +39,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-with-icons">
                      <li>
-                        <a href="/article/new/create" class="createArticle">
+                        <a href="/article/new" class="createArticle">
                         <i class="material-icons">dns</i> 添加文章
                         </a>
                      </li>
@@ -84,7 +84,7 @@
             </a>
          </li>
          <li>
-            <a href="/articles" class="articleLink">
+            <a href="/article" class="articleLink">
             文章
             </a>
          </li>
@@ -100,7 +100,7 @@
             </a>
             <ul class="dropdown-menu dropdown-with-icons">
                <li>
-                  <a href="/article/new/create" class="createArticle">
+                  <a href="/article/new" class="createArticle">
                   <i class="material-icons">dns</i> 添加文章
                   </a>
                </li>
