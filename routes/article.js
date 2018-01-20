@@ -21,13 +21,6 @@ var upload = multer({
     }
 });
 
-var uploadCKEditorImg = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1000000 // 1MB
-    }
-}).single('upload');
-
 function authorRequired(req, res, next) {
     if (!req.isAuthenticated()) {
         return res.redirect('/login')
@@ -72,7 +65,8 @@ router.route('/new', authorRequired).all(function(req, res, next) {
             res.locals.types = types;
             next()
         }).catch(next);
-}).get(function(req, res) {
+    })
+   .get(authorRequired, function(req, res) {
     res.render('createArticle', {
         types: res.locals.types,
         auth: function() {
@@ -80,9 +74,9 @@ router.route('/new', authorRequired).all(function(req, res, next) {
                 return req.user.admin
             }
         },
-        user: req.user
+        user: req.user})
     })
-}).post(authorRequired, upload.single('img'), function(req, res, next) {
+   .post(authorRequired, upload.single('img'), function(req, res, next) {
     var article = new chatDB.Article();
     articleFromRequestBody(article, req);
     article.save().then(() => res.redirect('/setting')).catch(next);
@@ -162,7 +156,7 @@ router.route('/edit/:id', authorRequired).all(function(req, res, next) {
             next()
         }).catch(next);
     })
-    .get(function(req, res) {
+    .get(authorRequired, function(req, res) {
         res.render('editArticle', {
             article: res.locals.article,
             auth: function() {
@@ -172,7 +166,7 @@ router.route('/edit/:id', authorRequired).all(function(req, res, next) {
             },
         })
     })
-    .post(function(req, res, next) {
+    .post(authorRequired, function(req, res, next) {
         articleFromRequestBody(res.locals.article, req);
         res.locals.article.save()
             .then(() => res.redirect("/article/" + res.locals.article.id))
@@ -185,25 +179,5 @@ router.route('/edit/:id', authorRequired).all(function(req, res, next) {
                 next(error);
             });
     });
-
-router.post('/uploader', function(req, res, next){
-    uploadCKEditorImg(req, res, function(err){
-        if(err){
-            var result = {
-                "uploaded": 0,
-                "error": {
-                    "message" : "The file is too large."
-                }
-            }
-            return res.send(result);
-        };
-        var result = {
-            "uploaded" : 1,
-            "fileName": req.file.filename,
-            "url": "/assets/articles/" + req.file.filename,
-        };
-        res.send(result);
-    });
-}); 
 
 module.exports = router;

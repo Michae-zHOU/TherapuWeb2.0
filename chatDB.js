@@ -12,11 +12,13 @@ mongoose.set('debug', true);
 var Article = require("./models/article");
 var ArticleType = require("./models/articleType");
 var SiteData = require("./models/siteData");
+var User = require("./models/user");
 module.exports = {
   connect,
   Article,
   ArticleType,
   SiteData,
+  User,
   close: function () {
     connect.then(db => db.close());
     mongoose.disconnect();

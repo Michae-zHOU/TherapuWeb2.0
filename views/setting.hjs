@@ -18,11 +18,11 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="articleManagement">                  
                     <div class="table-responsive"> 
-                    <div id="toolbar">
-                        <a href="/article/new" class="createArticle">
-                        <i class="material-icons">dns</i> 添加文章
-                        </a>
-                    </div>                      
+                        <div id="toolbar">
+                            <a href="/article/new" class="createArticle">
+                            <i class="material-icons">dns</i> 添加文章
+                            </a>
+                        </div>                      
                         <table id="table"
                                data-toolbar="#toolbar"
                                data-search="true"
@@ -128,7 +128,7 @@
 	                </div>
                     <h3>用户列表</h3>
                         <div class="table-responsive">
-                            <table class="table">
+                     <!--        <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>邮箱地址</th>
@@ -153,7 +153,25 @@
                                             </tr>
                                             {{/users}}
                                         </tbody>
-                                    </table>
+                                    </table> -->
+                            <table id="user-table"
+                               data-toolbar="#user_toolbar"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-show-columns="true"                                                                   
+                               data-minimum-count-columns="2"
+                               data-show-pagination-switch="true"
+                               data-pagination="true"
+                               data-id-field="id"
+                               data-page-list="[10, 25, 50, 100, ALL]"
+                               data-show-footer="false"
+                               data-side-pagination="server"
+                               data-url="/api/users"
+                               data-sort-order = "desc"
+                               data-page-size=10>
+                        </table>
+
                     </div>
                 </div>
                 <div class="tab-pane" id="primeManagement">
@@ -235,9 +253,9 @@
   </div>
 </div>
 <script>
-    var $table = $('#table'),
-        $remove = $('#remove'),
-        selections = [];
+    var $table = $('#table'),       
+        selections = [],
+        $user_table = $('#user-table');
 
     function initTable() {
         $table.bootstrapTable({           
@@ -283,48 +301,55 @@
                 ]
             ]
         });
+           $user_table.bootstrapTable({           
+            columns: [
+                [
+                {
+                        title: '用户名',
+                        field: 'email',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,                        
+                    }, {
+                        title: '姓名',
+                        field: 'fullName',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,    
+                    },{
+                        title: '注册时间',
+                        field: 'created_at',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,           
+                    },{
+                        title: '身份',
+                        field: 'creationDateFormat',                     
+                        align: 'left',
+                        valign: 'middle',
+                        sortable: true,                     
+                    },{                       
+                        title: '操作',     
+                        align: 'center',
+                        events: operateEventsUser,
+                        formatter: operateFormatterUser
+                    }
+                ]
+            ]
+        });
         // sometimes footer render error.
         setTimeout(function () {
             $table.bootstrapTable('resetView');
-        }, 200);
-        $table.on('check.bs.table uncheck.bs.table ' +
-                'check-all.bs.table uncheck-all.bs.table', function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
-
-            // save your data, here just save the current page
-            selections = getIdSelections();
-            // push or splice the selections if you want to save all data selections
-        });
+        }, 200);       
         $table.on('expand-row.bs.table', function (e, index, row, $detail) {                  
             $detail.html(row.article);
-        });
-
-        $remove.click(function () {
-            var ids = getIdSelections();
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            });
-            $remove.prop('disabled', true);
-        });
-        $(window).resize(function () {
-            // $table.bootstrapTable('resetView', {
-            //     height: getHeight()
-            // });
-        });
+        });       
     }
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
             return row.id
         });
-    }
-
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        });
-        return res;
     }
 
     function operateFormatter(value, row, index) {
@@ -353,6 +378,42 @@
                         self.parent().parent().hide()
                         $('#confirmModal').modal('hide')
                     }
+                });
+            });            
+        }
+    };
+
+  function operateFormatterUser(value, row, index) {
+        return [
+            '<a class="edit" href="javascript:void(0)" title="编辑">',
+            '<i class="glyphicon glyphicon-edit"></i>',
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="删除">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+    window.operateEventsUser = {
+        'click .edit': function (e, value, row, index) {                        
+        },
+        'click .remove': function (e, value, row, index) {
+            var self = $(this)
+            $('#confirmModal').modal()
+            $('#confirm').click(function() {                                                
+                $.ajax({
+                    url: '/api/delete/user/' + row._id,
+                    type: 'get',                   
+                      success: function(res) {
+                    alert(`用户成功删除`)
+                    self.parent().parent().hide()
+                    $('#confirmModal').modal('hide')             
+           },
+           error: function(res) {
+               alert(`用户删除失败, 请重试`)                
+                  $('#confirmModal').modal('hide') 
+           }
+
                 });
             });            
         }
@@ -426,9 +487,6 @@
 </script>
 
 
-
-
-
 <script>
    
    $('#changeBannerBtn').click(function() {
@@ -449,24 +507,7 @@
            }
        })
    })
-
- 
-   $('.deleteUser').on('click', function() {
-       var apiUrl =  $(this).parent().parent().find('.text-center')[0].innerText
-
-       var self = $(this)
-       $.ajax({
-           url: '/api/deleteUser/' + apiUrl,
-           type: 'get',
-           success: function(res) {
-               alert(`用户 ${apiUrl} 成功删除`)
-               self.parent().parent().hide()
-           },
-           error: function(res) {
-               alert(`用户删除失败， 因为 ${res.responseText}`)
-           }
-       })
-   })
+  
     $('.isAdmin1').text('作者')
     $('.isAdmin2').text('管理员')
 </script>

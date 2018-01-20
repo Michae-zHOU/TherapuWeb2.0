@@ -71,7 +71,7 @@
             height: 800,
             width: 1000,
             extraPlugins: 'uploadimage',
-            uploadUrl: '/uploader',
+            uploadUrl: '/api/uploader',
         } );
      
        $('.selectpicker').val( $('#articleType').val() ); 
