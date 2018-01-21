@@ -142,7 +142,7 @@ router.get("/users", adminRequired, function (req, res, next) {
 
     var promises = [    
       chatDB.User.count({}).exec(),
-      chatDB.User.find({'email': {'$regex': search}}).sort(sort).skip(offset).limit(limit).exec()  
+      chatDB.User.find({'email': {'$regex': search}}).skip(offset).limit(limit).sort(sort).exec()  
     ];
 
     Promise.all(promises).then(function(results) {
@@ -232,47 +232,6 @@ router.get('/delete/user/:id', adminRequired, function(req, res, next) {
             res.send('删除失败')
         }        
         res.json(removedUser)
-    })
-})
-
-// create a new user
-router.post('/register', adminRequired, upload.single('avatar'), function(req, res, next) {
-
-    var user = req.body
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
-    newdate = year + " 年 " + month + " 月 " + day + " 日 ";
-    
-    userCollection.findOne({email: user.email}, function(err, duplicatedUser) {
-
-        let passwordData = crypt.createPassword(user.password);
-
-        if (err) {
-            logger.error(err);
-            return err;
-        }
-
-        if (duplicatedUser) {
-            req.session.duplicatedUser = duplicatedUser
-            res.redirect(`/setting#userManagement`)
-        } else {            
-            userCollection.save({
-                email: user.email,
-                password: passwordData.passwordHash,
-                salt: passwordData.salt,
-                description: user.description,
-                admin: 1,
-                fullName: user.fullName,
-                created_at: newdate,
-                creationDateFormat: dateObj,
-                userAvatar: req.file ? req.file : {filename: "user-default.jpg"},
-            },  function(err, newUser) {
-                req.session.newUser = newUser
-                res.redirect(`/setting#userManagement`)
-            })
-        }
     })
 })
 

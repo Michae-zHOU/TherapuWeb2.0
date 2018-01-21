@@ -33,18 +33,13 @@ router.get('/logout', (req, res, next) => {
 	})
 })
 
-
-
-
-
-
-router.get('/status', (req, res, next)=> {
-		res.send({
-			session: req.session,
-			user: req.user,
-			authenticate: req.isAuthenticated()
-		})
-	})
+// router.get('/status', (req, res, next)=> {
+// 		res.send({
+// 			session: req.session,
+// 			user: req.user,
+// 			authenticate: req.isAuthenticated()
+// 		})
+// 	})
 
 
 module.exports = router;

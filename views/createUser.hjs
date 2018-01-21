@@ -1,0 +1,85 @@
+{{>head}}
+{{>header}}
+<link rel="stylesheet" href="../../stylesheets/users.css">
+<section class="createArticle">
+   <div class="col-md-8 col-md-offset-2">
+      <h2>新增用户</h2>
+   </div>
+   <form method="post" enctype="multipart/form-data">
+      <input type="text" id="articleType" name="articleType" value="{{article.type}},{{article.typeIdentifier}}" hidden> 
+      <div class="container container-width">
+         <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <h4>头像:</h4>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group is-empty">
+               <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail img-circle img-raised">
+                     <img src="assets/users/user-default.jpg" alt="...">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                  <div>
+                     <span class="btn btn-raised btn-round btn-default btn-file">
+                     <span class="fileinput-new">添加头像</span>
+                     <span class="fileinput-exists">修改</span>
+                     <input type="file" name="avatar" id="avatar"></span>
+                     <br>                                              
+                     <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 删除</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <h4>用户名:</h4>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group is-empty">
+               <input type="text" placeholder="用户名"  class="form-control" name="email" id="email" required>
+               <span class="material-input"></span>
+            </div>
+            <div class="bootstrap-select col-md-2">
+               <select name="type" class="selectpicker" data-style="btn btn-success btn-round" title="Single Select" data-size="7" tabindex="-98" value="2">
+                  <option class="bs-title-option" value="">权限</option>
+                  <option disabled="" >选择权限</option>
+                  <option value="1">作者</option>
+                  <option value="2">管理员</option>
+               </select>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <h4>修改密码:</h4>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group is-empty">                        
+               <input type="text" placeholder="密码" class="form-control" name="password">
+               <span class="material-input"></span>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <h4>姓名:</h4>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group is-empty">                        
+               <input type="text" placeholder="姓名" class="form-control" name="fullName" required>
+               <span class="material-input"></span>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <h4>简介:</h4>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group is-empty">
+               <textarea class="form-control" placeholder="简介" class="form-control" id="description" name="description" rows="3" required></textarea>
+               <span class="material-input"></span>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-1 col-md-offset-8">
+               <button class="btn btn-info btn-lg" type="submit">提交</button>
+            </div>
+         </div>
+      </div>
+   </form>
+</section>
+{{>footer}}
+{{>scripts}}

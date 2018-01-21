@@ -1,0 +1,32 @@
+.createArticle {
+    margin: 20px 5% 5% 5%;
+    background-color: white;
+    padding: 2%;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+}
+
+.container-width{
+    width:800px;
+}
+
+.dropdown-menu li a:active, .dropdown-menu li a:focus, .dropdown-menu li a:hover {
+    background-color: #4caf50;
+}
+.noMarginInput {
+    margin-top: 10px;
+}
+.authorBlock .img-raised {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+}
+.authorBlock {
+    padding: 10px 0 0 20px;
+}
+.authorBlock span {
+    font-size: 16px;
+    padding: 0 5px;
+}
+.form-group {
+    margin-top: 0;
+}

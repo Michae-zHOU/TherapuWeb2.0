@@ -3,20 +3,18 @@
 <link rel="stylesheet" href="../../stylesheets/setting.css">
 <section class="settingSection">
     <div class="row">
-        <div class="col-md-2">
-            
+        <div class="col-md-2">            
             <ul class="nav nav-pills nav-pills-rose nav-stacked">
-                <li class="active"><a  href="#articleManagement" data-toggle="tab">文章管理</a></li>
-                <li><a href="#surveyManagement" data-toggle="tab" >测试管理</a></li>
-                <li><a href="#pageManagement" data-toggle="tab" >页面管理</a></li>
-                <li><a href="#userManagement" data-toggle="tab">用户管理</a></li>
-                <li><a href="#primeManagement" data-toggle="tab" ">轮转文章管理</a></li>
-            </ul>
-         
+                <li id="li_articleManagement"><a href="#articleManagement" data-toggle="tab">文章管理</a></li>
+                <li id="li_surveyManagement"><a href="#surveyManagement" data-toggle="tab" >测试管理</a></li>
+                <li id="li_pageManagement"><a href="#pageManagement" data-toggle="tab" >页面管理</a></li>
+                <li id="li_userManagement"><a href="#userManagement" data-toggle="tab">用户管理</a></li>
+                <li id="li_primeManagement"><a href="#primeManagement" data-toggle="tab" ">轮转文章管理</a></li>
+            </ul>        
         </div>
         <div class="col-md-10">
             <div class="tab-content">
-                <div class="tab-pane active" id="articleManagement">                  
+                <div class="tab-pane" id="articleManagement">                  
                     <div class="table-responsive"> 
                         <div id="toolbar">
                             <a href="/article/new" class="createArticle">
@@ -84,76 +82,20 @@
                         <div class="col-md-8 col-md-offset-1">
                             <div class="form-group is-empty">
                                 <h3>首页横幅修改</h3>
-		        	        	<input type="text" name="mainPageBanner" value="{{homePageBannerData}}"  placeholder="{{homePageBannerData}}" class="form-control" id="mainPageBanner">
+                                <input type="text" name="mainPageBanner" value="{{homePageBannerData}}"  placeholder="{{homePageBannerData}}" class="form-control" id="mainPageBanner">
                                 <button class="btn btn-success btn-lg float-right" id="changeBannerBtn">修改</button>
                             </div>
                         </div>
-	                </div>
-	            </div>
-                <div class="tab-pane" id="userManagement">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-1">
-                            <div class="form-group is-empty">
-                                <h3>新用户添加</h3>
-                                <form class="row" name="newUserForm" action="/api/register" method="post" enctype="multipart/form-data">
-                                    <div class="col-md-3">
-                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail img-circle img-raised">
-                                                <img src="assets/users/user-default.jpg" alt="...">
-                                            </div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
-                                            <div>
-                                                <span class="btn btn-raised btn-round btn-default btn-file">
-                                                    <span class="fileinput-new">添加头像</span>
-                                                    <span class="fileinput-exists">修改</span>
-                                                    <input type="file" name="avatar" id="avatar"></span>
-                                                <br>                                              
-                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 删除</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <input type="text" name="email" placeholder="用户邮箱" class="form-control" required>
-                                        <input type="text" name="password"  placeholder="用户密码" class="form-control" required>
-                                        <input type="text" name="fullName" placeholder="用户姓名" class="form-control" required>
-                                        <input type="text" name="description" placeholder="用户简介" class="form-control" required>
-                                    </div>
-                                    <button class="btn btn-success btn-lg" type="submit">添加用户</button>
-                                </form>
-                                
-                               
-                            </div>
-                        </div>
-                         
-	                </div>
-                    <h3>用户列表</h3>
-                        <div class="table-responsive">
-                     <!--        <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>邮箱地址</th>
-                                                <th>全名</th>
-                                                <th>加入时间</th>
-                                                <th>身份</th>
-                                                <th class="text-right">操作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="userBody">
-                                            {{#users}}
-                                            <tr class="userCol">
-                                                <td class="title">{{email}}</td>
-                                                <td>{{fullName}}</td>
-                                                <td>{{created_at}}</td>
-                                                <td class="isAdmin{{admin}}">{{admin}}</td>
-                                                <td class="td-actions text-right">                                                     
-                                                    <a data-api="/api/delete/user/{{_id}}" type="button" rel="tooltip" class="btn btn-danger btn-simple deleteBtn">
-                                                        <i class="material-icons">close</i>
-                                                    </a>                                        
-                                                </td>
-                                            </tr>
-                                            {{/users}}
-                                        </tbody>
-                                    </table> -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="userManagement">                                
+                        <div class="table-responsive"> 
+                             <div id="user_toolbar">
+                                <a href="/users/new" class="createArticle">
+                                <i class="glyphicon glyphicon-user"></i> 添加用户
+                                </a>
+                             </div> 
+
                             <table id="user-table"
                                data-toolbar="#user_toolbar"
                                data-search="true"
@@ -229,10 +171,10 @@
                                 </script>
                             </div>
                         </div>
-	                </div>
-	            </div> 
-	        </div>
-	    </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
     </div>
 </section>
 <!-- small modal -->
@@ -324,10 +266,11 @@
                         sortable: true,           
                     },{
                         title: '身份',
-                        field: 'creationDateFormat',                     
+                        field: 'admin',                     
                         align: 'left',
                         valign: 'middle',
-                        sortable: true,                     
+                        sortable: true, 
+                        formatter: adminTypeFormatter                 
                     },{                       
                         title: '操作',     
                         align: 'center',
@@ -350,6 +293,15 @@
         return $.map($table.bootstrapTable('getSelections'), function (row) {
             return row.id
         });
+    }
+
+   function adminTypeFormatter(value, row, index, field) {
+      if (value === 1) {
+        return '作者';
+      }else if(value===2){
+        return '管理员';
+      }
+      return value;
     }
 
     function operateFormatter(value, row, index) {
@@ -395,7 +347,8 @@
     }
 
     window.operateEventsUser = {
-        'click .edit': function (e, value, row, index) {                        
+        'click .edit': function (e, value, row, index) {   
+            window.location.replace("/users/edit/" + row._id);                 
         },
         'click .remove': function (e, value, row, index) {
             var self = $(this)
@@ -404,8 +357,7 @@
                 $.ajax({
                     url: '/api/delete/user/' + row._id,
                     type: 'get',                   
-                      success: function(res) {
-                    alert(`用户成功删除`)
+                      success: function(res) {                   
                     self.parent().parent().hide()
                     $('#confirmModal').modal('hide')             
            },
@@ -507,9 +459,18 @@
            }
        })
    })
-  
-    $('.isAdmin1').text('作者')
-    $('.isAdmin2').text('管理员')
+     
+    
+var url = document.location.toString();
+if (url.match('#')) {   
+    $('#' + url.split('#')[1]).addClass("active");
+    $('#li_' + url.split('#')[1]).addClass("active"); 
+
+}else{
+    $('#articleManagement').addClass("active"); 
+    $('#li_articleManagement').addClass("active"); 
+} 
+
 </script>
 {{>footer}}
 {{>scripts}}

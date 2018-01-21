@@ -36,27 +36,41 @@ function adminRequired(req, res, next) {
 }
 
 function articleFromRequestBody(article, req) {
-        var content = req.body
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-        var newdate = year + " 年 " + month + " 月 " + day + " 日 ";
-        var typeArray = content.type.split(',');
-        var authorShown = content.author === ''? req.user.fullName : content.author;
+    var content = req.body
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    var newdate = year + " 年 " + month + " 月 " + day + " 日 ";
+    var typeArray = content.type.split(',');
+    var authorShown = content.author === '' ? req.user.fullName : content.author;
 
-         article.creator = req.user;
-         article.author= authorShown;
-         article.article= content.article;
-         article.title= content.title;
-         article.description = content.description ? content.description : '';
-         article.creationDateFormat = new Date();
-         article.created_at = newdate;
-         article.typeIdentifier = typeArray[1];
-         article.type = typeArray[0];
-         article.articleImg = req.file;
-         article.views = 0;
-         article.priority= 0;
+    article.creator = req.user;
+    article.author = authorShown;
+    article.article = content.article;
+    article.title = content.title;
+    article.description = content.description ? content.description : '';
+    article.creationDateFormat = new Date();
+    article.created_at = newdate;
+    article.typeIdentifier = typeArray[1];
+    article.type = typeArray[0];
+    article.articleImg = req.file;
+    article.views = 0;
+    article.priority = 0;
+}
+
+function articleUpdateFromRequestBody(article, req) {
+    var content = req.body
+    var typeArray = content.type.split(',');
+    var authorShown = content.author === '' ? req.user.fullName : content.author;
+    article.creator = req.user;
+    article.author = authorShown;
+    article.article = content.article;
+    article.title = content.title;
+    article.description = content.description ? content.description : '';
+    article.typeIdentifier = typeArray[1];
+    article.type = typeArray[0];
+    article.articleImg = req.file;
 }
 
 router.route('/new', authorRequired).all(function(req, res, next) {
@@ -167,7 +181,7 @@ router.route('/edit/:id', authorRequired).all(function(req, res, next) {
         })
     })
     .post(authorRequired, function(req, res, next) {
-        articleFromRequestBody(res.locals.article, req);
+        articleUpdateFromRequestBody(res.locals.article, req);
         res.locals.article.save()
             .then(() => res.redirect("/article/" + res.locals.article.id))
             .catch(error => {
